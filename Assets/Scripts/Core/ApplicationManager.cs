@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class ApplicationManager : MonoBehaviour
 {
+    [SerializeField] private GlobalParams _globalParams;
+
     private ModuleManager _moduleManager;
 
     private static ApplicationManager _instance = null;
@@ -28,12 +30,19 @@ public class ApplicationManager : MonoBehaviour
     private void InitializeManager()
     {
         _moduleManager = new ModuleManager();
-        Controller = new GameController(_moduleManager);
+        Controller = new GameController(_moduleManager, _globalParams);
         _moduleManager.Initialize(this);
 
         if (SceneManager.GetActiveScene().name == "ApplicationManager")
         {
             _moduleManager.LoadMainMenu();
         }
+    }
+
+    public void Update()
+    {
+        var deltaTime = Time.deltaTime;
+
+        _moduleManager.Tick(deltaTime);
     }
 }

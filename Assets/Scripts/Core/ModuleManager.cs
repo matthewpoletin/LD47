@@ -57,4 +57,12 @@ public class ModuleManager
         _currentModule = GameObject.FindObjectOfType<T>();
         _currentModule.Connect(_applicationManager.Controller);
     }
+
+    public void Tick(float deltaTime)
+    {
+        if (_currentModule != null)
+        {
+            _currentModule.Tick(deltaTime);
+        }
+    }
 }

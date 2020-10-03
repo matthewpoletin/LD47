@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad29e7e6460b4018a4525c3edc83dd0c, type: 3}
   m_Name: global_params
   m_EditorClassIdentifier: 
+  CommonAssets: {fileID: 11400000, guid: 28620bd599dc2b14da5a314954871374, type: 2}
   CycleDuration: 180
   GuestList:
   - {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}

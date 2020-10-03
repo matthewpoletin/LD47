@@ -2,9 +2,12 @@
 {
     private readonly ModuleManager _moduleManager;
 
-    public GameController(ModuleManager moduleManager)
+    public GlobalParams GlobalParams { get; }
+
+    public GameController(ModuleManager moduleManager, GlobalParams globalParams)
     {
         _moduleManager = moduleManager;
+        GlobalParams = globalParams;
     }
 
     public void LoadMainMenu()

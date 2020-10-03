@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944e05f5cebe4953b54b0b661782d018, type: 3}
   m_Name: GuestTimelineParams
   m_EditorClassIdentifier: 
-  TimelinePoints:
-  - Time: 10
+  GuestAppear:
+  - Time: 0
     GuestParams: {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
+    ChairIndex: 0
+  GuestLeave:
+  - Time: 5
+    GuestParams: {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
+  GuestDialog: []

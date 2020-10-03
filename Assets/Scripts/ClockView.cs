@@ -7,7 +7,7 @@ public class ClockView : MonoBehaviour
 
     private Timer _timer;
 
-    private const float ROTATION_SPEED = 100;
+    private const float ROTATION_SPEED = 25;
 
     public void Connect(Timer cycleManagerTimer)
     {
@@ -16,9 +16,7 @@ public class ClockView : MonoBehaviour
 
     private void Update()
     {
-        _hourHand.Rotate(0, 0, -1 * ROTATION_SPEED * Time.deltaTime);
-        _minuteHand.Rotate(0, 0, -1 * ROTATION_SPEED * 60 * Time.deltaTime);
-
-        // TODO: Обновлять положение время в соответсвии с _timer.TimePassed/_timer.Duration
+        _hourHand.localEulerAngles = new Vector3(-90f, 0f, -360f * _timer.TimePassed / _timer.Duration);
+        _minuteHand.localEulerAngles = new Vector3(-90f, 0f, 60 * -360f * _timer.TimePassed / _timer.Duration);
     }
 }

@@ -3,18 +3,50 @@ using UnityEngine;
 
 public class GuestsManager : MonoBehaviour
 {
-    private List<GuestView> _activeGuestsList = new List<GuestView>();
+    [SerializeField] private List<ChairView> _chairList = default;
+    [SerializeField] private Transform _guestContainer = default;
+    [SerializeField] private Transform _leftPivot = default;
+    [SerializeField] private Transform _rightPivot = default;
 
-    public void AddGuest(GuestParams guestParams, Transform container)
+    private readonly Dictionary<GuestParams, GuestView> _guests = new Dictionary<GuestParams, GuestView>();
+
+    public Transform LeftPivot => _leftPivot;
+    public Transform RightPivot => _rightPivot;
+
+    public void Connect(List<GuestParams> guestList)
     {
-        var go = GameObject.Instantiate(guestParams.Prefab, container);
-        var guestView = go.GetComponent<GuestView>();
-
-        _activeGuestsList.Add(guestView);
+        foreach (var guestParams in guestList)
+        {
+            CreateGuest(guestParams);
+        }
     }
 
-    public void RemoveGuest(GuestView guestView)
+    public void CreateGuest(GuestParams guestParams)
     {
-        // _activeGuestsList.Remove()
+        var go = Instantiate(guestParams.Prefab, _guestContainer);
+        var guestView = go.GetComponent<GuestView>();
+        go.SetActive(false);
+
+        _guests.Add(guestParams, guestView);
+    }
+
+
+    public GuestView GetGuestView(GuestParams commandGuestParams)
+    {
+        return _guests[commandGuestParams];
+    }
+
+    public ChairView GetChair(int commandChairIndex)
+    {
+        return _chairList[commandChairIndex];
+    }
+
+    public void Utilize()
+    {
+        foreach (var guestView in _guests.Values)
+        {
+            Destroy(guestView.gameObject);
+        }
+        _guests.Clear();
     }
 }

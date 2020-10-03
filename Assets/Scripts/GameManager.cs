@@ -2,7 +2,6 @@
 
 public class GameManager : BaseModule
 {
-    [SerializeField] private GlobalParams _globalParams = default;
     [SerializeField] private Camera _camera = default;
     [SerializeField] private GuestsManager _guestsManager = default;
     [SerializeField] private PlayerController _playerController = default;
@@ -14,9 +13,10 @@ public class GameManager : BaseModule
     public override void Connect(GameController controller)
     {
         _playerController.Connect(_camera);
-        _guestsManager.AddGuest(_globalParams.GuestList[0], _guestsManager.transform);
 
-        _cycleManager = new CycleManager(_globalParams.CycleDuration, _globalParams.GuestTimelineParams);
+        _guestsManager.Connect(controller.GlobalParams.GuestList);
+
+        _cycleManager = new CycleManager(controller, _guestsManager);
 
         _pauseDialog.Connect(controller);
         _pauseDialog.gameObject.SetActive(false);
@@ -41,5 +41,7 @@ public class GameManager : BaseModule
     public override void Utilize()
     {
         _pauseDialog.Utilize();
+        _guestsManager.Utilize();
+        _cycleManager.Utilize();
     }
 }

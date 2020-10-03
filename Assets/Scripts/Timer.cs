@@ -2,7 +2,7 @@
 
 public class Timer
 {
-    public float Duration { get; private set; }
+    private float _duration;
     private float _timeLeft;
 
     public event Action<float> OnTimerTick;
@@ -12,6 +12,10 @@ public class Timer
 
     private bool _paused;
 
+    public float Duration => _duration; 
+    public float TimeLeft => _timeLeft; 
+    public float TimePassed => _duration - _timeLeft; 
+
     public Timer(float duration)
     {
         Reset(duration);
@@ -19,7 +23,7 @@ public class Timer
 
     public void Reset(float duration)
     {
-        Duration = duration;
+        _duration = duration;
         _timeLeft = duration;
         _elapsed = false;
     }

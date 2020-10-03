@@ -9,6 +9,10 @@ public class MainMenuManager : BaseModule
         _mainMenuView.Connect(controller);
     }
 
+    public override void Tick(float deltaTime)
+    {
+    }
+
     public override void Utilize()
     {
         _mainMenuView.Utilize();

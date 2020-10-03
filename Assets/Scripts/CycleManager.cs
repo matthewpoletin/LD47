@@ -1,36 +1,42 @@
-﻿using TMPro;
-using UnityEngine;
-
-public enum CycleState
-{
-    Paused,
-    Ticking,
-    ShowResults,
-}
-
-public class CycleManager
+﻿public class CycleManager
 {
     private float _cycleDuration;
 
-    private Timer Timer { get; set; }
+    private readonly Timer _timer;
 
-    public CycleManager(Timer timer, float duration)
+    public Timer Timer => _timer;
+
+    public CycleManager(float cycleDuration, GuestTimelineParams guestTimelineParams)
     {
-        _cycleDuration = duration;
-        Timer = timer;
-        Timer.OnTimerElapsed += OnTimerElapsed;
+        _cycleDuration = cycleDuration;
+
+        _timer = new Timer(_cycleDuration);
+        _timer.OnTimerElapsed += OnTimerElapsed;
 
         Restart();
     }
 
+    public void Tick(float deltaTime)
+    {
+        _timer.Tick(deltaTime);
+
+        // TODO: 
+        // _timer.TimePassed
+    }
+
     private void OnTimerElapsed()
     {
+        // TODO: Конец цикла
         Restart();
     }
 
     public void Restart()
     {
-        Timer.Reset(_cycleDuration);
-        Timer.Unpause();
+        _timer.Reset(_cycleDuration);
+        _timer.Unpause();
+    }
+
+    public void Utilize()
+    {
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class ModuleManager
 {
     private const string SCENE_MAIN_MENU_PATH = "Scenes/MainMenu";
-    private const string SCENE_GAMEPLAY_PATH = "Scenes/SampleScene";
+    private const string SCENE_GAME_PATH = "Scenes/Game";
 
     private ApplicationManager _applicationManager;
 
@@ -41,7 +41,7 @@ public class ModuleManager
 
     public void LoadGame()
     {
-        _applicationManager.StartCoroutine(ChangeModule<GameplayManager>(SCENE_GAMEPLAY_PATH));
+        _applicationManager.StartCoroutine(ChangeModule<GameManager>(SCENE_GAME_PATH));
     }
 
     private IEnumerator ChangeModule<T>(string sceneName) where T : BaseModule

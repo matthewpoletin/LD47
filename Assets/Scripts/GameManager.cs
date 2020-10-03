@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GameplayManager : BaseModule
+public class GameManager : BaseModule
 {
     [SerializeField] private GlobalParams _globalParams = default;
 

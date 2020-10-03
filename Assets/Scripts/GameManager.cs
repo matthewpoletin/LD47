@@ -3,18 +3,19 @@
 public class GameManager : BaseModule
 {
     [SerializeField] private GlobalParams _globalParams = default;
-
+    [SerializeField] private Camera _camera = default;
     [SerializeField] private GuestsManager _guestsManager = default;
-
+    [SerializeField] private PlayerController _playerController = default;
+    [SerializeField] private PauseDialog _pauseDialog = default;
     // TODO: Установить ссылку на объект часов
     // [SerializeField] private ClockView _clockView = default;
-    [SerializeField] private PauseDialog _pauseDialog = default;
 
     private Timer _timer;
     private CycleManager _cycleManager;
 
     public override void Connect(GameController controller)
     {
+        _playerController.Connect(_camera);
         _guestsManager.AddGuest(_globalParams.GuestList[0], _guestsManager.transform);
 
         _timer = new Timer(_globalParams.CycleDuration);

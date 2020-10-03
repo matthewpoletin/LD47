@@ -9,6 +9,8 @@ public class playerMovement : MonoBehaviour
     public GameObject leftPivo;
     public GameObject rightPivo;
 
+    public GameObject camera;
+
     public CharacterController controller;
 
     // Update is called once per frame
@@ -23,10 +25,14 @@ public class playerMovement : MonoBehaviour
         if (transform.position.x > rightPivo.transform.position.x)
         {
             transform.position = rightPivo.transform.position;
+            x = 0;
         }
         else if (transform.position.x < leftPivo.transform.position.x)
         {
             transform.position = leftPivo.transform.position;
+            x = 0;
         }
+
+        camera.transform.Rotate(0, x * Time.deltaTime * 6, 0);
     }
 }

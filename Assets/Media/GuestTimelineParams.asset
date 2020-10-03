@@ -16,7 +16,12 @@ MonoBehaviour:
   - Time: 0
     GuestParams: {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
     ChairIndex: 0
+    Duration: 1
   GuestLeave:
   - Time: 5
     GuestParams: {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
-  GuestDialog: []
+    Duration: 1
+  GuestDialog:
+  - Time: 2
+    GuestParams: {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
+    Text: give me a drink, bartender

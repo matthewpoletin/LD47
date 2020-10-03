@@ -7,8 +7,6 @@ public class ClockView : MonoBehaviour
 
     private Timer _timer;
 
-    private const float ROTATION_SPEED = 25;
-
     public void Connect(Timer cycleManagerTimer)
     {
         _timer = cycleManagerTimer;

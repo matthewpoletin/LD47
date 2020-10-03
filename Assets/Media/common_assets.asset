@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be2c87593a74a3db2ec0af0d0279fb6, type: 3}
   m_Name: common_assets
   m_EditorClassIdentifier: 
-  DialogPrefab: {fileID: 0}
+  DialogPrefab: {fileID: 8369690031725421720, guid: 5fb05494e05b80440a1db62e034e839c, type: 3}

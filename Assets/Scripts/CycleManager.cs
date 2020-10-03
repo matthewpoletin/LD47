@@ -1,4 +1,6 @@
-﻿public class CycleManager
+﻿using UnityEngine;
+
+public class CycleManager
 {
     private readonly GuestsManager _guestsManager;
     private readonly float _cycleDuration;
@@ -12,7 +14,7 @@
 
     public Timer Timer => _timer;
 
-    public CycleManager(GameController controller, GuestsManager guestsManager)
+    public CycleManager(GameController controller, GuestsManager guestsManager, Transform bubbleContainer)
     {
         _guestsManager = guestsManager;
         _cycleDuration = controller.GlobalParams.CycleDuration;
@@ -22,7 +24,7 @@
         _timer.OnTimerElapsed += OnTimerElapsed;
 
         _timeline = new TimeCommandManager(_timer);
-        _commandsFactory = new CommandsFactory(_guestsManager, controller.GlobalParams.CommonAssets.DialogPrefab);
+        _commandsFactory = new CommandsFactory(_guestsManager, controller.GlobalParams.CommonAssets.DialogPrefab, bubbleContainer);
 
         Restart();
     }
@@ -44,21 +46,24 @@
         _timer.Reset(_cycleDuration);
         _timer.Unpause();
 
-        // TODO: Initialize
         foreach (var command in _guestTimeline.GuestAppear)
         {
-            var timeCommand = _commandsFactory.CreateTimeCommand(command);
-            _timeline.AddCommand(timeCommand);
+            _timeline.AddCommand(_commandsFactory.CreateTimeCommand(command));
         }
 
         foreach (var command in _guestTimeline.GuestLeave)
         {
-            var timeCommand = _commandsFactory.CreateTimeCommand(command);
-            _timeline.AddCommand(timeCommand);
+            _timeline.AddCommand(_commandsFactory.CreateTimeCommand(command));
+        }
+
+        foreach (var command in _guestTimeline.GuestDialog)
+        {
+            _timeline.AddCommand(_commandsFactory.CreateTimeCommand(command));
         }
     }
 
     public void Utilize()
     {
+        _timeline.Utilize();
     }
 }

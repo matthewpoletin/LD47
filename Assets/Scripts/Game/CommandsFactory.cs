@@ -4,11 +4,13 @@ public class CommandsFactory
 {
     private readonly GuestsManager _guestsManager;
     private readonly GameObject _dialogPrefab;
+    private readonly Transform _bubbleContainer;
 
-    public CommandsFactory(GuestsManager guestsManager, GameObject dialogPrefab)
+    public CommandsFactory(GuestsManager guestsManager, GameObject dialogPrefab, Transform bubbleContainer)
     {
         _guestsManager = guestsManager;
         _dialogPrefab = dialogPrefab;
+        _bubbleContainer = bubbleContainer;
     }
 
     public TimeCommandExecute CreateTimeCommand(GuestEnterTimelineCommand command)
@@ -50,9 +52,9 @@ public class CommandsFactory
             Action = delegate
             {
                 var guestView = _guestsManager.GetGuestView(command.GuestParams);
-                var fromPosition = guestView.transform.position;
-                var toPosition = _guestsManager.RightPivot.transform.position;
-                guestView.ShowDialog(command.Text);
+                var go = GameObject.Instantiate(_dialogPrefab, _bubbleContainer);
+                var dialogBox =  go.GetComponent<DialogBox>();
+                dialogBox.Connect(command.Text, guestView.TopPlaceholder, command.Duration);
             }
         };
     }

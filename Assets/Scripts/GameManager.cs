@@ -7,6 +7,7 @@ public class GameManager : BaseModule
     [SerializeField] private PlayerController _playerController = default;
     [SerializeField] private PauseDialog _pauseDialog = default;
     [SerializeField] private ClockView _clockView = default;
+    [SerializeField] private Transform _bubbleContainer = default;
 
     private CycleManager _cycleManager;
 
@@ -16,7 +17,7 @@ public class GameManager : BaseModule
 
         _guestsManager.Connect(controller.GlobalParams.GuestList);
 
-        _cycleManager = new CycleManager(controller, _guestsManager);
+        _cycleManager = new CycleManager(controller, _guestsManager, _bubbleContainer);
 
         _pauseDialog.Connect(controller);
         _pauseDialog.gameObject.SetActive(false);

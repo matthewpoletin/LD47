@@ -25,6 +25,7 @@ public class GuestDialogCommand
     public float Time = default;
     public GuestParams GuestParams = default;
     public string Text = default;
+    public float Duration = 5f;
 }
 
 [CreateAssetMenu(fileName = "GuestTimelineParams", menuName = "Params/GuestTimelineParams", order = 10)]

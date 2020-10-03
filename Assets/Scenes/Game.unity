@@ -1407,6 +1407,7 @@ MonoBehaviour:
   _guestsManager: {fileID: 1683422257}
   _playerController: {fileID: 1984704396}
   _pauseDialog: {fileID: 53479596}
+  _clockView: {fileID: 1360690549}
 --- !u!4 &1017462114
 Transform:
   m_ObjectHideFlags: 0
@@ -1649,6 +1650,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4432886324462595977, guid: 19d402a71ea6a034da5011e15723f1af, type: 3}
   m_PrefabInstance: {fileID: 1360690547}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1360690549 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1431050218325047558, guid: 19d402a71ea6a034da5011e15723f1af, type: 3}
+  m_PrefabInstance: {fileID: 1360690547}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5441bf145c86149ae7e5d463397274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1384723798
 GameObject:
   m_ObjectHideFlags: 0

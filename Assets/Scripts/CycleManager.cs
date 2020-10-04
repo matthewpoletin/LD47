@@ -109,12 +109,19 @@ public class CycleManager
                         }));
                         break;
                     }
-                    case "Order":
+                    case "Clue":
                     {
-                        // TODO:
+                        _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestClueCommand()
+                        {
+                            GuestParams = guestParams,
+                            StartTime = (int)storylineEntry["StartTime"],
+                            Duration = (int)storylineEntry["Duration"],
+                            ReportEng = (string)storylineEntry["TextEng"],
+                            ReportRus = (string)storylineEntry["TextRus"],
+                        }));
                         break;
                     }
-                    case "Clue":
+                    case "Order":
                     {
                         // TODO:
                         break;

@@ -63,6 +63,20 @@ public class CommandsFactory
         };
     }
 
+    public TimeCommandExecute CreateTimeCommand(GuestClueCommand command)
+    {
+        return new TimeCommandExecute
+        {
+            Time = command.StartTime,
+            Action = delegate
+            {
+                var go = GameObject.Instantiate(_dialogPrefab, _bubbleContainer);
+                var dialogBox = go.GetComponent<DialogBox>();
+                dialogBox.Connect(command.ReportEng, _guestsManager.ClueNotificationPivot, command.Duration);
+            }
+        };
+    }
+
     private bool CompareStrings(string newString)
     {
         foreach (var str in _currentClues)

@@ -8,11 +8,13 @@ public class GuestsManager : MonoBehaviour
     [SerializeField] private Transform _guestContainer = default;
     [SerializeField] private Transform _leftPivot = default;
     [SerializeField] private Transform _rightPivot = default;
+    [SerializeField] private Transform _clueNotificationPivot = default;
 
     private readonly Dictionary<GuestParams, GuestView> _guests = new Dictionary<GuestParams, GuestView>();
 
     public Transform LeftPivot => _leftPivot;
     public Transform RightPivot => _rightPivot;
+    public Transform ClueNotificationPivot => _clueNotificationPivot;
 
     public void Connect(List<GuestParams> guestList)
     {

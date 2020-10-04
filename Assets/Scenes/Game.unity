@@ -2257,6 +2257,7 @@ MonoBehaviour:
   _guestContainer: {fileID: 1384723799}
   _leftPivot: {fileID: 460585426}
   _rightPivot: {fileID: 1352518631}
+  _clueNotificationPivot: {fileID: 0}
 --- !u!1 &1478708027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2568,7 +2569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seq: ASWD
-  idleImg: {fileID: 21300000, guid: fa2c4666445dbf14aa1d5509d578cd78, type: 3}
+  idleImg: {fileID: 21300000, guid: 156acabad55bde54191aad1fa01b018b, type: 3}
   pressedImg: {fileID: 21300000, guid: 122695f648bb27949b1bea263498f2c7, type: 3}
   parent: {fileID: 0}
 --- !u!1 &1912660832

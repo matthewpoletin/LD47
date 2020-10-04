@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
+using UnityEngine;
 
 public class GameManager : BaseModule
 {
@@ -17,7 +16,7 @@ public class GameManager : BaseModule
 
     public override void Connect(GameController controller)
     {
-        _playerController.Connect(_camera);
+        _playerController.Connect(_camera, controller.GlobalParams);
 
         _guestsManager.Connect(controller.GlobalParams.GuestList, controller.Pool, controller.GlobalParams,
             controller.GlobalParams.CommonAssets,

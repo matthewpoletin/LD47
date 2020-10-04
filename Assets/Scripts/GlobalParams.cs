@@ -8,6 +8,7 @@ public class GlobalParams : ScriptableObject
     public float CycleDuration = 3 * 60f;
     public List<GuestParams> GuestList = default;
     public TextAsset StorylineCsv = default;
+    public float PlayerMovementSpeed = default;
     public float OpacityMinDistance = default;
     public float OpacityMaxDistance = default;
 }

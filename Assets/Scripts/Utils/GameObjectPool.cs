@@ -24,7 +24,7 @@ public class GameObjectPool : MonoBehaviour
                 itemPrefab == prefab)
             {
                 itemGameObject.SetActive(true);
-                itemGameObject.transform.parent = container;
+                itemGameObject.transform.SetParent(container);
                 return itemGameObject;
             }
         }

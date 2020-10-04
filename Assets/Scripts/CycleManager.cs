@@ -49,6 +49,8 @@ public class CycleManager
 
     public void Restart()
     {
+        _guestsManager.Reset();
+        
         _timer.Reset(_cycleDuration);
         _timer.Unpause();
 

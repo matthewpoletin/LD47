@@ -47,6 +47,15 @@ public class GuestsManager : MonoBehaviour
         return _chairList[commandChairIndex];
     }
 
+    public void Reset()
+    {
+        foreach (var guests in _guests.Values)
+        {
+            guests.transform.position = _leftPivot.transform.position;
+            guests.gameObject.SetActive(false);
+        }
+    }
+
     public void Utilize()
     {
         foreach (var guestView in _guests.Values)

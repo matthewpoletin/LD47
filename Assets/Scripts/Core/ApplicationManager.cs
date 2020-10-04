@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class ApplicationManager : MonoBehaviour
 {
-    [SerializeField] private GlobalParams _globalParams;
+    [SerializeField] private GlobalParams _globalParams = default;
+    [SerializeField] private GameObjectPool _gameObjectPool = default;
 
     private ModuleManager _moduleManager;
 
@@ -29,8 +30,10 @@ public class ApplicationManager : MonoBehaviour
 
     private void InitializeManager()
     {
+        _gameObjectPool.Init();
+
         _moduleManager = new ModuleManager();
-        Controller = new GameController(_moduleManager, _globalParams);
+        Controller = new GameController(_moduleManager, _globalParams, _gameObjectPool);
         _moduleManager.Initialize(this);
 
         if (SceneManager.GetActiveScene().name == "ApplicationManager")

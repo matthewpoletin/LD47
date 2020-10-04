@@ -3,11 +3,13 @@
     private readonly ModuleManager _moduleManager;
 
     public GlobalParams GlobalParams { get; }
+    public GameObjectPool Pool { get; }
 
-    public GameController(ModuleManager moduleManager, GlobalParams globalParams)
+    public GameController(ModuleManager moduleManager, GlobalParams globalParams, GameObjectPool pool)
     {
         _moduleManager = moduleManager;
         GlobalParams = globalParams;
+        Pool = pool;
     }
 
     public void LoadMainMenu()

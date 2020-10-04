@@ -62,9 +62,7 @@ public class CommandsFactory
             Action = delegate
             {
                 var guestView = _guestsManager.GetGuestView(command.GuestParams);
-                var go = GameObject.Instantiate(_dialogPrefab, _bubbleContainer);
-                var dialogBox = go.GetComponent<DialogBox>();
-                dialogBox.Connect(command.TextEng, _camera, guestView.TopPlaceholder, command.Duration);
+                _guestsManager.CreateDialogBox(guestView, command.TextEng, command.Duration);
             }
         };
     }
@@ -76,9 +74,9 @@ public class CommandsFactory
             Time = command.StartTime,
             Action = delegate
             {
-                var go = GameObject.Instantiate(_dialogPrefab, _bubbleContainer);
-                var dialogBox = go.GetComponent<DialogBox>();
-                dialogBox.Connect(command.ReportEng, _camera, _guestsManager.ClueNotificationPivot, command.Duration);
+                // var go = GameObject.Instantiate(_dialogPrefab, _bubbleContainer);
+                // var dialogBox = go.GetComponent<DialogBox>();
+                // dialogBox.Connect(command.ReportEng, _camera, _guestsManager.ClueNotificationPivot, command.Duration);
             }
         };
     }

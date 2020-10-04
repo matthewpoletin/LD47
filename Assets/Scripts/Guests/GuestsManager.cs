@@ -11,20 +11,69 @@ public class GuestsManager : MonoBehaviour
     [SerializeField] private Transform _clueNotificationPivot = default;
 
     private readonly Dictionary<GuestParams, GuestView> _guests = new Dictionary<GuestParams, GuestView>();
+    private readonly Dictionary<DialogBox, float> _dialogBoxes = new Dictionary<DialogBox, float>();
+
+    private GameObjectPool _pool;
+    private GlobalParams _globalParams;
+    private CommonAssets _commonAssets;
+    private Camera _camera;
+    private Transform _bubbleContainer;
+    private PlayerController _playerController;
+
+    private float _elapsedTime;
 
     public Transform LeftPivot => _leftPivot;
     public Transform RightPivot => _rightPivot;
     public Transform ClueNotificationPivot => _clueNotificationPivot;
 
-    public void Connect(List<GuestParams> guestList)
+    public void Connect(List<GuestParams> guestList, GameObjectPool pool, GlobalParams globalParams,
+        CommonAssets commonAssets, Camera camera1,
+        Transform bubbleContainer, PlayerController playerController)
     {
+        _pool = pool;
+        _globalParams = globalParams;
+        _commonAssets = commonAssets;
+        _camera = camera1;
+        _bubbleContainer = bubbleContainer;
+        _playerController = playerController;
+
         foreach (var guestParams in guestList)
         {
             CreateGuest(guestParams);
         }
     }
 
-    public void CreateGuest(GuestParams guestParams)
+    public void Tick(float deltaTime)
+    {
+        _elapsedTime += deltaTime;
+
+        var dialogsToRemove = new List<DialogBox>();
+        foreach (var keyValuePair in _dialogBoxes)
+        {
+            var dialogBox = keyValuePair.Key;
+            var destroyTime = keyValuePair.Value;
+            if (destroyTime < _elapsedTime)
+            {
+                dialogsToRemove.Add(dialogBox);
+            }
+        }
+
+        foreach (var dialogBox in dialogsToRemove)
+        {
+            _pool.UtilizeObject(dialogBox.gameObject);
+            _dialogBoxes.Remove(dialogBox);
+        }
+
+        foreach (var dialogBox in _dialogBoxes.Keys)
+        {
+            var distance = Mathf.Abs(dialogBox.GuestView.transform.position.x - _playerController.transform.position.x);
+            var alpha = Mathf.Lerp(1f, 0f, Mathf.InverseLerp(_globalParams.OpacityMinDistance, _globalParams.OpacityMaxDistance, distance));
+            dialogBox.SetOpacity(alpha);
+            dialogBox.Tick(deltaTime);
+        }
+    }
+
+    private void CreateGuest(GuestParams guestParams)
     {
         var go = Instantiate(guestParams.Prefab, _guestContainer);
         var guestView = go.GetComponent<GuestView>();
@@ -40,7 +89,7 @@ public class GuestsManager : MonoBehaviour
 
     public GuestParams GetGuestByCharacter(string character)
     {
-        return _guests.Keys.FirstOrDefault(GuestParams => GuestParams.Character == character);
+        return _guests.Keys.FirstOrDefault(guestParams => guestParams.Character == character);
     }
 
     public ChairView GetChair(int commandChairIndex)
@@ -48,7 +97,14 @@ public class GuestsManager : MonoBehaviour
         return _chairList[commandChairIndex];
     }
 
-    private List<DialogBox> _dialogBoxes = new List<DialogBox>();
+    public void CreateDialogBox(GuestView guestView, string value, float duration)
+    {
+        var dialogBoxGo = _pool.GetObject(_commonAssets.DialogPrefab, _bubbleContainer);
+        var dialogBox = dialogBoxGo.GetComponent<DialogBox>();
+        dialogBox.Connect(value, _camera, guestView);
+
+        _dialogBoxes.Add(dialogBox, _elapsedTime + duration);
+    }
 
     public void Reset()
     {
@@ -61,17 +117,21 @@ public class GuestsManager : MonoBehaviour
 
     public void Utilize()
     {
-        foreach (var dialogBox in _dialogBoxes)
+        _elapsedTime = default;
+
+        foreach (var dialogBox in _dialogBoxes.Keys)
         {
             dialogBox.Utilize();
-            GameObject.Destroy(dialogBox.gameObject);
+            _pool.UtilizeObject(dialogBox.gameObject);
         }
+
         _dialogBoxes.Clear();
 
         foreach (var guestView in _guests.Values)
         {
             Destroy(guestView.gameObject);
         }
+
         _guests.Clear();
     }
 }

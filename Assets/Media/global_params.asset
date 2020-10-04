@@ -22,3 +22,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ce037cb2189399448eade4847e59fbe, type: 2}
   - {fileID: 11400000, guid: a45cefe252d76c94395dc7dd2c789155, type: 2}
   StorylineCsv: {fileID: 4900000, guid: afc284c409f95c848a7e3c9a90d537bd, type: 3}
+  OpacityMinDistance: 0.5
+  OpacityMaxDistance: 2.25

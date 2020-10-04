@@ -16,8 +16,8 @@ public class CycleManager
 
     public Timer Timer => _timer;
 
-    public CycleManager(GameController controller, GuestsManager guestsManager, Transform bubbleContainer,
-        TextAsset storylineData, PlayerController playerController, Camera camera)
+    public CycleManager(GameController controller, GameObjectPool pool, GuestsManager guestsManager,
+        Transform bubbleContainer, TextAsset storylineData, PlayerController playerController, Camera camera)
     {
         _guestsManager = guestsManager;
         _cycleDuration = controller.GlobalParams.CycleDuration;

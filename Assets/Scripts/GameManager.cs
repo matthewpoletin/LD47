@@ -19,9 +19,11 @@ public class GameManager : BaseModule
     {
         _playerController.Connect(_camera);
 
-        _guestsManager.Connect(controller.GlobalParams.GuestList);
+        _guestsManager.Connect(controller.GlobalParams.GuestList, controller.Pool, controller.GlobalParams,
+            controller.GlobalParams.CommonAssets,
+            _camera, _bubbleContainer, _playerController);
 
-        _cycleManager = new CycleManager(controller, _guestsManager, _bubbleContainer,
+        _cycleManager = new CycleManager(controller, controller.Pool, _guestsManager, _bubbleContainer,
             controller.GlobalParams.StorylineCsv, _playerController, _camera);
 
         _pauseDialog.Connect(controller);
@@ -41,6 +43,7 @@ public class GameManager : BaseModule
     public override void Tick(float deltaTime)
     {
         _cycleManager.Tick(deltaTime);
+        _guestsManager.Tick(deltaTime);
 
         if (Input.GetKey(KeyCode.R))
         {

@@ -31,7 +31,7 @@ public class GameObjectPool : MonoBehaviour
 
         // create object if object not found
         var newGameObject = AddObject(prefab);
-        newGameObject.transform.parent = container;
+        newGameObject.transform.SetParent(container);
         newGameObject.SetActive(true);
         return newGameObject;
     }

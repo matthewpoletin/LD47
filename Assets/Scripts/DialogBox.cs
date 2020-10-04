@@ -3,38 +3,36 @@ using UnityEngine.UI;
 
 public class DialogBox : MonoBehaviour
 {
+    private readonly Vector3 _offset = new Vector3(0.8f, 1.8f, 0f);
+
     [SerializeField] private Text _text = default;
     [SerializeField] private CanvasGroup _canvasGroup = default;
 
-    private Transform _followPivot;
+    private GuestView _guestView;
     private Camera _camera;
-    // private readonly Vector3 _offset = new Vector3(0.8f, 1.8f, 0f);
-    private readonly Vector3 _offset = Vector3.zero;
 
-    private void Start()
-    {
-        _camera = Camera.main;
-    }
+    public GuestView GuestView => _guestView;
 
-    public void Connect(string value, Camera camera, Transform followPivot, float duration)
+    public void Connect(string value, Camera camera1, GuestView guestView)
     {
         _text.text = value;
-        _followPivot = followPivot;
-
-        GameObject.Destroy(gameObject, duration);
+        _camera = camera1;
+        _guestView = guestView;
     }
 
-    private void Tick()
+    public void Tick(float deltaTime)
     {
-        transform.position = _camera.WorldToScreenPoint(_followPivot.transform.position) + _offset;
+        transform.position = _camera.WorldToScreenPoint(_guestView.transform.position) + _offset;
     }
 
     public void SetOpacity(float alpha)
     {
-        
+        _canvasGroup.alpha = alpha;
     }
 
     public void Utilize()
     {
+        _canvasGroup.alpha = 1f;
+        _text.text = "";
     }
 }

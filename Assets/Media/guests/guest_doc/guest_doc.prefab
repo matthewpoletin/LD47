@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8984049841114044941, guid: e12d9238fcd7ce54fb9917dfa72ec0f9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 89d8c6294cac7a24492ac884ddf83b0e, type: 2}
     - target: {fileID: 8984049842502976359, guid: e12d9238fcd7ce54fb9917dfa72ec0f9, type: 3}
       propertyPath: m_Name
-      value: guest_blonde
+      value: guest_doc
       objectReference: {fileID: 0}
     - target: {fileID: 8984049842502976408, guid: e12d9238fcd7ce54fb9917dfa72ec0f9, type: 3}
       propertyPath: m_LocalPosition.x

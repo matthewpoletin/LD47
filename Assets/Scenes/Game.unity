@@ -2570,7 +2570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seq: ASWD
   idleImg: {fileID: 21300000, guid: 156acabad55bde54191aad1fa01b018b, type: 3}
-  pressedImg: {fileID: 21300000, guid: 05163565fb70c3d458456f5b9fd1de48, type: 3}
+  pressedImg: {fileID: 21300000, guid: 84a7f404500a2024cb36cac6dea4267b, type: 3}
   parent: {fileID: 0}
 --- !u!1 &1912660832
 GameObject:

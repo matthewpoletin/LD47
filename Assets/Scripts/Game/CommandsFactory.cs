@@ -44,17 +44,17 @@ public class CommandsFactory
         };
     }
 
-    public TimeCommandExecute CreateTimeCommand(GuestDialogCommand command)
+    public TimeCommandExecute CreateTimeCommand(GuestTalkTimelineCommand timelineCommand)
     {
         return new TimeCommandExecute
         {
-            Time = command.Time,
+            Time = timelineCommand.StartTime,
             Action = delegate
             {
-                var guestView = _guestsManager.GetGuestView(command.GuestParams);
+                var guestView = _guestsManager.GetGuestView(timelineCommand.GuestParams);
                 var go = GameObject.Instantiate(_dialogPrefab, _bubbleContainer);
                 var dialogBox =  go.GetComponent<DialogBox>();
-                dialogBox.Connect(command.Text, guestView.TopPlaceholder, command.Duration);
+                dialogBox.Connect(timelineCommand.TextEng, guestView.TopPlaceholder, timelineCommand.Duration);
             }
         };
     }

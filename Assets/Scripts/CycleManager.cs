@@ -4,7 +4,6 @@ public class CycleManager
 {
     private readonly GuestsManager _guestsManager;
     private readonly float _cycleDuration;
-    private readonly GuestTimelineParams _guestTimeline;
 
     private readonly CommandsFactory _commandsFactory;
 
@@ -20,7 +19,6 @@ public class CycleManager
     {
         _guestsManager = guestsManager;
         _cycleDuration = controller.GlobalParams.CycleDuration;
-        _guestTimeline = controller.GlobalParams.GuestTimelineParams;
         _storylineData = storylineData;
 
         _timer = new Timer(_cycleDuration);
@@ -95,7 +93,14 @@ public class CycleManager
                     }
                     case "Talk":
                     {
-                        // TODO:
+                        _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestTalkTimelineCommand()
+                        {
+                            GuestParams = guestParams,
+                            StartTime = (int) storylineEntry["StartTime"],
+                            Duration = (int) storylineEntry["Duration"],
+                            TextEng = (string) storylineEntry["TextEng"],
+                            TextRus = (string) storylineEntry["TextRus"],
+                        }));
                         break;
                     }
                     case "Order":

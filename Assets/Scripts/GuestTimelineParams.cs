@@ -9,6 +9,8 @@ public class GuestEnterTimelineCommand
     public GuestParams GuestParams = default;
     public int ChairIndex = 0;
     public float Duration = 1f;
+    public bool IsClue = default;
+    public string ClueText = default;
 }
 
 [Serializable]
@@ -26,6 +28,8 @@ public class GuestDialogCommand
     public GuestParams GuestParams = default;
     public string Text = default;
     public float Duration = 5f;
+    public bool IsClue = default;
+    public string ClueText = default;
 }
 
 [CreateAssetMenu(fileName = "GuestTimelineParams", menuName = "Params/GuestTimelineParams", order = 10)]

@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : BaseModule
 {
@@ -8,6 +10,8 @@ public class GameManager : BaseModule
     [SerializeField] private PauseDialog _pauseDialog = default;
     [SerializeField] private ClockView _clockView = default;
     [SerializeField] private Transform _bubbleContainer = default;
+    [SerializeField] private GameObject _clueDialog = default;
+    [SerializeField] private Report _report = default;
 
     private CycleManager _cycleManager;
 
@@ -22,7 +26,15 @@ public class GameManager : BaseModule
         _pauseDialog.Connect(controller);
         _pauseDialog.gameObject.SetActive(false);
 
+        _report.Connect(controller);
+        _report.gameObject.SetActive(false);
+
         _clockView.Connect(_cycleManager.Timer);
+
+        EventManager.OnGuestEnterClue += AddClue;
+        EventManager.OnGuestTalkClue += AddClue;
+
+        _cycleManager.Timer.OnTimerElapsed += ShowReport;
     }
 
     public override void Tick(float deltaTime)
@@ -39,10 +51,37 @@ public class GameManager : BaseModule
         }
     }
 
+    private void AddClue(string clueToAdd)
+    {
+        _report.AddClue(clueToAdd);
+        StartCoroutine(ClueNotificationCoroutine());
+    }
+
+    IEnumerator ClueNotificationCoroutine()
+    {
+        _clueDialog.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3);
+        _clueDialog.gameObject.SetActive(false);
+    }
+
+    private void ShowReport()
+    {
+        StartCoroutine(ShowReportCoroutine());
+    }
+
+    IEnumerator ShowReportCoroutine()
+    {
+        _report.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3);
+        _report.gameObject.SetActive(false);
+    }
+
     public override void Utilize()
     {
         _pauseDialog.Utilize();
         _guestsManager.Utilize();
         _cycleManager.Utilize();
+        EventManager.OnGuestEnterClue -= AddClue;
+        EventManager.OnGuestTalkClue -= AddClue;
     }
 }

@@ -8,6 +8,8 @@ public class CycleManager
 
     private readonly CommandsFactory _commandsFactory;
 
+    private readonly ClueManager _clueManager;
+
     private TimeCommandManager _timeline;
 
     private readonly Timer _timer;
@@ -25,6 +27,8 @@ public class CycleManager
 
         _timeline = new TimeCommandManager(_timer);
         _commandsFactory = new CommandsFactory(_guestsManager, controller.GlobalParams.CommonAssets.DialogPrefab, bubbleContainer);
+
+        _clueManager = new ClueManager(controller.GlobalParams.CommonAssets.DialogPrefab, bubbleContainer);
 
         Restart();
     }

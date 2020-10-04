@@ -30,8 +30,6 @@ public class CycleManager
         _commandsFactory = new CommandsFactory(_guestsManager, controller.GlobalParams.CommonAssets.DialogPrefab,
             bubbleContainer, playerController, camera);
 
-        _clueManager = new ClueManager(controller.GlobalParams.CommonAssets.DialogPrefab, bubbleContainer);
-
         Restart();
     }
 

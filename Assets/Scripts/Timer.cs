@@ -14,7 +14,7 @@ public class Timer
 
     public float Duration => _duration; 
     public float TimeLeft => _timeLeft; 
-    public float TimePassed => _duration - _timeLeft; 
+    public float TimePassed => _duration - _timeLeft;
 
     public Timer(float duration)
     {

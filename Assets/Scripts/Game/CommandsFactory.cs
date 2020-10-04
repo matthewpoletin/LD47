@@ -74,14 +74,9 @@ public class CommandsFactory
             Time = command.StartTime,
             Action = delegate
             {
-<<<<<<< Updated upstream
-                // var go = GameObject.Instantiate(_dialogPrefab, _bubbleContainer);
-                // var dialogBox = go.GetComponent<DialogBox>();
-                // dialogBox.Connect(command.ReportEng, _camera, _guestsManager.ClueNotificationPivot, command.Duration);
-=======
                 // Добавить в список полученную подсказку (придумать куда добавить этот список, чтобы он 
                 // был доступен для класса Report.
->>>>>>> Stashed changes
+                
             }
         };
     }

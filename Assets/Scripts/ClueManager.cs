@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClueManager
+public class ClueManager : MonoBehaviour
 {
-    private GameObject _clueBubblePrefab;
-    private Transform _cluePositionContainer;
+    public List<string> clueList;
 
-    public ClueManager(GameObject dialogPrefab, Transform bubbleContainer)
+    public void Connect()
     {
-        _clueBubblePrefab = dialogPrefab;
-        _cluePositionContainer = bubbleContainer;
+        clueList = new List<string>();
+    }
+
+    public void Utilize()
+    {
+        clueList.Clear();
     }
 }

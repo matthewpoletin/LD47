@@ -14,7 +14,7 @@ public class GuestEnterTimelineCommand
 [Serializable]
 public class GuestLeaveTimelineCommand
 {
-    public float Time = default;
+    public float StartTime = default;
     public GuestParams GuestParams = default;
     public float Duration = 1f;
 }

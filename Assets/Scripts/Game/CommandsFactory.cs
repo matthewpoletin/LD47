@@ -33,7 +33,7 @@ public class CommandsFactory
     {
         return new TimeCommandExecute
         {
-            Time = command.Time,
+            Time = command.StartTime,
             Action = delegate
             {
                 var guestView = _guestsManager.GetGuestView(command.GuestParams);

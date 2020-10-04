@@ -85,14 +85,27 @@ public class CycleManager
                     }
                     case "Leave":
                     {
+                        _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestLeaveTimelineCommand()
+                        {
+                            GuestParams = guestParams,
+                            StartTime = (int) storylineEntry["StartTime"],
+                            Duration = (int) storylineEntry["Duration"],
+                        }));
                         break;
                     }
                     case "Talk":
                     {
+                        // TODO:
+                        break;
+                    }
+                    case "Order":
+                    {
+                        // TODO:
                         break;
                     }
                     case "Clue":
                     {
+                        // TODO:
                         break;
                     }
                     default:

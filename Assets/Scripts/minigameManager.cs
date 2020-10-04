@@ -40,9 +40,9 @@ public class minigameManager : MonoBehaviour
             case true:
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
                 {
-                    if (Input.GetKey(vKey))
+                    if (Input.GetKeyUp(vKey))
                     {
-                        if (vKey.ToString() == ("" + seq[counter]))
+                        if (vKey.ToString() != ("" + seq[counter]))
                         {
                             integrity = false;
                         }
@@ -50,7 +50,11 @@ public class minigameManager : MonoBehaviour
                         if (counter >= seq.Length)
                         {
                             shown = false;
-                            //send result "integrity" to parent and destroy self
+                            if (integrity == false)
+                            {
+                                Destroy(gameObject);
+                            }
+
                         }
                     }
                 }
@@ -76,6 +80,10 @@ public class minigameManager : MonoBehaviour
         {
             IEnumerator coroutine = Blink(i, idleImg, 0.5f);
             StartCoroutine(coroutine);
+        }
+        if (i == seq.Length-1)
+        {
+            shown = true;
         }
     }
 }

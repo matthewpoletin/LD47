@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PauseDialog : MonoBehaviour
@@ -31,6 +30,7 @@ public class PauseDialog : MonoBehaviour
 
     private void OnResumeButtonClick()
     {
+        // TODO:
     }
 
     public void Utilize()

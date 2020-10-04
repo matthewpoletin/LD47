@@ -17,7 +17,7 @@ public class CycleManager
     public Timer Timer => _timer;
 
     public CycleManager(GameController controller, GuestsManager guestsManager, Transform bubbleContainer,
-        TextAsset storylineData)
+        TextAsset storylineData, PlayerController playerController, Camera camera)
     {
         _guestsManager = guestsManager;
         _cycleDuration = controller.GlobalParams.CycleDuration;
@@ -28,7 +28,7 @@ public class CycleManager
 
         _timeline = new TimeCommandManager(_timer);
         _commandsFactory = new CommandsFactory(_guestsManager, controller.GlobalParams.CommonAssets.DialogPrefab,
-            bubbleContainer);
+            bubbleContainer, playerController, camera);
 
         _clueManager = new ClueManager(controller.GlobalParams.CommonAssets.DialogPrefab, bubbleContainer);
 
@@ -50,7 +50,7 @@ public class CycleManager
     public void Restart()
     {
         _guestsManager.Reset();
-        
+
         _timer.Reset(_cycleDuration);
         _timer.Unpause();
 
@@ -114,10 +114,10 @@ public class CycleManager
                         _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestClueCommand()
                         {
                             GuestParams = guestParams,
-                            StartTime = (int)storylineEntry["StartTime"],
-                            Duration = (int)storylineEntry["Duration"],
-                            ReportEng = (string)storylineEntry["TextEng"],
-                            ReportRus = (string)storylineEntry["TextRus"],
+                            StartTime = (int) storylineEntry["StartTime"],
+                            Duration = (int) storylineEntry["Duration"],
+                            ReportEng = (string) storylineEntry["TextEng"],
+                            ReportRus = (string) storylineEntry["TextRus"],
                         }));
                         break;
                     }

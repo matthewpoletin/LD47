@@ -1,18 +1,24 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class CommandsFactory
 {
     private readonly GuestsManager _guestsManager;
     private readonly GameObject _dialogPrefab;
     private readonly Transform _bubbleContainer;
+    private readonly PlayerController _playerController;
+    private readonly Camera _camera;
+
     private List<string> _currentClues;
 
-    public CommandsFactory(GuestsManager guestsManager, GameObject dialogPrefab, Transform bubbleContainer)
+    public CommandsFactory(GuestsManager guestsManager, GameObject dialogPrefab, Transform bubbleContainer,
+        PlayerController playerController, Camera camera)
     {
         _guestsManager = guestsManager;
         _dialogPrefab = dialogPrefab;
         _bubbleContainer = bubbleContainer;
+        _playerController = playerController;
+        _camera = camera;
 
         _currentClues = new List<string>();
     }
@@ -32,7 +38,7 @@ public class CommandsFactory
             }
         };
     }
-    
+
     public TimeCommandExecute CreateTimeCommand(GuestLeaveCommand command)
     {
         return new TimeCommandExecute
@@ -57,8 +63,8 @@ public class CommandsFactory
             {
                 var guestView = _guestsManager.GetGuestView(command.GuestParams);
                 var go = GameObject.Instantiate(_dialogPrefab, _bubbleContainer);
-                var dialogBox =  go.GetComponent<DialogBox>();
-                dialogBox.Connect(command.TextEng, guestView.TopPlaceholder, command.Duration);
+                var dialogBox = go.GetComponent<DialogBox>();
+                dialogBox.Connect(command.TextEng, _camera, guestView.TopPlaceholder, command.Duration);
             }
         };
     }
@@ -72,7 +78,7 @@ public class CommandsFactory
             {
                 var go = GameObject.Instantiate(_dialogPrefab, _bubbleContainer);
                 var dialogBox = go.GetComponent<DialogBox>();
-                dialogBox.Connect(command.ReportEng, _guestsManager.ClueNotificationPivot, command.Duration);
+                dialogBox.Connect(command.ReportEng, _camera, _guestsManager.ClueNotificationPivot, command.Duration);
             }
         };
     }

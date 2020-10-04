@@ -33,7 +33,6 @@ public class GuestsManager : MonoBehaviour
         _guests.Add(guestParams, guestView);
     }
 
-
     public GuestView GetGuestView(GuestParams commandGuestParams)
     {
         return _guests[commandGuestParams];
@@ -49,6 +48,8 @@ public class GuestsManager : MonoBehaviour
         return _chairList[commandChairIndex];
     }
 
+    private List<DialogBox> _dialogBoxes = new List<DialogBox>();
+
     public void Reset()
     {
         foreach (var guests in _guests.Values)
@@ -60,6 +61,13 @@ public class GuestsManager : MonoBehaviour
 
     public void Utilize()
     {
+        foreach (var dialogBox in _dialogBoxes)
+        {
+            dialogBox.Utilize();
+            GameObject.Destroy(dialogBox.gameObject);
+        }
+        _dialogBoxes.Clear();
+
         foreach (var guestView in _guests.Values)
         {
             Destroy(guestView.gameObject);

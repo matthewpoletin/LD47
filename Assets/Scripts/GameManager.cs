@@ -21,7 +21,8 @@ public class GameManager : BaseModule
 
         _guestsManager.Connect(controller.GlobalParams.GuestList);
 
-        _cycleManager = new CycleManager(controller, _guestsManager, _bubbleContainer, controller.GlobalParams.StorylineCsv);
+        _cycleManager = new CycleManager(controller, _guestsManager, _bubbleContainer,
+            controller.GlobalParams.StorylineCsv, _playerController, _camera);
 
         _pauseDialog.Connect(controller);
         _pauseDialog.gameObject.SetActive(false);

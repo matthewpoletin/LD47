@@ -11,8 +11,6 @@ public class minigameManager : MonoBehaviour
     public Sprite idleImg;
     public Sprite pressedImg;
 
-    public Hashtable buttons;
-
     public GameObject parent;
 
     private bool shown = false;

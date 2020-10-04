@@ -29,12 +29,6 @@ public class CommandsFactory
                 var toPosition = chair.transform.position;
                 var fromPosition = _guestsManager.RightPivot.transform.position;
                 guestView.PlayMovement(fromPosition, toPosition, command.Duration);
-
-                if (command.IsClue && !CompareStrings(command.ClueText))
-                {
-                    _currentClues.Add(command.ClueText);
-                    EventManager.CallOnGuestEnterClue(command.ClueText);
-                }
             }
         };
     }

@@ -25,4 +25,9 @@
     public void OpenCreditsDialog()
     {
     }
+
+    public void OpenReportMenu()
+    {
+
+    }
 }

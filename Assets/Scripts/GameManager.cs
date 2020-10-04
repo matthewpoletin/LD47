@@ -13,6 +13,7 @@ public class GameManager : BaseModule
     [SerializeField] private Report _report = default;
 
     private CycleManager _cycleManager;
+    private List<string> _cluesList = new List<string>(); // Надо как-то инициализировать...
 
     public override void Connect(GameController controller)
     {
@@ -28,13 +29,15 @@ public class GameManager : BaseModule
         _pauseDialog.Connect(controller);
         _pauseDialog.gameObject.SetActive(false);
 
-        _report.Connect(controller);
+        _cluesList.Add("Something");
+        _cluesList.Add("More");
+        _report.Connect(controller, _cluesList);
         _report.gameObject.SetActive(false);
 
         _clockView.Connect(_cycleManager.Timer);
 
-        EventManager.OnGuestEnterClue += AddClue;
-        EventManager.OnGuestTalkClue += AddClue;
+        //EventManager.OnGuestEnterClue += AddClue;
+        //EventManager.OnGuestTalkClue += AddClue;
 
         _cycleManager.Timer.OnTimerElapsed += ShowReport;
     }
@@ -54,19 +57,22 @@ public class GameManager : BaseModule
         }
     }
 
-    private void AddClue(string clueToAdd)
-    {
-        _report.AddClue(clueToAdd);
-        StartCoroutine(ClueNotificationCoroutine());
-    }
+    //private void AddClue(string clueToAdd)
+    //{
+    //    _report.AddClue(clueToAdd);
+    //    StartCoroutine(ClueNotificationCoroutine());
+    //}
 
-    IEnumerator ClueNotificationCoroutine()
-    {
-        _clueDialog.gameObject.SetActive(true);
-        yield return new WaitForSeconds(3);
-        _clueDialog.gameObject.SetActive(false);
-    }
+    //IEnumerator ClueNotificationCoroutine()
+    //{
+    //    _clueDialog.gameObject.SetActive(true);
+    //    yield return new WaitForSeconds(3);
+    //    _clueDialog.gameObject.SetActive(false);
+    //}
 
+    /// <summary>
+    /// Вызывается в момент рестарта
+    /// </summary>
     private void ShowReport()
     {
         StartCoroutine(ShowReportCoroutine());
@@ -84,7 +90,8 @@ public class GameManager : BaseModule
         _pauseDialog.Utilize();
         _guestsManager.Utilize();
         _cycleManager.Utilize();
-        EventManager.OnGuestEnterClue -= AddClue;
-        EventManager.OnGuestTalkClue -= AddClue;
+        _report.Utilize();
+        //EventManager.OnGuestEnterClue -= AddClue;
+        //EventManager.OnGuestTalkClue -= AddClue;
     }
 }

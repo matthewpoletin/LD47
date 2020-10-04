@@ -8,7 +8,7 @@ public class GuestsManager : MonoBehaviour
     [SerializeField] private Transform _guestContainer = default;
     [SerializeField] private Transform _leftPivot = default;
     [SerializeField] private Transform _rightPivot = default;
-    [SerializeField] private Transform _clueNotificationPivot = default;
+    //[SerializeField] private Transform _clueNotificationPivot = default;
 
     private readonly Dictionary<GuestParams, GuestView> _guests = new Dictionary<GuestParams, GuestView>();
     private readonly Dictionary<DialogBox, float> _dialogBoxes = new Dictionary<DialogBox, float>();
@@ -24,7 +24,7 @@ public class GuestsManager : MonoBehaviour
 
     public Transform LeftPivot => _leftPivot;
     public Transform RightPivot => _rightPivot;
-    public Transform ClueNotificationPivot => _clueNotificationPivot;
+    //public Transform ClueNotificationPivot => _clueNotificationPivot;
 
     public void Connect(List<GuestParams> guestList, GameObjectPool pool, GlobalParams globalParams,
         CommonAssets commonAssets, Camera camera1,

@@ -309,7 +309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 156acabad55bde54191aad1fa01b018b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 156acabad55bde54191aad1fa01b018b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2315,7 +2315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 156acabad55bde54191aad1fa01b018b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2503,7 +2503,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 156acabad55bde54191aad1fa01b018b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2570,7 +2570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seq: ASWD
   idleImg: {fileID: 21300000, guid: 156acabad55bde54191aad1fa01b018b, type: 3}
-  pressedImg: {fileID: 21300000, guid: 122695f648bb27949b1bea263498f2c7, type: 3}
+  pressedImg: {fileID: 21300000, guid: 05163565fb70c3d458456f5b9fd1de48, type: 3}
   parent: {fileID: 0}
 --- !u!1 &1912660832
 GameObject:

@@ -17,11 +17,11 @@ public class CommandsFactory
         _currentClues = new List<string>();
     }
 
-    public TimeCommandExecute CreateTimeCommand(GuestEnterTimelineCommand command)
+    public TimeCommandExecute CreateTimeCommand(GuestEnterCommand command)
     {
         return new TimeCommandExecute
         {
-            Time = command.Time,
+            Time = command.StartTime,
             Action = delegate
             {
                 var guestView = _guestsManager.GetGuestView(command.GuestParams);
@@ -39,11 +39,11 @@ public class CommandsFactory
         };
     }
     
-    public TimeCommandExecute CreateTimeCommand(GuestLeaveTimelineCommand command)
+    public TimeCommandExecute CreateTimeCommand(GuestLeaveCommand command)
     {
         return new TimeCommandExecute
         {
-            Time = command.Time,
+            Time = command.StartTime,
             Action = delegate
             {
                 var guestView = _guestsManager.GetGuestView(command.GuestParams);
@@ -54,23 +54,17 @@ public class CommandsFactory
         };
     }
 
-    public TimeCommandExecute CreateTimeCommand(GuestDialogCommand command)
+    public TimeCommandExecute CreateTimeCommand(GuestTalkCommand command)
     {
         return new TimeCommandExecute
         {
-            Time = command.Time,
+            Time = command.StartTime,
             Action = delegate
             {
                 var guestView = _guestsManager.GetGuestView(command.GuestParams);
                 var go = GameObject.Instantiate(_dialogPrefab, _bubbleContainer);
                 var dialogBox =  go.GetComponent<DialogBox>();
-                dialogBox.Connect(command.Text, guestView.TopPlaceholder, command.Duration);
-
-                if (command.IsClue && !CompareStrings(command.ClueText))
-                {
-                    _currentClues.Add(command.ClueText);
-                    EventManager.CallOnGuestTalkClue(command.ClueText);
-                }
+                dialogBox.Connect(command.TextEng, guestView.TopPlaceholder, command.Duration);
             }
         };
     }

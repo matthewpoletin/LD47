@@ -13,44 +13,16 @@ MonoBehaviour:
   m_Name: GuestTimelineParams
   m_EditorClassIdentifier: 
   GuestAppear:
-  - Time: 0
+  - Time: 1
     GuestParams: {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
     ChairIndex: 0
     Duration: 1
-    IsClue: 0
-    ClueText: 
   GuestLeave:
-  - Time: 10
+  - Time: 9
     GuestParams: {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
     Duration: 1
   GuestDialog:
-  - Time: 2
-    GuestParams: {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
-    Text: give me a drink, bartender
-    Duration: 1
-    IsClue: 0
-    ClueText: 
   - Time: 3
     GuestParams: {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
-    Text: Not today
-    Duration: 1
-    IsClue: 1
-    ClueText: It`s him
-  - Time: 4
-    GuestParams: {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
-    Text: Something
-    Duration: 1
-    IsClue: 0
-    ClueText: 
-  - Time: 5
-    GuestParams: {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
-    Text: Actually a hint
-    Duration: 1
-    IsClue: 1
-    ClueText: Or not
-  - Time: 6
-    GuestParams: {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
-    Text: Ok I`ll leave
-    Duration: 1
-    IsClue: 0
-    ClueText: 
+    Text: give me a drink, bartender
+    Duration: 5

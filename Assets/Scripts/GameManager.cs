@@ -10,6 +10,7 @@ public class GameManager : BaseModule
     [SerializeField] private PauseDialog _pauseDialog = default;
     [SerializeField] private ClockView _clockView = default;
     [SerializeField] private Transform _bubbleContainer = default;
+    [SerializeField] private Transform _minigameContainer = default;
     [SerializeField] private GameObject _clueDialog = default;
     [SerializeField] private Report _report = default;
     [SerializeField] private ClueManager _clueManager = default;
@@ -26,7 +27,7 @@ public class GameManager : BaseModule
             controller.GlobalParams.CommonAssets,
             _camera, _bubbleContainer, _playerController);
 
-        _cycleManager = new CycleManager(controller, controller.Pool, _guestsManager, _bubbleContainer,
+        _cycleManager = new CycleManager(controller, controller.Pool, _guestsManager, _bubbleContainer, _minigameContainer,
             controller.GlobalParams.StorylineCsv, _playerController, _camera);
 
         _pauseDialog.Connect(controller);

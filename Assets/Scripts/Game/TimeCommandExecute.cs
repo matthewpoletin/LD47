@@ -2,6 +2,6 @@
 
 public struct TimeCommandExecute
 {
-    public float Time;
+    public float StartTime;
     public Action Action;
 }

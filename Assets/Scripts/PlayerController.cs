@@ -2,7 +2,6 @@
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = default;
     [SerializeField] private CharacterController controller = default;
     [SerializeField] private Transform _topPlaceholder = default;
     [SerializeField] private GameObject leftPivo = default;

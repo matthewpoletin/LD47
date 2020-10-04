@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: global_params
   m_EditorClassIdentifier: 
   CommonAssets: {fileID: 11400000, guid: 28620bd599dc2b14da5a314954871374, type: 2}
-  CycleDuration: 180
+  CycleDuration: 340
   GuestList:
   - {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
   - {fileID: 11400000, guid: 967602f97467b5e4d8be9091192ff610, type: 2}
@@ -21,6 +21,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 09234d43a07dc224dbab3d3ac0c5dbc1, type: 2}
   - {fileID: 11400000, guid: 3ce037cb2189399448eade4847e59fbe, type: 2}
   - {fileID: 11400000, guid: a45cefe252d76c94395dc7dd2c789155, type: 2}
+  DrinkList:
+  - {fileID: 11400000, guid: 2fc0a1555232e3f4690ce820ff58a116, type: 2}
+  - {fileID: 11400000, guid: 50daff9c381c08046aef358be30d5669, type: 2}
+  - {fileID: 11400000, guid: 75de49b509278c14ea9640e278bd202f, type: 2}
+  - {fileID: 11400000, guid: a1647350df0ce6a4a8ecae2f3b582a1a, type: 2}
+  - {fileID: 11400000, guid: 71ab4bcc431569d45a6fa76abcc63cdd, type: 2}
+  - {fileID: 11400000, guid: 7334bc029745d0b4e836bd4ca799d3f6, type: 2}
+  - {fileID: 11400000, guid: f7c009d502af7454aa007ee3a0e6580d, type: 2}
+  - {fileID: 11400000, guid: 76f41bb067d45e340b6464b619613d99, type: 2}
+  - {fileID: 11400000, guid: f750ae63c25e0af46b06dc76a6cce3d4, type: 2}
+  - {fileID: 11400000, guid: 1f34bfa96d7ab1947be60cebe231511d, type: 2}
+  - {fileID: 11400000, guid: 612df72e68cb7f74c8cb50fc736b5d3a, type: 2}
+  - {fileID: 11400000, guid: bf80a8288af8ec14bac810e4167c2f52, type: 2}
+  - {fileID: 11400000, guid: 9969082ec7059bc439117350ad254914, type: 2}
+  - {fileID: 11400000, guid: ff875930a0c678d49a352fe78d37f151, type: 2}
+  - {fileID: 11400000, guid: 26c2b7ba4188d164081da9784a994262, type: 2}
   StorylineCsv: {fileID: 4900000, guid: afc284c409f95c848a7e3c9a90d537bd, type: 3}
   PlayerMovementSpeed: 5
   OpacityMinDistance: 0.5

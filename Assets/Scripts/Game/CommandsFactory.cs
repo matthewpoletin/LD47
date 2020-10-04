@@ -27,7 +27,7 @@ public class CommandsFactory
     {
         return new TimeCommandExecute
         {
-            Time = command.StartTime,
+            StartTime = command.StartTime,
             Action = delegate
             {
                 var guestView = _guestsManager.GetGuestView(command.GuestParams);
@@ -43,7 +43,7 @@ public class CommandsFactory
     {
         return new TimeCommandExecute
         {
-            Time = command.StartTime,
+            StartTime = command.StartTime,
             Action = delegate
             {
                 var guestView = _guestsManager.GetGuestView(command.GuestParams);
@@ -58,7 +58,7 @@ public class CommandsFactory
     {
         return new TimeCommandExecute
         {
-            Time = command.StartTime,
+            StartTime = command.StartTime,
             Action = delegate
             {
                 var guestView = _guestsManager.GetGuestView(command.GuestParams);
@@ -71,12 +71,25 @@ public class CommandsFactory
     {
         return new TimeCommandExecute
         {
-            Time = command.StartTime,
+            StartTime = command.StartTime,
             Action = delegate
             {
                 // Добавить в список полученную подсказку (придумать куда добавить этот список, чтобы он 
                 // был доступен для класса Report.
                 
+            }
+        };
+    }
+
+    public TimeCommandExecute CreateTimeCommand(GuestOrderCommand command)
+    {
+        return new TimeCommandExecute()
+        {
+            StartTime = command.StartTime,
+            Action = delegate
+            {
+                var guestView = _guestsManager.GetGuestView(command.GuestParams);
+                _guestsManager.CreateOrderView(guestView, command.DrinkParams, command.Duration);
             }
         };
     }

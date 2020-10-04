@@ -1,5 +1,7 @@
 ﻿public class GuestOrderCommand
 {
       public float StartTime = default;
-      public string DrinkName = default;
+      public GuestParams GuestParams = default;
+      public float Duration = default;
+      public DrinkParams DrinkParams = default;
 }

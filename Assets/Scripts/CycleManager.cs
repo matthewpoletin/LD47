@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class CycleManager
 {
+    private GameController _controller;
     private readonly GuestsManager _guestsManager;
     private readonly float _cycleDuration;
 
@@ -13,15 +15,19 @@ public class CycleManager
 
     private readonly Timer _timer;
     private TextAsset _storylineData;
+    private Transform _minigameContainer;
 
     public Timer Timer => _timer;
 
     public CycleManager(GameController controller, GameObjectPool pool, GuestsManager guestsManager,
-        Transform bubbleContainer, TextAsset storylineData, PlayerController playerController, Camera camera)
+        Transform bubbleContainer,
+        Transform minigameContainer, TextAsset storylineData, PlayerController playerController, Camera camera)
     {
+        _controller = controller;
         _guestsManager = guestsManager;
         _cycleDuration = controller.GlobalParams.CycleDuration;
         _storylineData = storylineData;
+        _minigameContainer = minigameContainer;
 
         _timer = new Timer(_cycleDuration);
         _timer.OnTimerElapsed += OnTimerElapsed;
@@ -37,6 +43,26 @@ public class CycleManager
     {
         _timer.Tick(deltaTime);
         _timeline.Tick(deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            var minigameGo =
+                GameObject.Instantiate(_controller.GlobalParams.CommonAssets.MinigamePrefab, _minigameContainer);
+            var minigameView = minigameGo.GetComponent<MinigameView>();
+            minigameView.Connect("WASD", OnMinigameComplete);
+        }
+    }
+
+    private void OnMinigameComplete(bool completionResult)
+    {
+        if (completionResult)
+        {
+            Debug.Log("+5$");
+        }
+        else
+        {
+            Debug.Log("Failed");
+        }
     }
 
     private void OnTimerElapsed()
@@ -121,7 +147,21 @@ public class CycleManager
                     }
                     case "Order":
                     {
-                        // TODO:
+                        var drinkName = (string) storylineEntry["Drink"];
+                        var drinkParams = _controller.GlobalParams.DrinkList.FirstOrDefault(d => d.Name == drinkName);
+                        if (drinkParams == null)
+                        {
+                            Debug.LogError($"Drink not found: {drinkName}");
+                            continue;
+                        }
+
+                        _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestOrderCommand()
+                        {
+                            StartTime = (int) storylineEntry["StartTime"],
+                            GuestParams = guestParams,
+                            DrinkParams = drinkParams,
+                            Duration = (int) storylineEntry["Duration"],
+                        }));
                         break;
                     }
                     default:

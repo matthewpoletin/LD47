@@ -1,17 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class minigameManager : MonoBehaviour
+public class MinigameView : MonoBehaviour
 {
+    [SerializeField] private Sprite idleImg = default;
+    [SerializeField] private Sprite pressedImg = default;
 
-    public string seq;
+    private string seq;
 
-    public Sprite idleImg;
-    public Sprite pressedImg;
+    private GameObject parent;
 
-    public GameObject parent;
+    private Action<bool> _callBack;
 
     private bool shown = false;
     private bool integrity = true;
@@ -20,23 +22,28 @@ public class minigameManager : MonoBehaviour
     private Image a;
     private Dictionary<string, Image> uberDict = new Dictionary<string, Image>();
 
-    void Awake()
+    private void Awake()
     {
         uberDict.Add("W", GameObject.Find("Up").GetComponent<Image>());
         uberDict.Add("S", GameObject.Find("Down").GetComponent<Image>());
         uberDict.Add("A", GameObject.Find("Left").GetComponent<Image>());
         uberDict.Add("D", GameObject.Find("Right").GetComponent<Image>());
+    }
+
+    public void Connect(string sequence, Action<bool> callback)
+    {
+        seq = sequence;
+        _callBack = callback;
 
         ShowSequence();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        switch(shown)
+        switch (shown)
         {
             case true:
-                foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
+                foreach (KeyCode vKey in Enum.GetValues(typeof(KeyCode)))
                 {
                     if (Input.GetKeyUp(vKey))
                     {
@@ -44,24 +51,22 @@ public class minigameManager : MonoBehaviour
                         {
                             integrity = false;
                         }
+
                         counter += 1;
                         if (counter >= seq.Length)
                         {
                             shown = false;
-                            if (integrity == false)
-                            {
-                                Destroy(gameObject);
-                            }
-
+                            _callBack?.Invoke(integrity);
+                            Destroy(gameObject);
                         }
                     }
                 }
+
                 break;
- 
         }
     }
 
-    void ShowSequence()
+    private void ShowSequence()
     {
         for (int i = 0; i < seq.Length; i++)
         {
@@ -70,7 +75,7 @@ public class minigameManager : MonoBehaviour
         }
     }
 
-    IEnumerator Blink(int i, Sprite img, float ttl)
+    private IEnumerator Blink(int i, Sprite img, float ttl)
     {
         yield return new WaitForSeconds(ttl);
         uberDict["" + seq[i]].sprite = img;
@@ -79,7 +84,8 @@ public class minigameManager : MonoBehaviour
             IEnumerator coroutine = Blink(i, idleImg, 0.5f);
             StartCoroutine(coroutine);
         }
-        if (i == seq.Length-1)
+
+        if (i == seq.Length - 1)
         {
             shown = true;
         }

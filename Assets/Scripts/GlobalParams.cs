@@ -7,6 +7,7 @@ public class GlobalParams : ScriptableObject
     public CommonAssets CommonAssets = default;
     public float CycleDuration = 3 * 60f;
     public List<GuestParams> GuestList = default;
+    public List<DrinkParams> DrinkList = default;
     public TextAsset StorylineCsv = default;
     public float PlayerMovementSpeed = default;
     public float OpacityMinDistance = default;

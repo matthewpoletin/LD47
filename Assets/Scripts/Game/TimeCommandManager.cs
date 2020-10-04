@@ -21,7 +21,7 @@ public class TimeCommandManager
         for (var index = _commands.Count - 1; index >= 0; index--)
         {
             var activity = _commands[index];
-            if (activity.Time < _timer.TimePassed)
+            if (activity.StartTime < _timer.TimePassed)
             {
                 activity.Action?.Invoke();
                 _commands.RemoveAt(index);

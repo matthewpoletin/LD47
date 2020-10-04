@@ -11,7 +11,8 @@ public class GuestsManager : MonoBehaviour
     //[SerializeField] private Transform _clueNotificationPivot = default;
 
     private readonly Dictionary<GuestParams, GuestView> _guests = new Dictionary<GuestParams, GuestView>();
-    private readonly Dictionary<DialogBox, float> _dialogBoxes = new Dictionary<DialogBox, float>();
+    private readonly Dictionary<TextBox, float> _dialogBoxes = new Dictionary<TextBox, float>();
+    private readonly Dictionary<OrderBox, float> _orderViews = new Dictionary<OrderBox, float>();
 
     private GameObjectPool _pool;
     private GlobalParams _globalParams;
@@ -47,7 +48,7 @@ public class GuestsManager : MonoBehaviour
     {
         _elapsedTime += deltaTime;
 
-        var dialogsToRemove = new List<DialogBox>();
+        var dialogsToRemove = new List<TextBox>();
         foreach (var keyValuePair in _dialogBoxes)
         {
             var dialogBox = keyValuePair.Key;
@@ -67,9 +68,36 @@ public class GuestsManager : MonoBehaviour
         foreach (var dialogBox in _dialogBoxes.Keys)
         {
             var distance = Mathf.Abs(dialogBox.GuestView.transform.position.x - _playerController.transform.position.x);
-            var alpha = Mathf.Lerp(1f, 0f, Mathf.InverseLerp(_globalParams.OpacityMinDistance, _globalParams.OpacityMaxDistance, distance));
+            var alpha = Mathf.Lerp(1f, 0f,
+                Mathf.InverseLerp(_globalParams.OpacityMinDistance, _globalParams.OpacityMaxDistance, distance));
             dialogBox.SetOpacity(alpha);
             dialogBox.Tick(deltaTime);
+        }
+
+        var ordersToRemove = new List<OrderBox>();
+        foreach (var keyValuePair in _orderViews)
+        {
+            var orderView = keyValuePair.Key;
+            var destroyTime = keyValuePair.Value;
+            if (destroyTime < _elapsedTime)
+            {
+                ordersToRemove.Add(orderView);
+            }
+        }
+
+        foreach (var orderView in ordersToRemove)
+        {
+            _pool.UtilizeObject(orderView.gameObject);
+            _orderViews.Remove(orderView);
+        }
+
+        foreach (var orderView in _orderViews.Keys)
+        {
+            var distance = Mathf.Abs(orderView.GuestView.transform.position.x - _playerController.transform.position.x);
+            var alpha = Mathf.Lerp(1f, 0f,
+                Mathf.InverseLerp(_globalParams.OpacityMinDistance, _globalParams.OpacityMaxDistance, distance));
+            orderView.SetOpacity(alpha);
+            orderView.Tick(deltaTime);
         }
     }
 
@@ -100,10 +128,19 @@ public class GuestsManager : MonoBehaviour
     public void CreateDialogBox(GuestView guestView, string value, float duration)
     {
         var dialogBoxGo = _pool.GetObject(_commonAssets.DialogPrefab, _bubbleContainer);
-        var dialogBox = dialogBoxGo.GetComponent<DialogBox>();
+        var dialogBox = dialogBoxGo.GetComponent<TextBox>();
         dialogBox.Connect(value, _camera, guestView);
 
         _dialogBoxes.Add(dialogBox, _elapsedTime + duration);
+    }
+
+    public void CreateOrderView(GuestView guestView, DrinkParams drinkParams, float duration)
+    {
+        var orderViewGo = _pool.GetObject(_commonAssets.OrderPrefab, _bubbleContainer);
+        var orderView = orderViewGo.GetComponent<OrderBox>();
+        orderView.Connect(guestView, _camera, null);
+
+        _orderViews.Add(orderView, _elapsedTime + duration);
     }
 
     public void Reset()

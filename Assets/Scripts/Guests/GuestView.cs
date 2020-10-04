@@ -9,7 +9,6 @@ public class GuestView : MonoBehaviour
 
     public void PlayMovement(Vector3 fromPosition, Vector3 toPosition, float duration, bool stayActive = true)
     {
-
         var movementSequence = DOTween.Sequence();
         movementSequence.OnStart(() =>
         {

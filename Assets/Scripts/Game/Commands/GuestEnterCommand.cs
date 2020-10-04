@@ -1,4 +1,4 @@
-﻿public class GuestEnterTimelineCommand
+﻿public class GuestEnterCommand
 {
     public float StartTime = default;
     public GuestParams GuestParams = default;

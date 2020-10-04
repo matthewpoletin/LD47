@@ -1,4 +1,4 @@
-﻿public class GuestTalkTimelineCommand
+﻿public class GuestTalkCommand
 {
     public float StartTime = default;
     public GuestParams GuestParams = default;

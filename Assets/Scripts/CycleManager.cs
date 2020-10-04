@@ -71,7 +71,7 @@ public class CycleManager
                 {
                     case "Enter":
                     {
-                        _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestEnterTimelineCommand
+                        _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestEnterCommand
                         {
                             GuestParams = guestParams,
                             StartTime = (int) storylineEntry["StartTime"],
@@ -83,7 +83,7 @@ public class CycleManager
                     }
                     case "Leave":
                     {
-                        _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestLeaveTimelineCommand()
+                        _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestLeaveCommand()
                         {
                             GuestParams = guestParams,
                             StartTime = (int) storylineEntry["StartTime"],
@@ -93,7 +93,7 @@ public class CycleManager
                     }
                     case "Talk":
                     {
-                        _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestTalkTimelineCommand()
+                        _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestTalkCommand()
                         {
                             GuestParams = guestParams,
                             StartTime = (int) storylineEntry["StartTime"],

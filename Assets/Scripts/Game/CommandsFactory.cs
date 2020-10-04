@@ -13,7 +13,7 @@ public class CommandsFactory
         _bubbleContainer = bubbleContainer;
     }
 
-    public TimeCommandExecute CreateTimeCommand(GuestEnterTimelineCommand command)
+    public TimeCommandExecute CreateTimeCommand(GuestEnterCommand command)
     {
         return new TimeCommandExecute
         {
@@ -29,7 +29,7 @@ public class CommandsFactory
         };
     }
     
-    public TimeCommandExecute CreateTimeCommand(GuestLeaveTimelineCommand command)
+    public TimeCommandExecute CreateTimeCommand(GuestLeaveCommand command)
     {
         return new TimeCommandExecute
         {
@@ -44,17 +44,17 @@ public class CommandsFactory
         };
     }
 
-    public TimeCommandExecute CreateTimeCommand(GuestTalkTimelineCommand timelineCommand)
+    public TimeCommandExecute CreateTimeCommand(GuestTalkCommand command)
     {
         return new TimeCommandExecute
         {
-            Time = timelineCommand.StartTime,
+            Time = command.StartTime,
             Action = delegate
             {
-                var guestView = _guestsManager.GetGuestView(timelineCommand.GuestParams);
+                var guestView = _guestsManager.GetGuestView(command.GuestParams);
                 var go = GameObject.Instantiate(_dialogPrefab, _bubbleContainer);
                 var dialogBox =  go.GetComponent<DialogBox>();
-                dialogBox.Connect(timelineCommand.TextEng, guestView.TopPlaceholder, timelineCommand.Duration);
+                dialogBox.Connect(command.TextEng, guestView.TopPlaceholder, command.Duration);
             }
         };
     }

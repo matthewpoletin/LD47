@@ -5,6 +5,5 @@ public class GuestParams : ScriptableObject
 {
     public string Character = default;
     public string Name = default;
-    public Sprite Avatar = default;
     public GameObject Prefab = default;
 }

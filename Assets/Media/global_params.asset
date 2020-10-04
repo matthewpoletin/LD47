@@ -16,5 +16,9 @@ MonoBehaviour:
   CycleDuration: 180
   GuestList:
   - {fileID: 11400000, guid: 752f9457ce05b874aa24146a9a43b011, type: 2}
-  GuestTimelineParams: {fileID: 11400000, guid: bc8c4473ff2760240a8cde8a761ea987, type: 2}
+  - {fileID: 11400000, guid: 967602f97467b5e4d8be9091192ff610, type: 2}
+  - {fileID: 11400000, guid: a9597ae5ddd9e4840a244e2c77290781, type: 2}
+  - {fileID: 11400000, guid: 09234d43a07dc224dbab3d3ac0c5dbc1, type: 2}
+  - {fileID: 11400000, guid: 3ce037cb2189399448eade4847e59fbe, type: 2}
+  - {fileID: 11400000, guid: a45cefe252d76c94395dc7dd2c789155, type: 2}
   StorylineCsv: {fileID: 4900000, guid: afc284c409f95c848a7e3c9a90d537bd, type: 3}

@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae036a8a77dc4ce685f1246d3810d301, type: 3}
-  m_Name: guest_test_params
+  m_Name: guest_sissy_params
   m_EditorClassIdentifier: 
-  Character: Blonde
-  Name: Test
-  Avatar: {fileID: 21300000, guid: 9f21b5eb58d1b9d44babcf36d7a08c33, type: 3}
-  Prefab: {fileID: 8984049842502976359, guid: e12d9238fcd7ce54fb9917dfa72ec0f9, type: 3}
+  Character: Sissy
+  Name: Sissy
+  Prefab: {fileID: 55008145039850604, guid: fe985a9861a1ec744b9f7f427138c89e, type: 3}

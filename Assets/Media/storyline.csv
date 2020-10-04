@@ -1,0 +1,306 @@
+Сюжет,Rus,Eng,Character,EventType,StartTime,Duration,Drink,ChairIndex,,ReportRus,ReportEng
+"Сценарий Блондинки (Б.) ""Блондинка на веселе, ждёт подружек,
+ которые должны 
+к ней присоедениться в ближайшее время""",,,,,,,,,,,
+Блондинка Заходит в бар. Занимает первый стул слева,,,Blonde,Enter,0,5,,1,5 сек,,
+Приветсвует бармена,Привет. Мы с подружками сегодня здесь пошалим. Непротив?,Hi. My girlfriends and I will be fooling around here today. Do not mind?,Blonde,Talk,5,5,,,5-10 сек,Блондинка пришла оторваться сегодня вечером,
+Блондинка. Заказ,Начну я пожалуйс с маргариты?,Guess I'll start with margarita then?,Blonde,Order,10,5,Margarita,,10-15 сек,,
+,Блондинка пришла оторваться сегодня вечером,,Blonde,Clue,5,5,,,,,
+Заходит в бар байкер,,,Biker,Enter,10,5,,2,10-15 сек,,
+Байк. Сходу задаёт общий вопрос,Привет ребята. Чем тут можно пожевиться?,Hi guys. What can I get here?,Biker,Talk,20,5,,,20-25,,
+Бармен байкеру,Покрепче/полегче?,Strong or light?,Barman,Talk,25,5,,,25-30,,
+Байкер.Заказ,Давай позабористей. Виски. Двойной,Whiskey. Double. Let's have fun. ,Biker,Order,30,5,Whisky,,30-35,Байкер пьёт за рулём,
+Байк. Дневниковая запись,Байкер пьёт за рулём,Biker drink on a wheell,Biker,Clue,30,5,,,,,
+Байк к Б.,Часто здесь бываешь? Здесь всегда так тихо?,Do you often come here? Is it always so quiet here?,Biker,Talk,35,5,,,35-40,,
+Блондинка байкеру,Вечер только начинается. Я жду подружек. ,The evening is just beginning. I'm waiting for my girlfriends.,Blonde,Talk,40,5,,,40-45,,
+Байкер блондинке,Вот это я удачно зашёл. Расскажи о себе?,Nice. It is success. Tell me about yourself?,Biker,Talk,45,5,,,45-50,,
+Блондинка байкеру,"Обычная девчёнка. Заканчиваю мед. Люблю книги, путишествия, спорт зал","An ordinary girl. Studying in medical univeristy. I love books, travel, gym",Blonde,Talk,50,5,,,50-55,Блондинка -врач,
+,Блондинка -врач,,Blonde,Clue,50,5,,,,,
+Байкер блондинке,"Мир - это твой спорт зал, твоя жизнь это тренировка.
+Что тебе заказать?","The world is your gym, your life is training.
+Stand a drink? ",Biker,Talk,55,5,,,55-60,,
+Блондинка байкеру,Я пью маргариту) ,I drink margarita),Blonde,Talk,60,5,,,60-65,,
+Байкер бармену. Заказ.,"Бармен, две текилы.","Bartender, two tequilas.",Biker,Order,65,5,Teqila,,65-60,,
+Блондинка говорит по телефону,"Да? Ты опаздываешь? На сколько? Я так и знала что ты попадёшь в пробку.
+Хорошу, мы тебя ждём. -пауза-. Приедешь - увидишь.",Yes? Are you late? How long? I knew you were going to get stuck in traffic.,Blonde,Talk,70,10,,,70-80,Подруга блондинки опаздывает,
+,Подруга блондинки опаздывает,,Blonde,Clue,70,10,,,,,
+Блондинка байкеру,Видимо у нас есть ещё пол-часа. Скоро вернусь.,"Good, we are waiting for you. -pause-. Come here and you will see ",Blonde,Talk,80,5,,,80-85,,
+Блондинка бармену,где здесь уборная?,Apparently we still have half an hour. I'll be back soon.,Blonde,Talk,85,5,,,85-90,,
+Бармен блондинке,Справо от входа,where is the restroom?,Barman,Talk,90,5,,,90-95,,
+Блондинка уходит,,To the right of the entrance,Blonde,Leave,95,5,,,95-100,,
+Байкер бармену. Заказ.,Знаешь её?,Do you know her?,Biker,Talk,100,5,,,100-105,,
+Бармен байкеру,Не особо. Вроде она с парнем недавно рассталась,Not really. It seems that she recently broke up with her boyfriend,Barman,Talk,105,5,,,105-110,,
+В бар заходит Одна Пинта,,,OnePint,Enter,105,5,,1,105-110,,
+ОП бармену,"Сегодня я пью пиво. Дайте то, чего нет у ваших соседей.",Today I drink beer. Give me what your neighbors don't have.,OnePint,Talk,110,5,,,110-115,,
+Одна пинта. Заказ,,,OnePint,Order,115,5,?,,,,
+ОП к байкеру,Это твой чоппер у входа?,Your bike at the entrance?,OnePint,Talk,120,5,,,115-120,,
+Байкер к ОП,нравится?,Do you like it?,Biker,Talk,125,5,,,120-125,,
+Оп к байкеру,"Да, отличный байк чтобы уходить от копов по дворам","Yeah, cool bike to get away from the cops through the yard. ",OnePint,Talk,125,5,,,125-130,ОП возможно не дружит с законом,
+Дневник,ОП возможно не дружит с законом,,OnePint,Clue,125,5,,,,,
+Байкер к оп,"Не, это не скоросной аппарат. Скорее возить красоток или десяток кило серьёзного
+груза","Nah, this is a serious machine. Most likely to give a ride to some beautifes or a dozen kilos of some serious cargo. ",Biker,Talk,130,5,,,130-135,Байк возможно перевозит не совсем законные штуки,
+Дневник,Байк возможно перевозит не совсем законные штуки,,Biker,Clue,130,5,,,,,
+Оп к байкеру,хммм... А как ты в такую погоду ездишь?,"Hmmm, how can you drive in this weather?",OnePint,Talk,135,5,,,135-140,,
+Байкер к оп,А что с погодой?,What about the weather?,Biker,Talk,140,5,,,140-145,,
+Оп к байкеру,Да вроде обещали метеоритный дождь.,They promised a meteor shower. ,OnePint,Talk,145,5,,,145-150,На улице прогнозируется какая-то анамалия,
+Дневник,На улице прогнозируется какая-то анамалия,,OnePint,Clue,145,5,,,,,
+Байкер к оп,Это ангельская пыль что ли с неба?,You mean angel dust or something from the sky?,Biker,Talk,150,5,,,150-155,"Байкер использует подозрительный термен. Очень похоже на запрещённое
+вещество",
+Дневник,"Байкер использует подозрительный термен. Очень похоже на запрещённое
+вещество",,Biker,Clue,150,5,,,,,
+Оп к байкеру,Непонимаю о чём ты. Что ты пьёшь?,"Don't understand whats you are 
+talking about. What do you drink?",OnePint,Talk,155,5,,,155-160,,
+Байкер к оп,"Сейчас текилу. Только что познакомился с отличной девочкой, она скоро
+вернёться","Tequila. Just met a great girl, she will be back soon.",Biker,Talk,160,5,,,160-165,"Байкер расчитывает на знакомство с Блондинкой и вероятно собирается
+продолжить с ней вечер",
+Дневник,"Байкер расчитывает на знакомство с Блондинкой и вероятно собирается
+продолжить с ней вечер",,Biker,Clue,160,5,,,,,
+Оп к байкеру,"Круто. А у меня сегодня бар сёрф. Планирую выпить по пинте пива, в каждом
+в новом баре. До тех пор пока не отрублюсь.","Cool. And I have a bar tour today, planning to have a pint of beet in every new bar until i pass out.",OnePint,Talk,165,5,,,165-170,,
+Байкер к оп,С радости или с горя?,Because of joy or sorrow?,Biker,Talk,170,5,,,170-175,,
+Оп к байкеру,"Да всё достало. Знаешь, бывает такое состояние? Убил бы всех. Кругом одни
+уроды. ","I'm sick of all. You know, this feel? Wanna just kill everyone. Everyone around is a freak. ",OnePint,Talk,175,5,,,175-180,ОП в отчаенном состоянии,
+Дневник,,,OnePint,Clue,175,5,,,,,
+Байкер к оп,"Да, такое бывает. Пару лет назад я всерьёз подумывал взарват дом своей бывшей.
+Даже начил варить TNT.
+Но потом понял... 
+Короче передумал. 
+А сейчас здесь познакомился с шикарной девочкей","Yep, shit happenes. A couple of years ago I seriosly considered blowing up my ex's house. I even started to prepare TNT. But then I realized... Changed my mind sort of. And now here met such a gorgeous girl.",Biker,Talk,180,5,,,180-185,"Опасный тип, умеющий делать взрывчатку",
+,"Опасный тип, умеющий делать взрывчатку",,Biker,Clue,180,5,,,,,
+Оп к байкеру,Ты? можешь сварить TNT? Ты что химик?,You? You can make TNT? Are you a chemist?,OnePint,Talk,185,5,,,185-190,,
+Байкер к оп,"Да, у меня диплом. Что не похож?","Yes, I have a degree, What, I don't look like that?",Biker,Talk,190,5,,,190-195,,
+Оп к байкеру,"Скорее похож на человека, который любыт гаечные ключи. Ладно, мне пора, меня
+ждёт следующий бар","More like a man who loves wrenches. Fine, I have to go, the next bar is waiting me. ",OnePint,Talk,195,5,,,195-200,,
+ОП уходит,,,OnePint,Leave,200,5,,,200-205,,
+Байк к Бару,"Виски, двойной. Без льда","Double whiskey, no ice.",Biker,Talk,205,5,,,205-210,,
+,,,Biker,Order,210,5,,,,,
+Возращается Б.содиться за стол,"Мне определённо нужна ещё порция. Бармен, что-нибудь вкусное","I definitely need more. Barthender, something tasty please",Blonde,Enter,215,5,,1,210-215,,
+Байк к бармену,Ещё две текилы,Two more tequilas.,Biker,Talk,215,5,,,215-220,,
+Бармен наливает ещё текилы,,,Biker,Order,220,5,,,220-225,,
+Б. к байку,Что я пропустила?,What did I miss?,Blonder,Talk,225,5,,,225-230,,
+Байк к Б.,"Здесь был странный бар сёрфер. У него определённо не лучший периуд жизн.
+Предлагаю не тратить время на  чудаков, а вернуться к нашему знакомству. 
+к тебе или ко мне?","There was a weird ""bar-tourist"" He's definitely not having the best perion of life. I suggest not to waste time on eccentrics, but to return to our acquintance. Your place or mine?",Biker,Talk,230,5,,,230-235,ОП ушёл искать приключение. Вернёться ли он?,
+,ОП ушёл искать приключение. Вернёться ли он?,,OnePint,Clue,230,5,,,,,
+Б. к байку,"Вот ты быстрый. Ты не забыл? Я всё же пришла сюда встретиться с подругой.
+Кстати, где же она. Уже прошло 40 мин.","You're so fast, not forget anything? I came here to meet a friend. By the way, where is she? Already 4 minutes have paseed.",Blonde,Talk,235,5,,,235-240,,
+Байк к бармену,"Сделай какой-нибудь коктейл покрепче. Пожалуй, лонгайленд","Make something strong, Long Island, perhaps.",Biker,Talk,240,5,,,240-245,,
+,,,Biker,Order,245,5,,,245,,
+Б. звонит по телефону подруге второй раз,"Привет. Ты где? Как не приедешь? Мы же договаривались? Сижу жду тебя?
+И что мне теперь делать?","Hey, where are you? What means you won't come? We have agreed! I'm sitting waiting for you. What do I supposed to do now? ",Blonde,Talk,250,5,,,250-255,Подруга блондинки не приедит сегодня вечером,
+,Подруга блондинки не приедит сегодня вечером,,Blonde,Clue,250,5,,,,,
+Байкер к блондинке,"Мне тоже не нравиться когда люди сливаются в последний момент. 
+Ты давно знаешь эту подругу?",I also don't like when people dump at the last moment. How long have you known your friend? ,Biker,Talk,255,5,,,255-260,,
+Блондинка к байкеру,"Давно знакомы. И она не в первый раз так поступает. Бессит. Возможно пора ей 
+об этом скзать.",We have known each otehr for a long time. And this is not the first time she has dome it. This piss me off. Maybe it's time to tell her about it.  ,Blonde,Talk,260,10,,,260-270,,
+Байкер к блондинке,Ещё коктейл?,Another drink? ,Biker,Talk,270,5,,,270-275,,
+Блондинка к байкеру,"Да. давай)) Хорошо, что втстретила тебя здесь. Ик...","Yes, bring it. Good that I met you here ...hic!",Blonde,Talk,275,5,,,275-280,"Блондинка определённо сильно пьяная
+к концу вечера",
+,Блондинка определённо сильно пьяная уже,,Blonde,Clue,275,5,,,,,
+Байк к бармену,"Ещё коктейль, тот же.","Another drink, the same please.",Biker,Talk,280,5,,,280-285,Похоже байкер сегодня уже сильно пьян,
+,Байкер сильно пьяный в конце вечера,,Biker,Clue,280,5,,,,,
+Бармен наливает ещё лонгайленд,,,Biker,Order,280,5,,,,,
+Б. к байку,Кажеться я готова расставить всё выяснить прямо сейчас,"I think i'm ready to set everything, figure it our right now.",Blonde,Talk,,,,,285-290,,
+Б. звонит подруге,,,,,,,,,,,
+Б. в телефон,"Знаешь ""детка"". Это не первый раз когда ты меняешь планы в последний момент.
+Мне это сильн не нравиться. Ты же же моя ""лучшая подруга"". Что? Я пьяная?
+Кто это говорит? Ты не моя подруга. Точно, у тебя мужской голос? Ты кто?
+Какой инженер? Какой обороны?
+","You know ""baby' This isn't the first time you;ve changed plans at the last moment. I really don't appreciate it, you are my ""best friend""! What? I'm drunk? Who's speaking? Yu are not my friend, why do you have a male voice? Who are you? Engineer? Defence of what? ",Biker,Talk,,,,,290-300,Блондинка ошиблась номером,
+,,,?,Clue,,,,,,,
+Байкер к Б.,"Пойду выйду не надолго. Кстати, с кем ты говорила?","I'll go our for a while. By the way, who were you talking to?",Biker,Talk,,,,,300-305,,
+Б к байкеру,"Прикинь, я ошиблась номер. Это какой-то мужик. Сказал что инженер...
+какой-то противокосмической обороны... Какие-то метиориты...","Can you imagine, I called a wrong number. This is just a some guy. He said that he is an engineer... Something about space defense, some  meteorites...",Blonde,Talk,,,,,305-310,Блондинка позвонила инженеру. Инженеру чего?,
+,,,?,Clue,,,,,,,
+Байкер к Б.,Детка я скоро верунсь,Baby I will be back soon.,Biker,Talk,,,,,310-315,,
+Байкер к бару,"Повтори, пожалуйста, дружище. Я пока разомну кости. Возможно о 
+челюсть того сосунка","Please repeat buddy. Will knead the bones for now, Maybe on that sucker's jaw. ",Biker,Talk,,,,,315-320,Похоже байкер ушёл разбераться с МС. Чем это закончилось?,
+,,,?,Clue,,,,,,,
+Бармен наливает коктель,,,,,,,,,320-325,,
+Байкер уходи,,,Biker,Leave,,,,,325-330,,
+Бабах,,,,,,,,,"335  - перезапуск петли,
+ уведомление о попадании в петлю времени
+и результаты сбора информации в дневнике",,
+,,,,,,,,,,,
+МС заходит в бар,,,Sissy,Enter,,,,0,260-265,,
+Мс бармену,"Эй на баре, налей двойной негрони мне побысртей","Hey bartender, pour a double negroni, hurry up. ",Sissy,Talk,,,,,265-270,МС скандальный посетитель,
+,,,?,Clue,,,,,,,
+Бармен к МС,"Дружище, у нас нет сейчас свободных мест, ты же видешь","Buddy, we have no free places right now, can you see it?",Barman,Talk,,,,,270-275,,
+МС к бармену,"Ты не понял, я хочу два негрони, прямо сейчас","You got me wrong, I want two negronies, right now",Sissy,Talk,,,,,275-280,МС проявляет агресию,
+,,,?,Clue,,,,,,,
+Бармен к МС,"Дружище, у нас действительно нет свободных мест. Подажди, пожалуйста,
+скоров возможно освободиться одно.","Man, we really have no free places. Wait please, one might be free soon.",Barman,Talk,,,,,280-285,,
+МС к бармену,"Да, ты знаешь кто я такой. Я не буду ждать",Do you know who I am? I won't wait.,Sissy,Talk,,,,,285-290,,
+МС к бармену,"Я это так не оставлю. Где твой сервис! Я разнесу этот
+бар к чертям!!! Вы что не понимает, что небо рушиться. Я всего лишь
+хочу выпить.
+Пошли вы все, долбаные засранцы","I won't leave it like that! Where is your servise? I'll blow up this bar to hell! Don't you understand that the sky is crumbling? I just want a drink. Fuck all of you, you fucking assholes.",Sissy,Talk,,,,,290-300,МС угрожал отомстить. Что произошло дальше?,
+,,,?,Clue,,,,,,,
+МС уходит из бара,,,Sissy,Leave,,,,,300-305,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+Док. заходит в бар,,,Doc,Enter,,,,?,15-20 ,,
+Док к бару,"Парень, налей мне чего-нибудь?","Buddy, pour me something.",Doc,Talk,,,,,20-25,,
+Бармен,Плохой день?,"Bad day,huh?",Barman,Talk,,,,,25-30,,
+Док. к бару,Хуже не бывает. Даже не спрашивай,Couldn't get worse than that. Don't even ask me.,Doc,Talk,,,,,30-35,У дока неприятности на работе,
+,,,?,Clue,,,,,,,
+Бармен к доку,Тогда что-нибудь покрепче?,Then maybe something stonger?,Barman,Talk,,,,,35-40,,
+Док. ,Валяй,Go ahead.,Doc,Talk,,,,,40-45,,
+Бармен наливает абсент, ,,,,,,,,45-50,,
+"Доку звонит телефон, он долго не берёт трубку", ,,,,,,,,50-65,,
+Док говорит,"Я в баре. Нет,  ещё раз говорю вы совершаете глупость. Шутки со временем
+череваты непредсказуемыми последтсвиями. ","I'm at the bar. No, again, you are doing something very stupid. Jokes are fraught with unpredictable consequences over time. ",Doc,Talk,,,,,65-75,"Док явно повздорил с начальством. Его лаборатория занимается
+искожением времени? Что за фантастика?",
+,,,?,Clue,,,,,,,
+Док говорит,Это опасно. Вы будите нести отвественность за всю планету!! Готовы к этому?,This is dangerous. You will be resposible for the entire planet! Are you ready for this?,Doc,Talk,,,,,75-85,,
+Док говорит,9 из 10 что может произойти катастрофа!  ,9 out of 10 that a disaster can happen!,Doc,Talk,,,,,85-90,Док упоминает о какой-то возможной глобальной катастрофе,
+,,,?,Clue,,,,,,,
+Док говорит,"Да лучше я уничтожу лабораторю, чем буду так рисковать","Yes, better I'll destroy a laboratory, than risk it.",Doc,Talk,,,,,90-95,,
+Док бармену,Налей ещё,Pour some more.,Doc,Talk,,,,,95-100,Док угражает начальнику уничтожить свою лабораторию,
+,,,?,Clue,,,,,,,
+Бармен наливет доку абсент,,,,,,,,,100-105,,
+Док пьёт,,,,,,,,,105-115,,
+Док бармену,Налей ещё,Repeat,,,,,,,115-120,,
+Бармен наливает доку абсент,,,,,,,,,120-125,,
+Бармен доку,Серьёзные проблемы?,Serious problems?,Barman,Talk,,,,,125-130,,
+Док бармену,Начальник совсем с сума сошёл. Он погубит всех нас,"The boss went completely crazy. 
+He will doom us all",Doc,Talk,,,,,130-135,Док говорит о како-то угрозе,
+,,,?,Clue,,,,,,,
+у дока звонит телефон,Да. Что случилось? Я срочно выезжаю. Ничего не трогайте,"Yes. What happened? I am on my 
+way. Don't touch anything...",Doc,Talk,,,,,135-140,"Что-то произошло, док срочно уезжает. Что делать дальше?",
+,,,?,Clue,,,,,,,
+Док уходит,,,Doc,Leave,?,?,,,140-145,,
+,,,,,,,,,,,
+Матрос заходит в бар,,,Sailor,Enter,?,?,,?,150-155,,
+Матрос к бармену,"Выпить, Срочно выпить. Самого крепкого пойла, что есть в этой таверне","Drink, Drink urgently. The strongest liquor in this tavern",Sailor,Talk,?,?,,,155-160,,
+Бармен наливает водку, ,,,,,,,,160-165,,
+Матрос говорит сам с собой,"Выпить, выпить. Эти долбанные голоса в голове. Как бы их заглушить","Drink, drink. Those f%#king voices
+ in my head. How to drown them out",Sailor,Talk,,,,,165-170,Матрос явно не в себе,
+,,,?,Clue,,,,,,,
+Матрос говорит сам с собой,"Самолет упал в море около необитаемого острова. На берег выбрались
+ только штурман, пилот и стюардесса. Через неделю штурман сказал: 
+“Долой разврат” и застрелил стюардессу. Еще через неделю пилот сказал:
+","The airplane fell into the sea near a 
+desert island.
+Onnly  a navigator, a pilot and a 
+stewardess girl survived. 
+A week later, the navigator said:
+""Down with debauchery"" and shot
+the stewardess. 
+After another week, the pilot said:",Sailor,Talk,,,,,170-175,,
+Матрос говорит сам с собой,"“Долой разврат” и закопал стюардессу. Еще через неделю штурман сказал:
+ “Долой разврат” и откопал стюардессу","""Down with debauchery and buried 
+the stewardess. 
+A week later, the navigator said:
+""Down with debauchery"" and dug 
+up the stewardess ",Sailor,Talk,,,,,175-180,,
+Матрос к бармену,"Бармен, срочно налей мне","Bartender, drink immediately ",Sailor,Talk,,,,,175-180,,
+Бармен наливает водку,,,Sailor,Talk,,,,,180-185,,
+Матрос говорит сам с собой,Голоса. Голса . Заткнитесь. Я вас изведу. Я избавлюс от вас,"Vote. Gols. Shut up. I'll get you out. 
+I will get rid of you from my head",Sailor,Talk,,,,,185-190,Матрос скорее всего болен. Вероятно психиатрия,
+,,,?,Clue,,,,,,,
+Матрос говорит сам с собой,"Старая акула учит молодую: — Видишь дайвера? Подплываешь к нему, делаешь
+ сначала большой круг, потом — второй, поближе... третий — совсем близко... ам!
+.. съела! ","An old shark teaches a young one: 
+- Do you see a diver? 
+You swim up to him, do
+ first a big circle, then - the second, 
+closer ... the third 
+- very close ... um!
+.. ate!",Sailor,Talk,,,,,190-195,,
+Матрос говорит сам с собой,"— А че круги-то крутить ? Можно сразу... — Ну, нравится с гавном, жри с гавном! ","- Why twist the circles? 
+I can immediately ... 
+- Well, If you like it with shit, 
+eat with shit!",Sailor,Talk,,,,,195-200,,
+Матрос к бармену,"Бармен ещё, лей больше","Bartender more, double more",Sailor,Order,,,,,200-205,,
+Бармен наливает водку,,,,,,,,,205-210,,
+Матрос говорит сам с собой,"Нет. вы меня не победите. Уходите. Черти морские, я вас одалею.
+и в макароны я ваши дуть больше не буду. А то помню - было дело","No. You will not defeat me. Go away.
+Devils of the sea, I will spoil you.
+And I won't blow your pasta anymore.
+And then I remember - 
+there was a case... ",Sailor,Talk,,,,,210-215,Матрос совсем не дружет с головой. Это опасно?,
+,,,?,Clue,,,,,,,
+Матрос говорит сам с собой,"Долбанные глобальные катаклизым. Эти сумашедшие учёные, экстремисты, 
+анархисты-байкеры, маменькины сынки с пушками, корумпированное 
+правительство. ","F%#king global cataclysm. 
+These crazy scientists, extremists,
+anarchist bikers, sissies with guns 
+and TNT, corrupt government. ",Sailor,Talk,,,,,215-220,Матрос несёт брет?,
+,,,?,Clue,,,,,,,
+Матрос говорит сам с собой,"Все они. Они не доведут нас ни до чего хорошего. Ещё эти космические анамалии.
+Долбанный камень из космоса. Откуда он взялся? И так не удачно - прямо в 
+карму ниже ватерлинии. Как теперь доставать баркас со дна залива?","All of them. They will not bring us to anything good. Also these space anamalies.
+Fucking stone from space.
+Where did it come from? 
+And so not unsuccessful - right 
+below the waterline. 
+How do you get the launch 
+from the bottom of the bay now?",Sailor,Talk,,,,,220-225,Что это? Алкогольный делирий? Или действительно комета потапила,
+,,,?,Clue,,,,,,,
+Матрос к бармену,Налей мне полную,Full it up,Sailor,Order,,,,,225-230,,
+Бармен наливает водку,,,,,,,,,230-235,,
+Матрос говорит сам с собой,Уйдите. Уйдите! Убирайтесь! Я вас уничтожу!!! Вам конец.,Go away. Go away! Get out! I will destroy you !!! You're almost dead.,Sailor,Talk,,,,,235-240,Матрос грозиться всех уничтожить,
+,,,?,Clue,,,,,,,
+Матрос говорит сам с собой,"Моряк спрашивает меня - капитана, старого морского волка:
+— Капитан, а правда, что вас акула укусила?
+— Правда!","I am the, old f%#king sea wolf. 
+A kid sailor asks me - 
+- Captain, is it true that a shark bit you?
+- True!",Sailor,Talk,,,,,250-255,,
+Матрос говорит сам с собой,"— А куда?
+— А вот это — неправда!","- And where to?
+- And this is not true!",Sailor,Talk,,,,,255-260,,
+Матрос к бармену,"Бармен, ещё. Что за легкое пойло ты мне льёшь? Оно не помагает. 
+дай, что-нибудь покрепче","Bartender. Give me more.
+ What kind of light drink are you 
+pouring me? It doesn't help.
+Give me something much stronger ",Sailor,Order,,,Rum,,255-260,"Матрос сильно пьян, но похоже
+ему на становиться легче",
+,,,?,Clue,,,,,,,
+Бармен наливает ром,,,,,,,,,260-270,,
+Матрос говорит сам с собой,"Долбанный, добланные, долбанные голоса. Вы взрываете мою голову. Нет.. Нет..","F%#king, f%#king, f%#king voices. 
+You blow my head. No...no...",Sailor,Talk,,,,,260-265,,
+Матрос говорит сам с собой,"Сейчас я вас взорву. Да, да. взорву вас без остатка. Я вам отомщю","I'm going to blow you up now. 
+Yes. Yes. blow you up without a trace.
+ I will revenge...",Sailor,Talk,,,,,265-270,,
+Матрос говорит сам с собой,"Эй бармен, ты знаешь лучшую шутку про бар? Проблемы с алкоголем - это когда
+ ты заходишь в бар, и бармен тебя узнаёт, а ты его нет.","Hey, bartender, do you know the best bar joke? Drinking problems are when
+  you walk into a bar and the bartender recognizes you, but you don't. ",Sailor,Talk,,,,,270-275,Опасно! Матрос что-то задумал,
+,,,?,Clue,,,,,,,
+Матрос к бармену,Бармен у меня нет проблем с алкоголем. Плесни мне ещё рому.,Bartender I have No PROBLEM with alcohol. Give me some more rum.,Sailor,Order,,,,,275-280,,
+Бармен наливает ром,,,,,,,,,280-285,,
+Матрос говорит сам с собой,Это не выносимо. Я больше не могу терпеть.,It is unbearable. I can NOT take it anymore.,Sailor,Talk,,,,,285-290,,
+Матрос говорит сам с собой,Сколько можно. Хватит. Хватит!!! Хватит!!!,"What now? What else?
+Enough! Enough!! Enough!!!",Sailor,Talk,,,,,290-295,,
+Матрос говорит сам с собой,Всё.всё!!! ВСЕ!!,Done. Done. DONE!!!,Sailor,Talk,,,,,295-300,"Что-то нужно сделать. Матрос
+совсем не в себе",
+,,,?,Clue,,,,,,,
+Матрос к бармену,"Бармен, дай мне бутылку. Я Разберусь с этим!!","Bartender, give me a bottle. I'll Deal With It !!",Sailor,Order,,,,,300-305,,
+Бармен наливает ром,,,,,,,,,305-310,,
+Матрос говорит сам с собой,Я справлюс!,I CAN HANDLE!!!,Sailor,Talk,,,,,310-315,,
+Матрос говорит сам с собой,Я закончу это прямо сейчас. Эй. Где здесь можно сделать дело!,"I'll finish this right now. Hey! 
+Where can I do business here!",Sailor,Talk,,,,,315-320,,
+Матрос уходит ,,,Sailor,Leave,?,?,,,320-325,,
+,,,,,,,,,325-330,,
+Бабах,,,,,,,,,"335  - перезапуск петли, 
+уведомление о
+ попадании в петлю
+ времени
+и результаты сбора
+информации в дневнике",,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+Варианты концовки:,,,,,,,,,,,
+Нужно намешать коктейл который протрезвит Блондинку,,,,,,,,,,,
+Нужно намешать коктейл который усыпит Блондинку,,,,,,,,,,,
+"Звонок в полицию, после того как собранны данные полные по одному из персонажей",,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+Дополнительно сделать вбросы кросфункциональные по персонажем о соседних угрозах,,,,,,,,,,,

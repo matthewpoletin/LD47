@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GuestsManager : MonoBehaviour
@@ -34,6 +35,11 @@ public class GuestsManager : MonoBehaviour
     public GuestView GetGuestView(GuestParams commandGuestParams)
     {
         return _guests[commandGuestParams];
+    }
+
+    public GuestParams GetGuestByCharacter(string character)
+    {
+        return _guests.Keys.FirstOrDefault(GuestParams => GuestParams.Character == character);
     }
 
     public ChairView GetChair(int commandChairIndex)

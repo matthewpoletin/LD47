@@ -11,20 +11,24 @@ public class CycleManager
     private TimeCommandManager _timeline;
 
     private readonly Timer _timer;
+    private TextAsset _storylineData;
 
     public Timer Timer => _timer;
 
-    public CycleManager(GameController controller, GuestsManager guestsManager, Transform bubbleContainer)
+    public CycleManager(GameController controller, GuestsManager guestsManager, Transform bubbleContainer,
+        TextAsset storylineData)
     {
         _guestsManager = guestsManager;
         _cycleDuration = controller.GlobalParams.CycleDuration;
         _guestTimeline = controller.GlobalParams.GuestTimelineParams;
+        _storylineData = storylineData;
 
         _timer = new Timer(_cycleDuration);
         _timer.OnTimerElapsed += OnTimerElapsed;
 
         _timeline = new TimeCommandManager(_timer);
-        _commandsFactory = new CommandsFactory(_guestsManager, controller.GlobalParams.CommonAssets.DialogPrefab, bubbleContainer);
+        _commandsFactory = new CommandsFactory(_guestsManager, controller.GlobalParams.CommonAssets.DialogPrefab,
+            bubbleContainer);
 
         Restart();
     }
@@ -46,19 +50,58 @@ public class CycleManager
         _timer.Reset(_cycleDuration);
         _timer.Unpause();
 
-        foreach (var command in _guestTimeline.GuestAppear)
+        var storylineDict = CsvReader.Read(_storylineData);
+        foreach (var storylineEntry in storylineDict)
         {
-            _timeline.AddCommand(_commandsFactory.CreateTimeCommand(command));
-        }
+            if (storylineEntry.TryGetValue("EventType", out var eventType))
+            {
+                var eventTypeStr = (string) eventType;
+                if (string.IsNullOrEmpty(eventTypeStr))
+                {
+                    continue;
+                }
 
-        foreach (var command in _guestTimeline.GuestLeave)
-        {
-            _timeline.AddCommand(_commandsFactory.CreateTimeCommand(command));
-        }
+                var characterStr = (string) storylineEntry["Character"];
+                var guestParams = _guestsManager.GetGuestByCharacter(characterStr);
+                if (guestParams == null)
+                {
+                    Debug.LogError($"Guest not found by character {characterStr}");
+                    continue;
+                }
 
-        foreach (var command in _guestTimeline.GuestDialog)
-        {
-            _timeline.AddCommand(_commandsFactory.CreateTimeCommand(command));
+                switch (eventTypeStr)
+                {
+                    case "Enter":
+                    {
+                        _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestEnterTimelineCommand
+                        {
+                            GuestParams = guestParams,
+                            StartTime = (int) storylineEntry["StartTime"],
+                            Duration = (int) storylineEntry["Duration"],
+                            ChairIndex = (int) storylineEntry["ChairIndex"],
+                        }));
+
+                        break;
+                    }
+                    case "Leave":
+                    {
+                        break;
+                    }
+                    case "Talk":
+                    {
+                        break;
+                    }
+                    case "Clue":
+                    {
+                        break;
+                    }
+                    default:
+                    {
+                        Debug.LogError($"Can't handle storyline entry of type {eventType}");
+                        break;
+                    }
+                }
+            }
         }
     }
 

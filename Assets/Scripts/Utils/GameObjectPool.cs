@@ -47,7 +47,7 @@ public class GameObjectPool : MonoBehaviour
     public void UtilizeObject(GameObject utilizedGameObject)
     {
         utilizedGameObject.gameObject.SetActive(false);
-        utilizedGameObject.transform.parent = _utilizationContainer;
+        utilizedGameObject.transform.SetParent(_utilizationContainer);
     }
 
     private void OnDestroy()

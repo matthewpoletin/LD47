@@ -2123,6 +2123,8 @@ MonoBehaviour:
   _guestContainer: {fileID: 1384723799}
   _leftPivot: {fileID: 460585426}
   _rightPivot: {fileID: 1352518631}
+  _minigameContainer: {fileID: 2108209207}
+  MinigamePrefab: {fileID: 4588858059582172388, guid: ba90adcf33331554dacaccc22749f9e2, type: 3}
 --- !u!1 &1542125264
 GameObject:
   m_ObjectHideFlags: 0
@@ -2394,6 +2396,7 @@ MonoBehaviour:
   _topPlaceholder: {fileID: 0}
   leftPivo: {fileID: 455628764}
   rightPivo: {fileID: 943719449}
+  MovementEnabled: 1
 --- !u!143 &1984704397
 CharacterController:
   m_ObjectHideFlags: 0

@@ -70,7 +70,7 @@ public class MinigameView : MonoBehaviour
     {
         for (int i = 0; i < seq.Length; i++)
         {
-            IEnumerator coroutine = Blink(i, pressedImg, 0.5f * (i + 1));
+            IEnumerator coroutine = Blink(i, pressedImg, 0.3f * (i + 1));
             StartCoroutine(coroutine);
         }
     }
@@ -81,7 +81,7 @@ public class MinigameView : MonoBehaviour
         uberDict["" + seq[i]].sprite = img;
         if (i != seq.Length)
         {
-            IEnumerator coroutine = Blink(i, idleImg, 0.5f);
+            IEnumerator coroutine = Blink(i, idleImg, 0.3f);
             StartCoroutine(coroutine);
         }
 

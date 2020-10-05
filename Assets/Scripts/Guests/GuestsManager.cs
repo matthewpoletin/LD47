@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class GuestsManager : MonoBehaviour
 {
-    [SerializeField] private List<ChairView> _chairList = default;
-    [SerializeField] private Transform _guestContainer = default;
-    [SerializeField] private Transform _leftPivot = default;
-    [SerializeField] private Transform _rightPivot = default;
+    [SerializeField] private List<ChairView> _chairList   = default;
+    [SerializeField] private Transform _guestContainer    = default;
+    [SerializeField] private Transform _leftPivot         = default;
+    [SerializeField] private Transform _rightPivot        = default;
+    [SerializeField] private Transform _minigameContainer = default;
+    [SerializeField] private GameObject MinigamePrefab    = default;
     //[SerializeField] private Transform _clueNotificationPivot = default;
 
     private readonly Dictionary<GuestParams, GuestView> _guests = new Dictionary<GuestParams, GuestView>();
@@ -78,7 +80,7 @@ public class GuestsManager : MonoBehaviour
             dialogBox.SetOpacity(alpha);
             dialogBox.Tick(deltaTime);
         }
-
+    //minigame
         var ordersToRemove = new List<OrderBox>();
         foreach (var keyValuePair in _orderViews)
         {
@@ -103,6 +105,18 @@ public class GuestsManager : MonoBehaviour
                 Mathf.InverseLerp(_globalParams.OpacityMinDistance, _globalParams.OpacityMaxDistance, distance));
             orderView.SetOpacity(alpha);
             orderView.Tick(deltaTime);
+
+            if (distance < 1)
+            {
+                if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    var minigameGo = GameObject.Instantiate(MinigamePrefab, _minigameContainer);
+                    var minigameView = minigameGo.GetComponent<MinigameView>();
+                    minigameView.Connect("ASWD", OnMinigameComplete);
+
+                    ordersToRemove.Add(orderView);
+                }
+            }
             
             // TODO: Если дистанция до заказа меньше заданной параметром и был нажат пробел, что нужно запустить мини игру и удалить бабл заказа и заблокировать перемещение игрока
         }
@@ -115,6 +129,18 @@ public class GuestsManager : MonoBehaviour
         // TODO: Создать диалоговое окно и сохранить его
     }
 
+    private void OnMinigameComplete(bool completionResult)
+    {
+        if (completionResult)
+        {
+            Debug.Log("+5$");
+        }
+        else
+        {
+            Debug.Log("Failed");
+        }
+    }
+    //minigame
     private void CreateGuest(GuestParams guestParams)
     {
         var go = Instantiate(guestParams.Prefab, _guestContainer);

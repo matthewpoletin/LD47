@@ -44,27 +44,17 @@ public class CycleManager
         _timer.Tick(deltaTime);
         _timeline.Tick(deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            var minigameGo =
-                GameObject.Instantiate(_controller.GlobalParams.CommonAssets.MinigamePrefab, _minigameContainer);
-            var minigameView = minigameGo.GetComponent<MinigameView>();
-            minigameView.Connect("WASD", OnMinigameComplete);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    var minigameGo =
+        //        GameObject.Instantiate(_controller.GlobalParams.CommonAssets.MinigamePrefab, _minigameContainer);
+        //    var minigameView = minigameGo.GetComponent<MinigameView>();
+        //    minigameView.Connect("WASD", OnMinigameComplete);
+        //}
     }
 
     // TODO: Перенести внутрь GuestManager и при вызове включать перемещение игрока
-    private void OnMinigameComplete(bool completionResult)
-    {
-        if (completionResult)
-        {
-            Debug.Log("+5$");
-        }
-        else
-        {
-            Debug.Log("Failed");
-        }
-    }
+  
 
     private void OnTimerElapsed()
     {

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: OnePint
   Name: One Pint
-  Prefab: {fileID: 55008145039850604, guid: 4d09dd4b75196304ba594a30273bb240, type: 3}
+  Prefab: {fileID: 4772017571409439948, guid: 0540e464513c17a47b48218e47e3ac5c, type: 3}

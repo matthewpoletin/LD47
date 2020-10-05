@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: Biker
   Name: Biker
-  Prefab: {fileID: 55008145039850604, guid: 85aa9a7bec61428418e87a063865ffa5, type: 3}
+  Prefab: {fileID: 4043211212630787197, guid: 8e09a842aea0fe742b77c2d1b74a52bf, type: 3}

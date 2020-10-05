@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: Doc
   Name: Doctor
-  Prefab: {fileID: 55008145039850604, guid: 296a2988271bcc94780aa21dad1ca819, type: 3}
+  Prefab: {fileID: 95750064404314140, guid: 3c6c2f8c8259c64458f4ca18c96ae62b, type: 3}

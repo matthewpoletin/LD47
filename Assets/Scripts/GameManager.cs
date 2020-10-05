@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : BaseModule
 {
@@ -12,7 +11,6 @@ public class GameManager : BaseModule
     [SerializeField] private Transform _minigameContainer = default;
     [SerializeField] private GameObject _clueDialog = default;
     [SerializeField] private Report _report = default;
-    [SerializeField] private ClueManager _clueManager = default;
     [SerializeField] private Tutorial _tutorial = default;
     [SerializeField] private CollectedMoneyWidget _collectedMoneyWidget = default;
 
@@ -119,7 +117,6 @@ public class GameManager : BaseModule
         _pauseDialog.Utilize();
         _guestsManager.Utilize();
         _cycleManager.Utilize();
-        _clueManager.Utilize();
         EventManager.OnCallPolice += ContinueGame;
     }
 }

@@ -9,8 +9,6 @@ public class CycleManager
 
     private readonly CommandsFactory _commandsFactory;
 
-    private readonly ClueManager _clueManager;
-
     private TimeCommandManager _timeline;
 
     private readonly Timer _timer;

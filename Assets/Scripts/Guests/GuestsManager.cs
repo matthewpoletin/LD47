@@ -242,6 +242,19 @@ public class GuestsManager : MonoBehaviour
         }
     }
 
+    private bool CompareStrings(string newString, List<string> clues)
+    {
+        foreach (var str in clues)
+        {
+            if (string.Compare(newString, str) == 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void Utilize()
     {
         _elapsedTime = default;
@@ -256,23 +269,11 @@ public class GuestsManager : MonoBehaviour
 
         foreach (var guestView in _guests.Values)
         {
+            guestView.Utilize();
             Destroy(guestView.gameObject);
         }
 
         _guests.Clear();
         EventManager.OnClueGet -= AddClue;
-    }
-
-    private bool CompareStrings(string newString, List<string> clues)
-    {
-        foreach (var str in clues)
-        {
-            if (string.Compare(newString, str) == 0)
-            {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

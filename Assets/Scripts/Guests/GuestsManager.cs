@@ -14,11 +14,8 @@ public class GuestsManager : MonoBehaviour
     private readonly Dictionary<GuestParams, GuestView> _guests = new Dictionary<GuestParams, GuestView>();
     private readonly Dictionary<TextBox, float> _dialogBoxes = new Dictionary<TextBox, float>();
     private readonly Dictionary<OrderBox, float> _orderViews = new Dictionary<OrderBox, float>();
-
     private readonly Dictionary<OrderBox, DrinkParams> _orderDrinks = new Dictionary<OrderBox, DrinkParams>();
-
-    // TODO: Хранить созданные диалоги миниигр
-    private readonly List<MinigameView> _minigameViews = new List<MinigameView>();
+    private readonly List<MinigameBox> _minigameViews = new List<MinigameBox>();
 
     private GameModel _gameModel;
     private GameObjectPool _pool;
@@ -34,7 +31,7 @@ public class GuestsManager : MonoBehaviour
 
     private readonly List<TextBox> _textBoxesToRemove = new List<TextBox>();
     private readonly List<OrderBox> _orderBoxesToRemove = new List<OrderBox>();
-    private readonly List<MinigameView> _minigamesToRemove = new List<MinigameView>();
+    private readonly List<MinigameBox> _minigamesToRemove = new List<MinigameBox>();
 
     private float _elapsedTime;
 
@@ -154,12 +151,12 @@ public class GuestsManager : MonoBehaviour
     private void CreateMinigameDialogBox(OrderBox orderView)
     {
         var minigameGo = GameObject.Instantiate(_commonAssets.MinigamePrefab, _minigameContainer);
-        var minigameView = minigameGo.GetComponent<MinigameView>();
+        var minigameView = minigameGo.GetComponent<MinigameBox>();
         minigameView.Connect(_orderDrinks[orderView].sequence, OnMinigameComplete, _camera, orderView.GuestView);
         _minigameViews.Add(minigameView);
     }
 
-    private void OnMinigameComplete(bool completionResult, MinigameView minigameView)
+    private void OnMinigameComplete(bool completionResult, MinigameBox minigameBox)
     {
         if (completionResult)
         {
@@ -172,7 +169,7 @@ public class GuestsManager : MonoBehaviour
 
         _playerController.MovementEnabled = true;
 
-        _minigamesToRemove.Add(minigameView);
+        _minigamesToRemove.Add(minigameBox);
     }
 
     private void CreateGuest(GuestParams guestParams)

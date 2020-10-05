@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MinigameView : DialogBoxBase
+public class MinigameBox : DialogBoxBase
 {
     [SerializeField] private Sprite idleImg = default;
     [SerializeField] private Sprite pressedImg = default;
@@ -19,7 +19,7 @@ public class MinigameView : DialogBoxBase
 
     private GameObject parent;
 
-    private Action<bool, MinigameView> _callBack;
+    private Action<bool, MinigameBox> _callBack;
 
     private bool shown = false;
     private bool integrity = true;
@@ -35,7 +35,7 @@ public class MinigameView : DialogBoxBase
         uberDict.Add("D", _rightImage);
     }
 
-    public void Connect(string sequence, Action<bool, MinigameView> callback, Camera camera1, GuestView guestView)
+    public void Connect(string sequence, Action<bool, MinigameBox> callback, Camera camera1, GuestView guestView)
     {
         base.Connect(camera1, guestView);
 

@@ -47,5 +47,17 @@ public class ApplicationManager : MonoBehaviour
         var deltaTime = Time.deltaTime;
 
         _moduleManager.Tick(deltaTime);
+
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            Time.timeScale = 10;
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Time.timeScale = 1;
+        }
+#endif
     }
 }

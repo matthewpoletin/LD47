@@ -141,17 +141,6 @@ public class GuestsManager : MonoBehaviour
                 minigameView.Tick(deltaTime);
             }
         }
-
-        // Ускорялка для тестов проходимости игры
-        //if (Input.GetKeyDown(KeyCode.Y))
-        //{
-        //    Time.timeScale = 10;
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.N))
-        //{
-        //    Time.timeScale = 1;
-        //}
     }
 
     private void CreateMinigameDialogBox(OrderBox orderView)

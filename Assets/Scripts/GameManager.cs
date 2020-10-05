@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : BaseModule
 {
@@ -15,14 +13,18 @@ public class GameManager : BaseModule
     [SerializeField] private Report _report = default;
     [SerializeField] private ClueManager _clueManager = default;
     [SerializeField] private Tutorial _tutorial = default;
+    [SerializeField] private CollectedMoneyWidget _collectedMoneyWidget = default;
 
+    private GameModel _gameModel;
     private CycleManager _cycleManager;
 
     public override void Connect(GameController controller)
     {
+        _gameModel = new GameModel();
+
         _playerController.Connect(_camera, controller.GlobalParams);
 
-        _guestsManager.Connect(controller.GlobalParams.GuestList, controller.Pool, controller.GlobalParams,
+        _guestsManager.Connect(_gameModel, controller.GlobalParams.GuestList, controller.Pool, controller.GlobalParams,
             controller.GlobalParams.CommonAssets,
             _camera, _bubbleContainer, _playerController);
 
@@ -39,6 +41,7 @@ public class GameManager : BaseModule
         OpenTutorialScreen();
 
         _clockView.Connect(_cycleManager.Timer);
+        _collectedMoneyWidget.Connect(_gameModel);
 
         //EventManager.OnGuestEnterClue += AddClue;
         //EventManager.OnGuestTalkClue += AddClue;

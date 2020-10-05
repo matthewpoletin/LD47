@@ -53,9 +53,6 @@ public class CycleManager
         //}
     }
 
-    // TODO: Перенести внутрь GuestManager и при вызове включать перемещение игрока
-  
-
     private void OnTimerElapsed()
     {
         // TODO: Конец цикла

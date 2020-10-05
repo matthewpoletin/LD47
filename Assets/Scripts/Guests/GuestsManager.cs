@@ -20,6 +20,7 @@ public class GuestsManager : MonoBehaviour
     // TODO: Хранить созданные диалоги миниигр
     // private readonly Dictionary<OrderBox, float> _orderViews = new Dictionary<OrderBox, float>();
 
+    private GameModel _gameModel;
     private GameObjectPool _pool;
     private GlobalParams _globalParams;
     private CommonAssets _commonAssets;
@@ -27,8 +28,8 @@ public class GuestsManager : MonoBehaviour
     private Transform _bubbleContainer;
     private PlayerController _playerController;
 
-    private List<string> _clueList = new List<string>();
-    private List<GuestParams> _guestParams = new List<GuestParams>();
+    private readonly List<string> _clueList = new List<string>();
+    private readonly List<GuestParams> _guestParams = new List<GuestParams>();
 
     private float _elapsedTime;
 
@@ -37,10 +38,12 @@ public class GuestsManager : MonoBehaviour
     public List<string> ClueList => _clueList;
     public List<GuestParams> GuestParamsList => _guestParams;
 
-    public void Connect(List<GuestParams> guestList, GameObjectPool pool, GlobalParams globalParams,
+    public void Connect(GameModel gameModel, List<GuestParams> guestList, GameObjectPool pool,
+        GlobalParams globalParams,
         CommonAssets commonAssets, Camera camera1,
         Transform bubbleContainer, PlayerController playerController)
     {
+        _gameModel = gameModel;
         _pool = pool;
         _globalParams = globalParams;
         _commonAssets = commonAssets;
@@ -139,11 +142,11 @@ public class GuestsManager : MonoBehaviour
     {
         if (completionResult)
         {
-            Debug.Log("+5$");
+            _gameModel.VisibleValues.CollectedMoney += 5;
         }
         else
         {
-            Debug.Log("Failed");
+            _gameModel.VisibleValues.CollectedMoney -= 5;
         }
     }
     //minigame

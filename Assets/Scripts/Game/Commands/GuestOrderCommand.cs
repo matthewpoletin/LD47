@@ -1,6 +1,5 @@
-﻿public class GuestOrderCommand
+﻿public class GuestOrderCommand : CommandBase
 {
-      public float StartTime = default;
       public GuestParams GuestParams = default;
       public float Duration = default;
       public DrinkParams DrinkParams = default;

@@ -1,6 +1,5 @@
-﻿public class GuestClueCommand
+﻿public class GuestClueCommand : CommandBase
 {
-    public float StartTime = default;
     public GuestParams GuestParams = default;
     public float Duration = 5f;
     public string ReportEng = default;

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Absinthe
   Icon: {fileID: 0}
+  sequence: ASAW

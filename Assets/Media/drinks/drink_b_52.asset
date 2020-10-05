@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: B52
   Icon: {fileID: 0}
+  sequence: ADWSA

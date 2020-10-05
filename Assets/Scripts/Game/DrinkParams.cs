@@ -5,4 +5,5 @@ public class DrinkParams : ScriptableObject
 {
     public string Name;
     public Sprite Icon;
+    public string sequence;
 }

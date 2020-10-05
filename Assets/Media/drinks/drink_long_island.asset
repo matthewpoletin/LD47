@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: LongIsland
   Icon: {fileID: 0}
+  sequence: ASDDS

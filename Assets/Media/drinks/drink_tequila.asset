@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Tequila
   Icon: {fileID: 0}
+  sequence: DDAW

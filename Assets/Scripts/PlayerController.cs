@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private Camera _camera;
     private GlobalParams _globalParams;
 
+    public bool MovementEnabled = true;
+
     public Transform TopPlaceholder => _topPlaceholder;
 
     public void Connect(Camera camera1, GlobalParams globalParams)
@@ -20,6 +22,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!MovementEnabled)
+        {
+            return;
+        }
+
         if (_globalParams == null)
         {
             return;

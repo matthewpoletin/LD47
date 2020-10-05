@@ -13,6 +13,8 @@ public class GuestsManager : MonoBehaviour
     private readonly Dictionary<GuestParams, GuestView> _guests = new Dictionary<GuestParams, GuestView>();
     private readonly Dictionary<TextBox, float> _dialogBoxes = new Dictionary<TextBox, float>();
     private readonly Dictionary<OrderBox, float> _orderViews = new Dictionary<OrderBox, float>();
+    // TODO: Хранить созданные диалоги миниигр
+    // private readonly Dictionary<OrderBox, float> _orderViews = new Dictionary<OrderBox, float>();
 
     private GameObjectPool _pool;
     private GlobalParams _globalParams;
@@ -101,7 +103,16 @@ public class GuestsManager : MonoBehaviour
                 Mathf.InverseLerp(_globalParams.OpacityMinDistance, _globalParams.OpacityMaxDistance, distance));
             orderView.SetOpacity(alpha);
             orderView.Tick(deltaTime);
+            
+            // TODO: Если дистанция до заказа меньше заданной параметром и был нажат пробел, что нужно запустить мини игру и удалить бабл заказа и заблокировать перемещение игрока
         }
+
+        // TODO: Дописать схожую логику для диалога миниигры 
+    }
+
+    public void CreateMinigameDialogBox()
+    {
+        // TODO: Создать диалоговое окно и сохранить его
     }
 
     private void CreateGuest(GuestParams guestParams)

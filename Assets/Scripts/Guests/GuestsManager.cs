@@ -118,7 +118,7 @@ public class GuestsManager : MonoBehaviour
                 {
                     var minigameGo = GameObject.Instantiate(MinigamePrefab, _minigameContainer);
                     var minigameView = minigameGo.GetComponent<MinigameView>();
-                    minigameView.Connect(_orderDrinks[orderView].sequence, OnMinigameComplete); //Add drink sequence
+                    minigameView.Connect(_orderDrinks[orderView].sequence, OnMinigameComplete); //improve visuals; spawn above parent guest
 
                     ordersToRemove.Add(orderView);
                 }

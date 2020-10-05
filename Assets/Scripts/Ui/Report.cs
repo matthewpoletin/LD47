@@ -39,8 +39,14 @@ public class Report : MonoBehaviour
         {
             if (guestParams.Name == tab.name)
             {
-                AddToTab(clueToAdd, tab.transform);
-                tab.CheckForSummary(clueToAdd);
+                //AddToTab(clueToAdd, tab.transform);
+                //tab.CheckForSummary(clueToAdd);
+
+                for (int i = 0; i < 7; i++)
+                {
+                    AddToTab(clueToAdd, tab.transform);
+                    tab.CheckForSummary(clueToAdd);
+                }
             }
         }
     }
@@ -84,5 +90,11 @@ public class Report : MonoBehaviour
         }
 
         newTab.gameObject.SetActive(true);
+    }
+
+    public void CallThePolice(GameObject policeButton)
+    {
+        policeButton.gameObject.SetActive(false);
+        Debug.Log("Police has been called");
     }
 }

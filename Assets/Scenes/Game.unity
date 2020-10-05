@@ -2193,8 +2193,6 @@ MonoBehaviour:
   _guestContainer: {fileID: 1384723799}
   _leftPivot: {fileID: 460585426}
   _rightPivot: {fileID: 1352518631}
-  _minigameContainer: {fileID: 2108209207}
-  MinigamePrefab: {fileID: 4588858059582172388, guid: ba90adcf33331554dacaccc22749f9e2, type: 3}
   _clueNotificationPrefab: {fileID: 8369690031119344378}
 --- !u!1 &1542125264
 GameObject:
@@ -2611,10 +2609,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

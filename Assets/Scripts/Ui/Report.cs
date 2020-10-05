@@ -8,6 +8,7 @@ public class Report : MonoBehaviour
     [SerializeField] private GameObject _cluePrefab;
     [SerializeField] private Transform _clueContainer;
     [SerializeField] private List<ClueTab> _clueTabs;
+    [SerializeField] private List<ClueEntryView> _conclusionClues;
 
     private List<ClueEntryView> _clueEntryList = new List<ClueEntryView>();
     private List<string> _currentClues = new List<string>();
@@ -37,6 +38,12 @@ public class Report : MonoBehaviour
 
         foreach (var tab in _clueTabs)
         {
+            if (tab.name == "Conclusions" && CheckForConclusion(clueToAdd))
+            {
+                AddToTab(clueToAdd, tab.transform);
+                tab.CheckForSummary(clueToAdd);
+            }
+
             if (guestParams.Name == tab.name)
             {
                 AddToTab(clueToAdd, tab.transform);
@@ -59,6 +66,19 @@ public class Report : MonoBehaviour
         clueEntry.Connect(clueToAdd);
         _currentClues.Add(clueToAdd);
         _clueEntryList.Add(clueEntry);
+    }
+
+    private bool CheckForConclusion(string clue)
+    {
+        foreach (var conclusion in _conclusionClues)
+        {
+            if (conclusion.Text.text == clue)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void Utilize()

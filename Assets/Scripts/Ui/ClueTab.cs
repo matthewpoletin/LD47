@@ -19,7 +19,7 @@ public class ClueTab : MonoBehaviour
             Instantiate(_summaryPrefab, gameObject.transform);
             if (_policeButton != null)
             {
-                _policeButton.SetActive(true); 
+                _policeButton.SetActive(true);
             }
         }
     }

@@ -1624,7 +1624,6 @@ MonoBehaviour:
   _topPlaceholder: {fileID: 0}
   leftPivo: {fileID: 455628764}
   rightPivo: {fileID: 943719449}
-  MovementEnabled: 1
 --- !u!143 &1984704397
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2515,11 +2514,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8502691734843813741, guid: c3d1bb4c222905f4384de90843ba89c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -960.0001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8502691734843813741, guid: c3d1bb4c222905f4384de90843ba89c3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 663.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8502691734843813741, guid: c3d1bb4c222905f4384de90843ba89c3, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2527,23 +2526,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8502691734843813741, guid: c3d1bb4c222905f4384de90843ba89c3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1135.0396
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 8502691734843813741, guid: c3d1bb4c222905f4384de90843ba89c3, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8502691734843813741, guid: c3d1bb4c222905f4384de90843ba89c3, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8502691734843813741, guid: c3d1bb4c222905f4384de90843ba89c3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8502691734843813741, guid: c3d1bb4c222905f4384de90843ba89c3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8502691734843813741, guid: c3d1bb4c222905f4384de90843ba89c3, type: 3}
       propertyPath: m_Pivot.x

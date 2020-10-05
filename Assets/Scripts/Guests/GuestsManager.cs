@@ -31,7 +31,9 @@ public class GuestsManager : MonoBehaviour
     private readonly List<string> _clueList = new List<string>();
     private readonly List<GuestParams> _guestParams = new List<GuestParams>();
 
-    private List<MinigameView> _minigamesToRemove = new List<MinigameView>();
+    private readonly List<TextBox> _textBoxesToRemove = new List<TextBox>();
+    private readonly List<OrderBox> _orderBoxesToRemove = new List<OrderBox>();
+    private readonly List<MinigameView> _minigamesToRemove = new List<MinigameView>();
 
     private float _elapsedTime;
 
@@ -63,30 +65,41 @@ public class GuestsManager : MonoBehaviour
 
     public void Tick(float deltaTime)
     {
+        foreach (var textBox in _textBoxesToRemove)
+        {
+            textBox.Utilize();
+            _pool.UtilizeObject(textBox.gameObject);
+            _dialogBoxes.Remove(textBox);
+        }
+        _textBoxesToRemove.Clear();
+
+        foreach (var orderBox in _orderBoxesToRemove)
+        {
+            orderBox.Utilize();
+            _pool.UtilizeObject(orderBox.gameObject);
+            _orderViews.Remove(orderBox);
+            _orderDrinks.Remove(orderBox);
+        }
+        _orderBoxesToRemove.Clear();
+
         foreach (var minigameView in _minigamesToRemove)
         {
             minigameView.Utilize();
             _minigameViews.Remove(minigameView);
             _pool.UtilizeObject(minigameView.gameObject);
         }
+        _minigamesToRemove.Clear();
 
         _elapsedTime += deltaTime;
 
-        var dialogsToRemove = new List<TextBox>();
         foreach (var keyValuePair in _dialogBoxes)
         {
             var dialogBox = keyValuePair.Key;
             var destroyTime = keyValuePair.Value;
             if (destroyTime < _elapsedTime)
             {
-                dialogsToRemove.Add(dialogBox);
+                _textBoxesToRemove.Add(dialogBox);
             }
-        }
-
-        foreach (var dialogBox in dialogsToRemove)
-        {
-            _pool.UtilizeObject(dialogBox.gameObject);
-            _dialogBoxes.Remove(dialogBox);
         }
 
         foreach (var dialogBox in _dialogBoxes.Keys)
@@ -98,22 +111,14 @@ public class GuestsManager : MonoBehaviour
             dialogBox.Tick(deltaTime);
         }
 
-        var ordersToRemove = new List<OrderBox>();
         foreach (var keyValuePair in _orderViews)
         {
             var orderView = keyValuePair.Key;
             var destroyTime = keyValuePair.Value;
             if (destroyTime < _elapsedTime)
             {
-                ordersToRemove.Add(orderView);
+                _orderBoxesToRemove.Add(orderView);
             }
-        }
-
-        foreach (var orderView in ordersToRemove)
-        {
-            _pool.UtilizeObject(orderView.gameObject);
-            _orderViews.Remove(orderView);
-            _orderDrinks.Remove(orderView);
         }
 
         foreach (var orderView in _orderViews.Keys)
@@ -128,7 +133,7 @@ public class GuestsManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space) && _playerController.MovementEnabled)
                 {
-                    ordersToRemove.Add(orderView);
+                    _orderBoxesToRemove.Add(orderView);
 
                     CreateMinigameDialogBox(orderView);
 
@@ -136,10 +141,11 @@ public class GuestsManager : MonoBehaviour
                 }
             }
 
-            foreach (var minigameView in _minigameViews)
-            {
-                minigameView.Tick(deltaTime);
-            }
+        }
+
+        foreach (var minigameView in _minigameViews)
+        {
+            minigameView.Tick(deltaTime);
         }
     }
 

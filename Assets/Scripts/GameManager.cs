@@ -43,10 +43,9 @@ public class GameManager : BaseModule
         _clockView.Connect(_cycleManager.Timer);
         _collectedMoneyWidget.Connect(_gameModel);
 
-        //EventManager.OnGuestEnterClue += AddClue;
-        //EventManager.OnGuestTalkClue += AddClue;
-
         _cycleManager.Timer.OnTimerElapsed += ShowReport;
+
+        EventManager.OnCallPolice += ContinueGame;
     }
 
     public override void Tick(float deltaTime)
@@ -64,21 +63,6 @@ public class GameManager : BaseModule
         }
     }
 
-    //private void AddClue(string clueToAdd)
-    //{
-    //    if (CompareStrings(clueToAdd, _report._currentClues)) { return; }
-
-    //    _report._currentClues.Add(clueToAdd);
-    //    StartCoroutine(ClueNotificationCoroutine());
-    //}
-
-    //IEnumerator ClueNotificationCoroutine()
-    //{
-    //    _clueDialog.gameObject.SetActive(true);
-    //    yield return new WaitForSeconds(3);
-    //    _clueDialog.gameObject.SetActive(false);
-    //}
-
     /// <summary>
     /// Вызывается в момент рестарта
     /// </summary>
@@ -87,16 +71,18 @@ public class GameManager : BaseModule
         _cycleManager.Timer.Pause();
         _report.StartAddingClues(_guestsManager.ClueList, _guestsManager.GuestParamsList);
         _report.gameObject.SetActive(true);
-
     }
 
     public void CloseReport()
     {
-        _report.gameObject.SetActive(false);
-
-        // Снимаем с паузы, так как после того, как туториал закончится таймер должен начинаться после репорта
-        _cycleManager.Timer.Unpause();
+        ContinueGame();
         OpenTutorialScreen();
+    }
+
+    private void ContinueGame()
+    {
+        _report.gameObject.SetActive(false);
+        _cycleManager.Timer.Unpause();
     }
 
     private void OpenTutorialScreen()
@@ -110,7 +96,6 @@ public class GameManager : BaseModule
         _guestsManager.Utilize();
         _cycleManager.Utilize();
         _clueManager.Utilize();
-        //EventManager.OnGuestEnterClue -= AddClue;
-        //EventManager.OnGuestTalkClue -= AddClue;
+        EventManager.OnCallPolice += ContinueGame;
     }
 }

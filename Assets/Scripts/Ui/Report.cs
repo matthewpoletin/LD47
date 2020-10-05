@@ -49,13 +49,6 @@ public class Report : MonoBehaviour
             {
                 AddToTab(clueToAdd, tab.transform);
                 tab.CheckForSummary(clueToAdd);
-
-                // Для отладки процессов возникающих после нахождения всех подсказок
-                //for (int i = 0; i < 7; i++)
-                //{
-                //    AddToTab(clueToAdd, tab.transform);
-                //    tab.CheckForSummary(clueToAdd);
-                //}
             }
         }
     }
@@ -104,15 +97,17 @@ public class Report : MonoBehaviour
         return false;
     }
 
-    public void OpenNewTab(ClueTab newTab)
+    public void OpenNewTab(GameObject newTab)
     {
         foreach (var tab in _clueTabs)
         {
             tab.gameObject.SetActive(false);
+            tab.transform.parent.gameObject.SetActive(false);
         }
 
         newTab.gameObject.SetActive(true);
-        _activeTab = newTab;
+        _activeTab = newTab.transform.GetChild(0).GetComponent<ClueTab>();
+        _activeTab.gameObject.SetActive(true);
     }
 
     public void CallThePolice(GameObject policeButton)
@@ -120,5 +115,24 @@ public class Report : MonoBehaviour
         policeButton.gameObject.SetActive(false);
         string message = "Police arrest " + _activeTab.name + ". Loop repeats.";
         AddToTab(message, _activeTab.transform);
+        gameObject.SetActive(false);
+        EventManager.CallOnCallPolice();
+    }
+
+    public void Sleep(GameObject soberupButton)
+    {
+        soberupButton.gameObject.SetActive(false);
+        string message = "You mix cocktail, which put to sleep Blonde. You left temporary loop. Until new meeting ;)";
+        AddToTab(message, _activeTab.transform);
+
+        if (_activeTab._endGameButton != null)
+        {
+            _activeTab._endGameButton.SetActive(true);
+        }
+    }
+
+    public void EndGame()
+    {
+        Debug.Log("Credits");
     }
 }

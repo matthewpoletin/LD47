@@ -1666,7 +1666,7 @@ MonoBehaviour:
   _pauseDialog: {fileID: 53479596}
   _clockView: {fileID: 1360690549}
   _bubbleContainer: {fileID: 1968943689}
-  _minigameContainer: {fileID: 0}
+  _minigameContainer: {fileID: 2108209207}
   _clueDialog: {fileID: 8369690031119344378}
   _report: {fileID: 522909380}
   _clueManager: {fileID: 0}

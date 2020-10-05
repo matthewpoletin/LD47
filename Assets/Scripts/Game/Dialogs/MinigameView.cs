@@ -70,7 +70,7 @@ public class MinigameView : MonoBehaviour
     {
         for (int i = 0; i < seq.Length; i++)
         {
-            IEnumerator coroutine = Blink(i, pressedImg, 0.3f * (i + 1));
+            IEnumerator coroutine = Blink(i, pressedImg, 0.4f * (i + 1));
             StartCoroutine(coroutine);
         }
     }

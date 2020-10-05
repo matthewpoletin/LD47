@@ -15,6 +15,7 @@ public class GuestsManager : MonoBehaviour
     private readonly Dictionary<GuestParams, GuestView> _guests = new Dictionary<GuestParams, GuestView>();
     private readonly Dictionary<TextBox, float> _dialogBoxes = new Dictionary<TextBox, float>();
     private readonly Dictionary<OrderBox, float> _orderViews = new Dictionary<OrderBox, float>();
+    private readonly Dictionary<OrderBox, DrinkParams> _orderDrinks = new Dictionary<OrderBox, DrinkParams>();
     // TODO: Хранить созданные диалоги миниигр
     // private readonly Dictionary<OrderBox, float> _orderViews = new Dictionary<OrderBox, float>();
 
@@ -98,6 +99,7 @@ public class GuestsManager : MonoBehaviour
         {
             _pool.UtilizeObject(orderView.gameObject);
             _orderViews.Remove(orderView);
+            _orderDrinks.Remove(orderView);
         }
 
         foreach (var orderView in _orderViews.Keys)
@@ -114,7 +116,7 @@ public class GuestsManager : MonoBehaviour
                 {
                     var minigameGo = GameObject.Instantiate(MinigamePrefab, _minigameContainer);
                     var minigameView = minigameGo.GetComponent<MinigameView>();
-                    minigameView.Connect("ASWD", OnMinigameComplete); //Add drink sequence
+                    minigameView.Connect(_orderDrinks[orderView].sequence, OnMinigameComplete); //Add drink sequence
 
                     ordersToRemove.Add(orderView);
                 }
@@ -183,6 +185,7 @@ public class GuestsManager : MonoBehaviour
         orderView.Connect(guestView, _camera, null);
 
         _orderViews.Add(orderView, _elapsedTime + duration);
+        _orderDrinks.Add(orderView, drinkParams);
     }
 
     public void AddClue(string clueToAdd)

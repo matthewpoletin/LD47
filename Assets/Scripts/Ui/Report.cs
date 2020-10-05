@@ -40,6 +40,7 @@ public class Report : MonoBehaviour
             if (guestParams.Name == tab.name)
             {
                 AddToTab(clueToAdd, tab.transform);
+                tab.CheckForSummary(clueToAdd);
             }
         }
     }

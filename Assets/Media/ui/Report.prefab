@@ -486,6 +486,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Doctor
+  _maxNumberOfClues: 6
+  _summaryPrefab: {fileID: 0}
 --- !u!1 &2845141639076173504
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +564,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Biker
+  _maxNumberOfClues: 7
+  _summaryPrefab: {fileID: 0}
 --- !u!1 &2899740701667002258
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +882,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Sailor
+  _maxNumberOfClues: 9
+  _summaryPrefab: {fileID: 0}
 --- !u!1 &3482902500802314121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,6 +1279,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Sissy
+  _maxNumberOfClues: 3
+  _summaryPrefab: {fileID: 0}
 --- !u!1 &5096619917206040612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,6 +1515,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Conclusions
+  _maxNumberOfClues: 0
+  _summaryPrefab: {fileID: 0}
 --- !u!1 &6285764676391635902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,6 +1713,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: One Pint
+  _maxNumberOfClues: 4
+  _summaryPrefab: {fileID: 0}
 --- !u!1 &6980294794591374932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1858,6 +1870,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Blonde
+  _maxNumberOfClues: 7
+  _summaryPrefab: {fileID: 0}
 --- !u!1 &7285394413291185868
 GameObject:
   m_ObjectHideFlags: 0

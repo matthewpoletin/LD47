@@ -29,7 +29,7 @@ public class GameManager : BaseModule
             _camera, _bubbleContainer, _playerController);
 
         _cycleManager = new CycleManager(controller, controller.Pool, _guestsManager, _bubbleContainer, _minigameContainer,
-            controller.GlobalParams.StorylineCsv, _playerController, _camera);
+            controller.GlobalParams.StorylineCsv, _playerController, _camera, _gameModel);
 
         _pauseDialog.Connect(controller);
         _pauseDialog.gameObject.SetActive(false);

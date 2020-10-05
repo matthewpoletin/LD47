@@ -16,13 +16,16 @@ public class CycleManager
     private readonly Timer _timer;
     private TextAsset _storylineData;
     private Transform _minigameContainer;
+    private GameModel _gameModel;
 
     public Timer Timer => _timer;
 
     public CycleManager(GameController controller, GameObjectPool pool, GuestsManager guestsManager,
         Transform bubbleContainer,
-        Transform minigameContainer, TextAsset storylineData, PlayerController playerController, Camera camera)
+        Transform minigameContainer, TextAsset storylineData, PlayerController playerController, Camera camera,
+        GameModel gameModel)
     {
+        _gameModel = gameModel;
         _controller = controller;
         _guestsManager = guestsManager;
         _cycleDuration = controller.GlobalParams.CycleDuration;
@@ -62,6 +65,7 @@ public class CycleManager
     public void Restart()
     {
         _guestsManager.Reset();
+        _gameModel.VisibleValues.CollectedMoney = 0;
 
         _timer.Reset(_cycleDuration);
         _timer.Unpause();

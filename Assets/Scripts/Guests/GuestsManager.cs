@@ -210,7 +210,8 @@ public class GuestsManager : MonoBehaviour
     {
         var orderViewGo = _pool.GetObject(_commonAssets.OrderPrefab, _bubbleContainer);
         var orderView = orderViewGo.GetComponent<OrderBox>();
-        orderView.Connect(guestView, _camera, null);
+        // TODO: Иконка напитка
+        orderView.Connect(guestView, _camera, drinkParams.Name, null);
 
         _orderViews.Add(orderView, _elapsedTime + duration);
         _orderDrinks.Add(orderView, drinkParams);

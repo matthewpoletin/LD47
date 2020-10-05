@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: Sailor
   Name: Sailor
-  Prefab: {fileID: 55008145039850604, guid: 70a3d07d1db44134189a1e0e312c7e8f, type: 3}
+  Prefab: {fileID: 9158492355157009774, guid: 20d5b031e912b804abe3ac044d33e3cf, type: 3}

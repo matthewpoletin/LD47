@@ -670,7 +670,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455628764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.96, y: 0, z: -5.17}
+  m_LocalPosition: {x: -1.99, y: 0, z: -5.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 957746477}
@@ -742,7 +742,7 @@ Animator:
   m_GameObject: {fileID: 646928176}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 92227c275e8c27b40a3fa65ecef7a955, type: 2}
+  m_Controller: {fileID: 9100000, guid: e1feb8caafad7ad458554c505c410566, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -885,7 +885,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943719449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.96, y: 0, z: -5.17}
+  m_LocalPosition: {x: 2.75, y: 0, z: -5.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 957746477}
@@ -2541,6 +2541,10 @@ PrefabInstance:
       propertyPath: rightPivo
       value: 
       objectReference: {fileID: 943719449}
+    - target: {fileID: 4157189711677386897, guid: 12db4d246b7002644985651dd7d41c9c, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 646928178}
     - target: {fileID: 8984049841114044938, guid: 12db4d246b7002644985651dd7d41c9c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2641,5 +2645,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4783993069665672966, guid: 12db4d246b7002644985651dd7d41c9c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 12db4d246b7002644985651dd7d41c9c, type: 3}

@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour, ICharacter
 
     private Coroutine _moving = null;
 
+    private float lastX = 0.0f;
+
     public void Connect(Camera camera1, GlobalParams globalParams)
     {
         _camera = camera1;
@@ -39,38 +41,54 @@ public class PlayerController : MonoBehaviour, ICharacter
 
         float x = Input.GetAxis("Horizontal");
 
-        if (x > 0.001f && _moving == null)
+        var xAbs = Mathf.Abs(x);
+
+        if (xAbs > 0.001 && lastX > 0.01)
         {
-            if (x > 0)
+            _animator.SetFloat("Movement", xAbs);
+
+            if (_moving == null)
             {
-                _moving = StartCoroutine(Rotate(-90, 1));
-            }
-            else
-            {
-                _moving = StartCoroutine(Rotate(90, 1));
+                if (x > 0)
+                {
+                    _moving = StartCoroutine(Rotate(-90));
+                }
+                else
+                {
+                    _moving = StartCoroutine(Rotate(90));
+                }
             }
         }
 
-        var movement = transform.right * x;
+        var movement = Vector3.right * x;
 
-        controller.Move(movement * (_globalParams.PlayerMovementSpeed * Time.deltaTime));
+        transform.Translate(movement * (_globalParams.PlayerMovementSpeed * Time.deltaTime), Space.World);
+
+        //controller.Move(movement * (_globalParams.PlayerMovementSpeed * Time.deltaTime));
 
         if (transform.position.x > rightPivo.transform.position.x)
         {
+            StartCoroutine(Rotate(90));
+
             transform.position = rightPivo.transform.position;
             x = 0;
         }
         else if (transform.position.x < leftPivo.transform.position.x)
         {
+            StartCoroutine(Rotate(-90));
+
             transform.position = leftPivo.transform.position;
             x = 0;
         }
 
         _camera.transform.Rotate(0, x * Time.deltaTime * 6, 0);
+
+        lastX = x;
     }
 
-    private IEnumerator Rotate(float angle, float duration)
+    private IEnumerator Rotate(float angle)
     {
+        float duration = 0.2f;
         float startRotation = transform.eulerAngles.y;
         float endRotation = startRotation + angle;
         float t = 0.0f;
@@ -82,8 +100,6 @@ public class PlayerController : MonoBehaviour, ICharacter
             transform.eulerAngles.z);
             yield return null;
         }
-
-        _animator.SetTrigger("Stand");
 
         _moving = null;
     }

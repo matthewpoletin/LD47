@@ -21,10 +21,13 @@ public class GuestsManager : MonoBehaviour
     private Transform _bubbleContainer;
     private PlayerController _playerController;
 
+    private List<string> _clueList = new List<string>();
+
     private float _elapsedTime;
 
     public Transform LeftPivot => _leftPivot;
     public Transform RightPivot => _rightPivot;
+    public List<string> ClueList => _clueList;
     //public Transform ClueNotificationPivot => _clueNotificationPivot;
 
     public void Connect(List<GuestParams> guestList, GameObjectPool pool, GlobalParams globalParams,
@@ -143,6 +146,11 @@ public class GuestsManager : MonoBehaviour
         _orderViews.Add(orderView, _elapsedTime + duration);
     }
 
+    public void AddClue(string clueToAdd)
+    {
+        _clueList.Add(clueToAdd);
+    }
+
     public void Reset()
     {
         foreach (var guests in _guests.Values)
@@ -170,5 +178,6 @@ public class GuestsManager : MonoBehaviour
         }
 
         _guests.Clear();
+        _clueList.Clear();
     }
 }

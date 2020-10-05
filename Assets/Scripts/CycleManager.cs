@@ -140,8 +140,8 @@ public class CycleManager
                             GuestParams = guestParams,
                             StartTime = (int) storylineEntry["StartTime"],
                             Duration = (int) storylineEntry["Duration"],
-                            ReportEng = (string) storylineEntry["TextEng"],
-                            ReportRus = (string) storylineEntry["TextRus"],
+                            ReportEng = (string) storylineEntry["ReportEng"],
+                            ReportRus = (string) storylineEntry["ReportRus"],
                         }));
                         break;
                     }

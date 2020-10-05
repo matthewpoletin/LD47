@@ -76,7 +76,8 @@ public class CommandsFactory
             {
                 // Добавить в список полученную подсказку (придумать куда добавить этот список, чтобы он 
                 // был доступен для класса Report.
-                
+                var guestView = _guestsManager.GetGuestView(command.GuestParams);
+                _guestsManager.AddClue(command.ReportEng);
             }
         };
     }

@@ -3038,6 +3038,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: clue_notification_box
       objectReference: {fileID: 0}
+    - target: {fileID: 2021092792453445717, guid: d121cc202f874764ca26f624828f490e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d121cc202f874764ca26f624828f490e, type: 3}
 --- !u!1 &8369690031119344378 stripped

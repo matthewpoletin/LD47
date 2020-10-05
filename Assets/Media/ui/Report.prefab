@@ -3492,6 +3492,14 @@ PrefabInstance:
       propertyPath: m_Text
       value: Call the police!
       objectReference: {fileID: 0}
+    - target: {fileID: 3284603694548286682, guid: 5d56ecb919d71994f9557692dd28f06f, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284603694548286682, guid: 5d56ecb919d71994f9557692dd28f06f, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5757986391145149056, guid: 5d56ecb919d71994f9557692dd28f06f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

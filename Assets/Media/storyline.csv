@@ -60,7 +60,7 @@ Comment,TextRus,TextEng,Character,EventType,StartTime,Duration,Drink,ChairIndex,
 Бармен наливает ещё текилы,,,Biker,Order,220,5,Tequila,,220-225,,
 Б. к байку,Что я пропустила?,What did I miss?,Blonde,Talk,225,5,,,225-230,,
 Байк к Б.,"Здесь был странный бар сёрфер. У него определённо не лучший периуд жизн. Предлагаю не тратить время на  чудаков, а вернуться к нашему знакомству. к тебе или ко мне?","There was a weird ""bar-tourist"" He's definitely not having the best time of his life. I suggest not to waste time on eccentrics, but to return to our acquintance. Your place or mine?",Biker,Talk,230,5,,,230-235,,
-Дневник,,,OnePint,Clue,230,5,,,,ОднаПинта ушёл искать приключение.  Вернёться ли он?,One Pint went off to seek adventure. Will he come back?
+Дневник,,,OnePint,Clue,200,5,,,,ОднаПинта ушёл искать приключение.  Вернёться ли он?,One Pint went off to seek adventure. Will he come back?
 Б. к байку,"Вот ты быстрый. Ты не забыл? Я всё же пришла сюда встретиться с подругой. Кстати, где же она. Уже прошло 40 мин.","You're so fast, not forgeting anything? I came here to meet a friend. By the way, where is she? Already 4 minutes have paseed.",Blonde,Talk,235,5,,,235-240,,
 Байк к бармену,"Сделай какой-нибудь коктейл покрепче. Пожалуй, лонгайленд","Make something strong, Long Island, perhaps.",Biker,Talk,240,5,,,240-245,,
 ,,,Biker,Order,245,5,LongIsland,,245,,

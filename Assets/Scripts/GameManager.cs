@@ -32,11 +32,11 @@ public class GameManager : BaseModule
         _pauseDialog.Connect(controller);
         _pauseDialog.gameObject.SetActive(false);
 
+        _report.Connect(controller);
         _report.gameObject.SetActive(false);
 
         _tutorial.Connect(_cycleManager);
         OpenTutorialScreen();
-        //_tutorial.gameObject.SetActive(false);
 
         _clockView.Connect(_cycleManager.Timer);
 
@@ -77,22 +77,21 @@ public class GameManager : BaseModule
     /// <summary>
     /// Вызывается в момент рестарта
     /// </summary>
-    private void ShowReport()
+    public void ShowReport()
     {
         _cycleManager.Timer.Pause();
-        _report.Connect(_guestsManager.ClueList);
-        StartCoroutine(ShowReportCoroutine());
+        _report.StartAddingClues(_guestsManager.ClueList);
+        _report.gameObject.SetActive(true);
+
     }
 
-    IEnumerator ShowReportCoroutine()
+    public void CloseReport()
     {
-        _report.gameObject.SetActive(true);
-        yield return new WaitForSeconds(3);
         _report.gameObject.SetActive(false);
-        //_report.Utilize();
         _guestsManager.ClueList.Clear();
+
         // Снимаем с паузы, так как после того, как туториал закончится таймер должен начинаться после репорта
-        _cycleManager.Timer.Unpause();  
+        _cycleManager.Timer.Unpause();
         OpenTutorialScreen();
     }
 
@@ -107,7 +106,6 @@ public class GameManager : BaseModule
         _guestsManager.Utilize();
         _cycleManager.Utilize();
         _clueManager.Utilize();
-        //_tutorial.Utilize();
         //EventManager.OnGuestEnterClue -= AddClue;
         //EventManager.OnGuestTalkClue -= AddClue;
     }

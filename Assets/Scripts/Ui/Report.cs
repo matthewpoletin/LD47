@@ -6,13 +6,22 @@ using UnityEngine.UI;
 public class Report : MonoBehaviour
 {
     [SerializeField] private GameObject _cluePrefab;
+    [SerializeField] private Transform _clueContainer;
+    [SerializeField] private List<ClueTab> _clueTabs;
 
     private List<ClueEntryView> _clueEntryList = new List<ClueEntryView>();
     private List<string> _currentClues = new List<string>();
 
+    private GameController _gameController;
+
     private int _index = 0;
 
-    public void Connect(List<string> clueList)
+    public void Connect(GameController controller)
+    {
+        _gameController = controller;
+    }
+
+    public void StartAddingClues(List<string> clueList)
     {
         foreach (var clue in clueList)
         {
@@ -24,7 +33,12 @@ public class Report : MonoBehaviour
     {
         if (!CompareStrings(clueToAdd))
         {
-            var go = Instantiate(_cluePrefab.gameObject, gameObject.transform);
+            foreach (var tab in _clueTabs)
+            {
+                //switch ()
+            }
+
+            var go = Instantiate(_cluePrefab.gameObject, _clueContainer);
             ClueEntryView clueEntry = go.GetComponent<ClueEntryView>();
             clueEntry.Connect(clueToAdd);
             _currentClues.Add(clueToAdd);

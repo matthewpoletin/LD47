@@ -7,15 +7,13 @@ public class Report : MonoBehaviour
 {
     [SerializeField] private GameObject _cluePrefab;
 
-    private GameController _controller;
     private List<ClueEntryView> _clueEntryList = new List<ClueEntryView>();
+    private List<string> _currentClues = new List<string>();
 
     private int _index = 0;
 
-    public void Connect(GameController controller, List<string> clueList)
+    public void Connect(List<string> clueList)
     {
-        _controller = controller;
-
         foreach (var clue in clueList)
         {
             AddClue(clue);
@@ -24,10 +22,14 @@ public class Report : MonoBehaviour
 
     public void AddClue(string clueToAdd)
     {
-        var go = Instantiate(_cluePrefab.gameObject, gameObject.transform);
-        ClueEntryView clueEntry = go.GetComponent<ClueEntryView>();
-        clueEntry.Connect(clueToAdd);
-        _clueEntryList.Add(clueEntry);
+        if (!CompareStrings(clueToAdd))
+        {
+            var go = Instantiate(_cluePrefab.gameObject, gameObject.transform);
+            ClueEntryView clueEntry = go.GetComponent<ClueEntryView>();
+            clueEntry.Connect(clueToAdd);
+            _currentClues.Add(clueToAdd);
+            _clueEntryList.Add(clueEntry);
+        }
     }
 
     public void Utilize()
@@ -37,5 +39,18 @@ public class Report : MonoBehaviour
             Destroy(entry.gameObject);
         }
         _clueEntryList.Clear();
+    }
+
+    private bool CompareStrings(string newString)
+    {
+        foreach (var str in _currentClues)
+        {
+            if (string.Compare(newString, str) == 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

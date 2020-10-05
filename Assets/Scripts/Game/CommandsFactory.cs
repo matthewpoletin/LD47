@@ -74,10 +74,8 @@ public class CommandsFactory
             StartTime = command.StartTime,
             Action = delegate
             {
-                // Добавить в список полученную подсказку (придумать куда добавить этот список, чтобы он 
-                // был доступен для класса Report.
                 var guestView = _guestsManager.GetGuestView(command.GuestParams);
-                _guestsManager.AddClue(command.ReportEng);
+                guestView.TryToGetClue(command.ReportEng, command.Duration);
             }
         };
     }
@@ -93,18 +91,5 @@ public class CommandsFactory
                 _guestsManager.CreateOrderView(guestView, command.DrinkParams, command.Duration);
             }
         };
-    }
-
-    private bool CompareStrings(string newString)
-    {
-        foreach (var str in _currentClues)
-        {
-            if (string.Compare(newString, str) == 0)
-            {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

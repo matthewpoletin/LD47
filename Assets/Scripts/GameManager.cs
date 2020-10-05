@@ -17,7 +17,6 @@ public class GameManager : BaseModule
     [SerializeField] private Tutorial _tutorial = default;
 
     private CycleManager _cycleManager;
-    private List<string> _cluesList = new List<string>(); // Надо как-то инициализировать...
 
     public override void Connect(GameController controller)
     {
@@ -33,15 +32,11 @@ public class GameManager : BaseModule
         _pauseDialog.Connect(controller);
         _pauseDialog.gameObject.SetActive(false);
 
-        // Тестовые значения для подсказок
-        _cluesList.Add("Something");
-        _cluesList.Add("More");
-
-        _report.Connect(controller, _cluesList);
         _report.gameObject.SetActive(false);
 
         _tutorial.Connect(_cycleManager);
-        _tutorial.gameObject.SetActive(false);
+        OpenTutorialScreen();
+        //_tutorial.gameObject.SetActive(false);
 
         _clockView.Connect(_cycleManager.Timer);
 
@@ -85,6 +80,7 @@ public class GameManager : BaseModule
     private void ShowReport()
     {
         _cycleManager.Timer.Pause();
+        _report.Connect(_guestsManager.ClueList);
         StartCoroutine(ShowReportCoroutine());
     }
 
@@ -93,7 +89,10 @@ public class GameManager : BaseModule
         _report.gameObject.SetActive(true);
         yield return new WaitForSeconds(3);
         _report.gameObject.SetActive(false);
-        _cycleManager.Timer.Unpause();
+        //_report.Utilize();
+        _guestsManager.ClueList.Clear();
+        // Снимаем с паузы, так как после того, как туториал закончится таймер должен начинаться после репорта
+        _cycleManager.Timer.Unpause();  
         OpenTutorialScreen();
     }
 
@@ -108,7 +107,6 @@ public class GameManager : BaseModule
         _guestsManager.Utilize();
         _cycleManager.Utilize();
         _clueManager.Utilize();
-        _report.Utilize();
         //_tutorial.Utilize();
         //EventManager.OnGuestEnterClue -= AddClue;
         //EventManager.OnGuestTalkClue -= AddClue;

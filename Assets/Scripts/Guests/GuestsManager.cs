@@ -49,6 +49,8 @@ public class GuestsManager : MonoBehaviour
         {
             CreateGuest(guestParams);
         }
+
+        EventManager.OnClueGet += AddClue;
     }
 
     public void Tick(float deltaTime)
@@ -215,6 +217,6 @@ public class GuestsManager : MonoBehaviour
         }
 
         _guests.Clear();
-        _clueList.Clear();
+        EventManager.OnClueGet -= AddClue;
     }
 }

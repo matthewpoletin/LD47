@@ -7,6 +7,7 @@ public class EventManager
 {
     public static Action<string> OnGuestEnterClue = delegate { };
     public static Action<string> OnGuestTalkClue = delegate { };
+    public static Action<string> OnClueGet = delegate { };
 
     public static void CallOnGuestEnterClue(string clueToAdd)
     {
@@ -16,5 +17,10 @@ public class EventManager
     public static void CallOnGuestTalkClue(string clueToAdd)
     {
         OnGuestTalkClue?.Invoke(clueToAdd);
+    }
+
+    public static void CallOnClueGet(string clueToAdd)
+    {
+        OnClueGet?.Invoke(clueToAdd);
     }
 }

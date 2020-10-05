@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class GuestView : MonoBehaviour
+public class GuestView : MonoBehaviour, ICharacter
 {
     [SerializeField] private Transform _topPlaceholder = default;
     [SerializeField] private GameObject _clueTrigger = default;
@@ -10,6 +10,7 @@ public class GuestView : MonoBehaviour
     [SerializeField] private Transform _rootView = default;
 
     public Transform TopPlaceholder => _topPlaceholder;
+    public Vector3 Position => transform.position;
 
     public void PlayMovement(Vector3 fromPosition, Vector3 toPosition, float duration, bool stayActive = true)
     {

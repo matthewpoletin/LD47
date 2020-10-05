@@ -7,12 +7,12 @@ public abstract class DialogBoxBase : MonoBehaviour
 
     [SerializeField] private CanvasGroup _canvasGroup = default;
 
-    private GuestView _guestView;
+    private ICharacter _guestView;
     private Camera _camera;
 
-    public GuestView GuestView => _guestView;
+    public ICharacter GuestView => _guestView;
 
-    protected void Connect(Camera camera1, GuestView guestView)
+    protected void Connect(Camera camera1, ICharacter guestView)
     {
         _camera = camera1;
         _guestView = guestView;

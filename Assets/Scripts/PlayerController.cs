@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ICharacter
 {
     [SerializeField] private CharacterController controller = default;
     [SerializeField] private Transform _topPlaceholder = default;
@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public bool MovementEnabled { get; set; } = true;
 
     public Transform TopPlaceholder => _topPlaceholder;
+    public Vector3 Position => transform.position;
 
     public void Connect(Camera camera1, GlobalParams globalParams)
     {

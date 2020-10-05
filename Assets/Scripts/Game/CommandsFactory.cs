@@ -67,6 +67,18 @@ public class CommandsFactory
         };
     }
 
+    public TimeCommandExecute CreateTimeCommand(BarmanTalkCommand command)
+    {
+        return new TimeCommandExecute
+        {
+            StartTime = command.StartTime,
+            Action = delegate
+            {
+                _guestsManager.CreateDialogBox(_playerController, command.TextEng, command.Duration);
+            }
+        };
+    }
+
     public TimeCommandExecute CreateTimeCommand(GuestClueCommand command)
     {
         return new TimeCommandExecute

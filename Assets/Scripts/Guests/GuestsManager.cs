@@ -103,7 +103,7 @@ public class GuestsManager : MonoBehaviour
 
         foreach (var dialogBox in _dialogBoxes.Keys)
         {
-            var distance = Mathf.Abs(dialogBox.GuestView.transform.position.x - _playerController.transform.position.x);
+            var distance = Mathf.Abs(dialogBox.GuestView.Position.x - _playerController.transform.position.x);
             var alpha = Mathf.Lerp(1f, 0f,
                 Mathf.InverseLerp(_globalParams.OpacityMinDistance, _globalParams.OpacityMaxDistance, distance));
             dialogBox.SetOpacity(alpha);
@@ -122,7 +122,7 @@ public class GuestsManager : MonoBehaviour
 
         foreach (var orderView in _orderViews.Keys)
         {
-            var distance = Mathf.Abs(orderView.GuestView.transform.position.x - _playerController.transform.position.x);
+            var distance = Mathf.Abs(orderView.GuestView.Position.x - _playerController.transform.position.x);
             var alpha = Mathf.Lerp(1f, 0f,
                 Mathf.InverseLerp(_globalParams.OpacityMinDistance, _globalParams.OpacityMaxDistance, distance));
             orderView.SetOpacity(alpha);
@@ -152,7 +152,7 @@ public class GuestsManager : MonoBehaviour
     {
         var minigameGo = GameObject.Instantiate(_commonAssets.MinigamePrefab, _minigameContainer);
         var minigameView = minigameGo.GetComponent<MinigameBox>();
-        minigameView.Connect(_orderDrinks[orderView].sequence, OnMinigameComplete, _camera, orderView.GuestView);
+        minigameView.Connect(_orderDrinks[orderView].sequence, OnMinigameComplete, _camera, (GuestView) orderView.GuestView);
         _minigameViews.Add(minigameView);
     }
 
@@ -196,7 +196,7 @@ public class GuestsManager : MonoBehaviour
         return _chairList[commandChairIndex];
     }
 
-    public void CreateDialogBox(GuestView guestView, string value, float duration)
+    public void CreateDialogBox(ICharacter guestView, string value, float duration)
     {
         var dialogBoxGo = _pool.GetObject(_commonAssets.DialogPrefab, _bubbleContainer);
         var dialogBox = dialogBoxGo.GetComponent<TextBox>();

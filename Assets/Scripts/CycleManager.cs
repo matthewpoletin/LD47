@@ -83,7 +83,7 @@ public class CycleManager
 
                 var characterStr = (string) storylineEntry["Character"];
                 var guestParams = _guestsManager.GetGuestByCharacter(characterStr);
-                if (guestParams == null)
+                if (guestParams == null && characterStr != "Barman")
                 {
                     Debug.LogError($"Guest not found by character {characterStr}");
                     continue;
@@ -117,6 +117,18 @@ public class CycleManager
                     }
                     case "Talk":
                     {
+                        if (characterStr == "Barman")
+                        {
+                            _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new BarmanTalkCommand()
+                            {
+                                StartTime = startTime,
+                                GuestParams = guestParams,
+                                Duration = (int) storylineEntry["Duration"],
+                                TextEng = (string) storylineEntry["TextEng"],
+                                TextRus = (string) storylineEntry["TextRus"],
+                            }));
+                            break;
+                        }
                         _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestTalkCommand()
                         {
                             StartTime = startTime,

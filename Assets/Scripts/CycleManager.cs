@@ -89,14 +89,16 @@ public class CycleManager
                     continue;
                 }
 
+                var startTime = (int) storylineEntry["StartTime"];
+
                 switch (eventTypeStr)
                 {
                     case "Enter":
                     {
                         _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestEnterCommand
                         {
+                            StartTime = startTime,
                             GuestParams = guestParams,
-                            StartTime = (int) storylineEntry["StartTime"],
                             Duration = (int) storylineEntry["Duration"],
                             ChairIndex = (int) storylineEntry["ChairIndex"],
                         }));
@@ -107,8 +109,8 @@ public class CycleManager
                     {
                         _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestLeaveCommand()
                         {
+                            StartTime = startTime,
                             GuestParams = guestParams,
-                            StartTime = (int) storylineEntry["StartTime"],
                             Duration = (int) storylineEntry["Duration"],
                         }));
                         break;
@@ -117,8 +119,8 @@ public class CycleManager
                     {
                         _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestTalkCommand()
                         {
+                            StartTime = startTime,
                             GuestParams = guestParams,
-                            StartTime = (int) storylineEntry["StartTime"],
                             Duration = (int) storylineEntry["Duration"],
                             TextEng = (string) storylineEntry["TextEng"],
                             TextRus = (string) storylineEntry["TextRus"],
@@ -129,8 +131,8 @@ public class CycleManager
                     {
                         _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestClueCommand()
                         {
+                            StartTime = startTime,
                             GuestParams = guestParams,
-                            StartTime = (int) storylineEntry["StartTime"],
                             Duration = (int) storylineEntry["Duration"],
                             ReportEng = (string) storylineEntry["ReportEng"],
                             ReportRus = (string) storylineEntry["ReportRus"],
@@ -149,7 +151,7 @@ public class CycleManager
 
                         _timeline.AddCommand(_commandsFactory.CreateTimeCommand(new GuestOrderCommand()
                         {
-                            StartTime = (int) storylineEntry["StartTime"],
+                            StartTime = startTime,
                             GuestParams = guestParams,
                             DrinkParams = drinkParams,
                             Duration = (int) storylineEntry["Duration"],

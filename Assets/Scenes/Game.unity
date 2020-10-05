@@ -1079,7 +1079,6 @@ MonoBehaviour:
   _minigameContainer: {fileID: 161027628}
   _clueDialog: {fileID: 8369690031119344378}
   _report: {fileID: 8502691735030798769}
-  _clueManager: {fileID: 0}
   _tutorial: {fileID: 194465017}
   _collectedMoneyWidget: {fileID: 565507013}
 --- !u!4 &1017462114

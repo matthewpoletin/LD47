@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour, ICharacter
 {
@@ -6,6 +7,7 @@ public class PlayerController : MonoBehaviour, ICharacter
     [SerializeField] private Transform _topPlaceholder = default;
     [SerializeField] private GameObject leftPivo = default;
     [SerializeField] private GameObject rightPivo = default;
+    [SerializeField] private Animator _animator = default;
 
     private Camera _camera;
     private GlobalParams _globalParams;

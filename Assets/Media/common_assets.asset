@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be2c87593a74a3db2ec0af0d0279fb6, type: 3}
   m_Name: common_assets
   m_EditorClassIdentifier: 
+  CreditsDialog: {fileID: 7859353919238257055, guid: 883cee7e5d1448a4095fc3f047221d59, type: 3}
   DialogPrefab: {fileID: 8369690031725421720, guid: 5fb05494e05b80440a1db62e034e839c, type: 3}
   OrderPrefab: {fileID: 6752738168906136559, guid: 18c6dca9bbec9c846b3ff9aa84c1f422, type: 3}
   MinigamePrefab: {fileID: 4588858059582172388, guid: ba90adcf33331554dacaccc22749f9e2, type: 3}

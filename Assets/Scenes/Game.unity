@@ -1070,6 +1070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f59cfcfe9ef477a965d7457d2dc9ad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dialogsContainer: {fileID: 2001096088}
   _camera: {fileID: 963194227}
   _guestsManager: {fileID: 1384723800}
   _playerController: {fileID: 1984704396}

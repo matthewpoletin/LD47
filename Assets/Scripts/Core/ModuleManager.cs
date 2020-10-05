@@ -12,6 +12,8 @@ public class ModuleManager
     private BaseModule _currentModule;
     private Scene _currentModuleScene;
 
+    public BaseModule CurrentModule => _currentModule;
+
     public void Initialize(ApplicationManager applicationManager)
     {
         _applicationManager = applicationManager;

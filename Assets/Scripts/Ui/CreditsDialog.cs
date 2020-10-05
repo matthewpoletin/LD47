@@ -6,18 +6,21 @@ public class CreditsDialog : MonoBehaviour
 {
     [SerializeField] private Button _closeButton = default;
 
-    private Action _onCloseCallback;
+    private Action[] _onCloseCallbacks;
 
-    public void Connect(Action onCloseCallback)
+    public void Connect(params Action[] onCloseCallback)
     {
         _closeButton.onClick.AddListener(OnGameButtonClick);
 
-        _onCloseCallback = onCloseCallback;
+        _onCloseCallbacks = onCloseCallback;
     }
 
     private void OnGameButtonClick()
     {
-        _onCloseCallback?.Invoke();
+        foreach (var callback in _onCloseCallbacks)
+        {
+            callback?.Invoke();
+        }
     }
 
     public void Utilize()

@@ -133,6 +133,11 @@ public class Report : MonoBehaviour
 
     public void EndGame()
     {
-        Debug.Log("Credits");
+        _gameController.OpenCreditsDialog(OpenMainMenu);
+    }
+
+    private void OpenMainMenu()
+    {
+        _gameController.LoadMainMenu();
     }
 }

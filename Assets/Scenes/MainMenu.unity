@@ -661,6 +661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4f49dfb38debb4e8d1a06065746eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dialogsContainer: {fileID: 262124604}
   _mainMenuView: {fileID: 1912719314}
 --- !u!1 &1250216296
 GameObject:
@@ -1368,17 +1369,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8974498052471411214, guid: 883cee7e5d1448a4095fc3f047221d59, type: 3}
   m_PrefabInstance: {fileID: 1727891038}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1727891040 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8525339798693963182, guid: 883cee7e5d1448a4095fc3f047221d59, type: 3}
-  m_PrefabInstance: {fileID: 1727891038}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e360646ab7cbd4c8d49485a9c438b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1912719312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,7 +1422,6 @@ MonoBehaviour:
   _playButton: {fileID: 1345767910}
   _creditsButton: {fileID: 1250216298}
   _exitButton: {fileID: 1506823112}
-  _creditsDialog: {fileID: 1727891040}
 --- !u!1 &2051168706
 GameObject:
   m_ObjectHideFlags: 0

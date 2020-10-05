@@ -9,6 +9,7 @@ public class Report : MonoBehaviour
     [SerializeField] private Transform _clueContainer;
     [SerializeField] private List<ClueTab> _clueTabs;
     [SerializeField] private List<ClueEntryView> _conclusionClues;
+    [SerializeField] private ClueTab _activeTab;
 
     private List<ClueEntryView> _clueEntryList = new List<ClueEntryView>();
     private List<string> _currentClues = new List<string>();
@@ -103,7 +104,7 @@ public class Report : MonoBehaviour
         return false;
     }
 
-    public void OpenNewTab(GameObject newTab)
+    public void OpenNewTab(ClueTab newTab)
     {
         foreach (var tab in _clueTabs)
         {
@@ -111,11 +112,13 @@ public class Report : MonoBehaviour
         }
 
         newTab.gameObject.SetActive(true);
+        _activeTab = newTab;
     }
 
     public void CallThePolice(GameObject policeButton)
     {
         policeButton.gameObject.SetActive(false);
-        Debug.Log("Police has been called");
+        string message = "Police arrest " + _activeTab.name + ". Loop repeats.";
+        AddToTab(message, _activeTab.transform);
     }
 }

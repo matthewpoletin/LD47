@@ -63,7 +63,9 @@ public class GameManager : BaseModule
 
     //private void AddClue(string clueToAdd)
     //{
-    //    _report.AddClue(clueToAdd);
+    //    if (CompareStrings(clueToAdd, _report._currentClues)) { return; }
+
+    //    _report._currentClues.Add(clueToAdd);
     //    StartCoroutine(ClueNotificationCoroutine());
     //}
 
@@ -88,7 +90,6 @@ public class GameManager : BaseModule
     public void CloseReport()
     {
         _report.gameObject.SetActive(false);
-        _guestsManager.ClueList.Clear();
 
         // Снимаем с паузы, так как после того, как туториал закончится таймер должен начинаться после репорта
         _cycleManager.Timer.Unpause();

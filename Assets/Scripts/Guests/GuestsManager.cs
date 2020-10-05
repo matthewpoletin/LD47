@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class GuestsManager : MonoBehaviour
     [SerializeField] private Transform _rightPivot        = default;
     [SerializeField] private Transform _minigameContainer = default;
     [SerializeField] private GameObject MinigamePrefab    = default;
-    //[SerializeField] private Transform _clueNotificationPivot = default;
+    [SerializeField] private GameObject _clueNotificationPrefab = default;
 
     private readonly Dictionary<GuestParams, GuestView> _guests = new Dictionary<GuestParams, GuestView>();
     private readonly Dictionary<TextBox, float> _dialogBoxes = new Dictionary<TextBox, float>();
@@ -35,7 +36,6 @@ public class GuestsManager : MonoBehaviour
     public Transform RightPivot => _rightPivot;
     public List<string> ClueList => _clueList;
     public List<GuestParams> GuestParamsList => _guestParams;
-    //public Transform ClueNotificationPivot => _clueNotificationPivot;
 
     public void Connect(List<GuestParams> guestList, GameObjectPool pool, GlobalParams globalParams,
         CommonAssets commonAssets, Camera camera1,
@@ -192,8 +192,19 @@ public class GuestsManager : MonoBehaviour
 
     public void AddClue(string clueToAdd, GuestParams guestParams)
     {
-        _clueList.Add(clueToAdd);
-        _guestParams.Add(guestParams);
+        if (!CompareStrings(clueToAdd, _clueList))
+        {
+            _clueList.Add(clueToAdd);
+            _guestParams.Add(guestParams);
+            StartCoroutine(ClueNotificationCoroutine());
+        }
+    }
+
+    IEnumerator ClueNotificationCoroutine()
+    {
+        _clueNotificationPrefab.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3);
+        _clueNotificationPrefab.gameObject.SetActive(false);
     }
 
     public void Reset()
@@ -224,5 +235,18 @@ public class GuestsManager : MonoBehaviour
 
         _guests.Clear();
         EventManager.OnClueGet -= AddClue;
+    }
+
+    private bool CompareStrings(string newString, List<string> clues)
+    {
+        foreach (var str in clues)
+        {
+            if (string.Compare(newString, str) == 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

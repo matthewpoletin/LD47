@@ -39,14 +39,15 @@ public class Report : MonoBehaviour
         {
             if (guestParams.Name == tab.name)
             {
-                //AddToTab(clueToAdd, tab.transform);
-                //tab.CheckForSummary(clueToAdd);
+                AddToTab(clueToAdd, tab.transform);
+                tab.CheckForSummary(clueToAdd);
 
-                for (int i = 0; i < 7; i++)
-                {
-                    AddToTab(clueToAdd, tab.transform);
-                    tab.CheckForSummary(clueToAdd);
-                }
+                // Для отладки процессов возникающих после нахождения всех подсказок
+                //for (int i = 0; i < 7; i++)
+                //{
+                //    AddToTab(clueToAdd, tab.transform);
+                //    tab.CheckForSummary(clueToAdd);
+                //}
             }
         }
     }

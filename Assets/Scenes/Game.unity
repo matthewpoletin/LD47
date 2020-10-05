@@ -2142,6 +2142,7 @@ MonoBehaviour:
   _rightPivot: {fileID: 1352518631}
   _minigameContainer: {fileID: 2108209207}
   MinigamePrefab: {fileID: 4588858059582172388, guid: ba90adcf33331554dacaccc22749f9e2, type: 3}
+  _clueNotificationPrefab: {fileID: 8369690031119344378}
 --- !u!1 &1542125264
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,19 +3047,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2021092792453445714, guid: d121cc202f874764ca26f624828f490e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -175
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2021092792453445714, guid: d121cc202f874764ca26f624828f490e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2021092792453445714, guid: d121cc202f874764ca26f624828f490e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 350
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 2021092792453445714, guid: d121cc202f874764ca26f624828f490e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2021092792453445714, guid: d121cc202f874764ca26f624828f490e, type: 3}
       propertyPath: m_AnchorMin.x
@@ -3078,11 +3079,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2021092792453445714, guid: d121cc202f874764ca26f624828f490e, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2021092792453445714, guid: d121cc202f874764ca26f624828f490e, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2021092792453445717, guid: d121cc202f874764ca26f624828f490e, type: 3}
       propertyPath: m_Name
@@ -3091,6 +3092,14 @@ PrefabInstance:
     - target: {fileID: 2021092792453445717, guid: d121cc202f874764ca26f624828f490e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021092793427252963, guid: d121cc202f874764ca26f624828f490e, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021092793427252963, guid: d121cc202f874764ca26f624828f490e, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d121cc202f874764ca26f624828f490e, type: 3}

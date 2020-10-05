@@ -7,6 +7,8 @@ public class MainMenuView : MonoBehaviour
     [SerializeField] private Button _creditsButton = default;
     [SerializeField] private Button _exitButton = default;
 
+    [SerializeField] private CreditsDialog _creditsDialog = default;
+
     private GameController _controller;
 
     public void Connect(GameController controller)
@@ -16,6 +18,8 @@ public class MainMenuView : MonoBehaviour
         _playButton.onClick.AddListener(OnPlayButtonClick);
         _creditsButton.onClick.AddListener(OnCreditsButtonClick);
         _exitButton.onClick.AddListener(OnExitButtonClick);
+
+        _creditsDialog.Connect(CloseCreditsDialog);
     }
 
     private void OnPlayButtonClick()
@@ -25,7 +29,12 @@ public class MainMenuView : MonoBehaviour
 
     private void OnCreditsButtonClick()
     {
-        _controller.OpenCreditsDialog();
+        _creditsDialog.gameObject.SetActive(true);
+    }
+
+    private void CloseCreditsDialog()
+    {
+        _creditsDialog.gameObject.SetActive(false);
     }
 
     private void OnExitButtonClick()

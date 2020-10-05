@@ -12,6 +12,8 @@ public class GuestView : MonoBehaviour, ICharacter
     public Transform TopPlaceholder => _topPlaceholder;
     public Vector3 Position => transform.position;
 
+    private Sequence _movementSequence;
+
     public void PlayMovement(Vector3 fromPosition, Vector3 toPosition, float duration, bool stayActive = true)
     {
         var movementSequence = DOTween.Sequence();
@@ -52,6 +54,8 @@ public class GuestView : MonoBehaviour, ICharacter
 //            _rootView.Rotate(0, -90, 0);
         });
         movementSequence.Play();
+
+        _movementSequence = movementSequence;
     }
 
     private IEnumerator Rotate(float angle, float duration)
@@ -80,5 +84,10 @@ public class GuestView : MonoBehaviour, ICharacter
         clueTrigger.Connect(clueToAdd, guestParams);
         yield return new WaitForSeconds(duration);
         clueTrigger.Utilize();
+    }
+
+    public void Utilize()
+    {
+        _movementSequence.Kill();
     }
 }

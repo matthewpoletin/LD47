@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class MainMenuView : MonoBehaviour
@@ -8,6 +9,15 @@ public class MainMenuView : MonoBehaviour
     [SerializeField] private Button _exitButton = default;
 
     private GameController _controller;
+
+    private void Awake()
+    {
+        var exitButtonEnabled = true;
+#if UNITY_WEBGL
+        exitButtonEnabled = false;
+#endif
+        _exitButton.gameObject.SetActive(exitButtonEnabled);
+    }
 
     public void Connect(GameController controller)
     {

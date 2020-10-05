@@ -30,8 +30,6 @@ public class GuestView : MonoBehaviour
     IEnumerator ClueTriggerCoroutine(string clueToAdd, float duration)
     {
         ClueTrigger clueTrigger = _clueTrigger.GetComponent<ClueTrigger>();
-        //clueTrigger._lastClue = clueToAdd;
-        //clueTrigger.gameObject.SetActive(true);
         clueTrigger.Connect(clueToAdd);
         yield return new WaitForSeconds(duration);
         clueTrigger.Utilize();

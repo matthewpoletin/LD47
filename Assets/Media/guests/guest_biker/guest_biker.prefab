@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984049841114044941, guid: e12d9238fcd7ce54fb9917dfa72ec0f9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 123c9d9d3926b27409e8c57bd976b4de, type: 2}
     - target: {fileID: 8984049842502976359, guid: e12d9238fcd7ce54fb9917dfa72ec0f9, type: 3}
       propertyPath: m_Name
       value: guest_biker

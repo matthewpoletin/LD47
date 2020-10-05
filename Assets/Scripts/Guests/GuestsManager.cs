@@ -27,12 +27,14 @@ public class GuestsManager : MonoBehaviour
     private PlayerController _playerController;
 
     private List<string> _clueList = new List<string>();
+    private List<GuestParams> _guestParams = new List<GuestParams>();
 
     private float _elapsedTime;
 
     public Transform LeftPivot => _leftPivot;
     public Transform RightPivot => _rightPivot;
     public List<string> ClueList => _clueList;
+    public List<GuestParams> GuestParamsList => _guestParams;
     //public Transform ClueNotificationPivot => _clueNotificationPivot;
 
     public void Connect(List<GuestParams> guestList, GameObjectPool pool, GlobalParams globalParams,
@@ -188,9 +190,10 @@ public class GuestsManager : MonoBehaviour
         _orderDrinks.Add(orderView, drinkParams);
     }
 
-    public void AddClue(string clueToAdd)
+    public void AddClue(string clueToAdd, GuestParams guestParams)
     {
         _clueList.Add(clueToAdd);
+        _guestParams.Add(guestParams);
     }
 
     public void Reset()

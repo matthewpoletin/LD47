@@ -75,7 +75,7 @@ public class CommandsFactory
             Action = delegate
             {
                 var guestView = _guestsManager.GetGuestView(command.GuestParams);
-                guestView.TryToGetClue(command.ReportEng, command.Duration);
+                guestView.TryToGetClue(command.ReportEng, command.Duration, command.GuestParams);
             }
         };
     }

@@ -5,15 +5,17 @@ using UnityEngine;
 public class ClueTrigger : MonoBehaviour
 {
     public string _lastClue = default;
+    private GuestParams _guestParams;
 
     private void Start()
     {
         
     }
 
-    public void Connect(string clueToAdd)
+    public void Connect(string clueToAdd, GuestParams guestParams)
     {
         _lastClue = clueToAdd;
+        _guestParams = guestParams;
         gameObject.SetActive(true);
     }
 
@@ -23,7 +25,7 @@ public class ClueTrigger : MonoBehaviour
         {
             if (_lastClue != null)
             {
-                EventManager.CallOnClueGet(_lastClue);
+                EventManager.CallOnClueGet(_lastClue, _guestParams);
                 Utilize(); 
             }
         }

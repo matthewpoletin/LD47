@@ -80,7 +80,7 @@ public class GameManager : BaseModule
     public void ShowReport()
     {
         _cycleManager.Timer.Pause();
-        _report.StartAddingClues(_guestsManager.ClueList);
+        _report.StartAddingClues(_guestsManager.ClueList, _guestsManager.GuestParamsList);
         _report.gameObject.SetActive(true);
 
     }

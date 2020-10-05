@@ -22,15 +22,15 @@ public class GuestView : MonoBehaviour
         movementSequence.Play();
     }
 
-    public void TryToGetClue(string clueToAdd, float duration)
+    public void TryToGetClue(string clueToAdd, float duration, GuestParams guestParams)
     {
-        StartCoroutine(ClueTriggerCoroutine(clueToAdd, duration));
+        StartCoroutine(ClueTriggerCoroutine(clueToAdd, duration, guestParams));
     }
 
-    IEnumerator ClueTriggerCoroutine(string clueToAdd, float duration)
+    IEnumerator ClueTriggerCoroutine(string clueToAdd, float duration, GuestParams guestParams)
     {
         ClueTrigger clueTrigger = _clueTrigger.GetComponent<ClueTrigger>();
-        clueTrigger.Connect(clueToAdd);
+        clueTrigger.Connect(clueToAdd, guestParams);
         yield return new WaitForSeconds(duration);
         clueTrigger.Utilize();
     }

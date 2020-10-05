@@ -21,29 +21,36 @@ public class Report : MonoBehaviour
         _gameController = controller;
     }
 
-    public void StartAddingClues(List<string> clueList)
+    public void StartAddingClues(List<string> clueList, List<GuestParams> guestParams)
     {
-        foreach (var clue in clueList)
+        if (clueList.Count <= 0) { return; }
+
+        for (int i = 0; i < clueList.Count; i++)
         {
-            AddClue(clue);
+            AddClue(clueList[i], guestParams[i]);
         }
     }
 
-    public void AddClue(string clueToAdd)
+    public void AddClue(string clueToAdd, GuestParams guestParams)
     {
-        if (!CompareStrings(clueToAdd))
-        {
-            foreach (var tab in _clueTabs)
-            {
-                //switch ()
-            }
+        if (CompareStrings(clueToAdd)) { return; }
 
-            var go = Instantiate(_cluePrefab.gameObject, _clueContainer);
-            ClueEntryView clueEntry = go.GetComponent<ClueEntryView>();
-            clueEntry.Connect(clueToAdd);
-            _currentClues.Add(clueToAdd);
-            _clueEntryList.Add(clueEntry);
+        foreach (var tab in _clueTabs)
+        {
+            if (guestParams.Name == tab.name)
+            {
+                AddToTab(clueToAdd, tab.transform);
+            }
         }
+    }
+
+    private void AddToTab(string clueToAdd, Transform tabTransform)
+    {
+        var go = Instantiate(_cluePrefab.gameObject, tabTransform);
+        ClueEntryView clueEntry = go.GetComponent<ClueEntryView>();
+        clueEntry.Connect(clueToAdd);
+        _currentClues.Add(clueToAdd);
+        _clueEntryList.Add(clueEntry);
     }
 
     public void Utilize()
@@ -66,5 +73,15 @@ public class Report : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void OpenNewTab(GameObject newTab)
+    {
+        foreach (var tab in _clueTabs)
+        {
+            tab.gameObject.SetActive(false);
+        }
+
+        newTab.gameObject.SetActive(true);
     }
 }

@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 4588858059582172389}
   - component: {fileID: 4588858059582172390}
   m_Layer: 0
-  m_Name: minigame
+  m_Name: minigame_dialog_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,10 +199,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efdc58684bf3874dba5179d83194b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seq: ASWD
+  _canvasGroup: {fileID: 7416436021502279130}
   idleImg: {fileID: 21300000, guid: 156acabad55bde54191aad1fa01b018b, type: 3}
   pressedImg: {fileID: 21300000, guid: 05163565fb70c3d458456f5b9fd1de48, type: 3}
-  parent: {fileID: 0}
+  _upImage: {fileID: 4588858059532849364}
+  _downImage: {fileID: 4588858060028894611}
+  _leftImage: {fileID: 4588858060355189823}
+  _rightImage: {fileID: 4588858059397785913}
 --- !u!1 &4588858059777743399
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4588858059851482040}
+  - component: {fileID: 7416436021502279130}
   m_Layer: 0
   m_Name: container
   m_TagString: Untagged
@@ -279,6 +283,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &7416436021502279130
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4588858059851482047}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4588858060028894609
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8487479, g: 0.8773585, b: 0.23589355, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

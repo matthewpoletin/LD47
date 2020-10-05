@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class GuestsManager : MonoBehaviour
 {
-    [SerializeField] private List<ChairView> _chairList   = default;
-    [SerializeField] private Transform _guestContainer    = default;
-    [SerializeField] private Transform _leftPivot         = default;
-    [SerializeField] private Transform _rightPivot        = default;
-    [SerializeField] private Transform _minigameContainer = default;
-    [SerializeField] private GameObject MinigamePrefab    = default;
+    [SerializeField] private List<ChairView> _chairList = default;
+    [SerializeField] private Transform _guestContainer = default;
+    [SerializeField] private Transform _leftPivot = default;
+    [SerializeField] private Transform _rightPivot = default;
     [SerializeField] private GameObject _clueNotificationPrefab = default;
 
     private readonly Dictionary<GuestParams, GuestView> _guests = new Dictionary<GuestParams, GuestView>();
     private readonly Dictionary<TextBox, float> _dialogBoxes = new Dictionary<TextBox, float>();
     private readonly Dictionary<OrderBox, float> _orderViews = new Dictionary<OrderBox, float>();
+
     private readonly Dictionary<OrderBox, DrinkParams> _orderDrinks = new Dictionary<OrderBox, DrinkParams>();
+
     // TODO: Хранить созданные диалоги миниигр
-    // private readonly Dictionary<OrderBox, float> _orderViews = new Dictionary<OrderBox, float>();
+    private readonly List<MinigameView> _minigameViews = new List<MinigameView>();
 
     private GameModel _gameModel;
     private GameObjectPool _pool;
@@ -30,6 +30,8 @@ public class GuestsManager : MonoBehaviour
 
     private readonly List<string> _clueList = new List<string>();
     private readonly List<GuestParams> _guestParams = new List<GuestParams>();
+
+    private List<MinigameView> _minigamesToRemove = new List<MinigameView>();
 
     private float _elapsedTime;
 
@@ -61,6 +63,13 @@ public class GuestsManager : MonoBehaviour
 
     public void Tick(float deltaTime)
     {
+        foreach (var minigameView in _minigamesToRemove)
+        {
+            minigameView.Utilize();
+            _minigameViews.Remove(minigameView);
+            _pool.UtilizeObject(minigameView.gameObject);
+        }
+
         _elapsedTime += deltaTime;
 
         var dialogsToRemove = new List<TextBox>();
@@ -88,7 +97,7 @@ public class GuestsManager : MonoBehaviour
             dialogBox.SetOpacity(alpha);
             dialogBox.Tick(deltaTime);
         }
-    //minigame
+
         var ordersToRemove = new List<OrderBox>();
         foreach (var keyValuePair in _orderViews)
         {
@@ -117,17 +126,20 @@ public class GuestsManager : MonoBehaviour
 
             if (distance < 1)
             {
-                if(Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && _playerController.MovementEnabled)
                 {
-                    var minigameGo = GameObject.Instantiate(MinigamePrefab, _minigameContainer);
-                    var minigameView = minigameGo.GetComponent<MinigameView>();
-                    minigameView.Connect(_orderDrinks[orderView].sequence, OnMinigameComplete); //improve visuals; spawn above parent guest
-
                     ordersToRemove.Add(orderView);
+
+                    CreateMinigameDialogBox(orderView);
+
+                    _playerController.MovementEnabled = false;
                 }
             }
-            
-            // TODO: Если дистанция до заказа меньше заданной параметром и был нажат пробел, что нужно запустить мини игру и удалить бабл заказа и заблокировать перемещение игрока
+
+            foreach (var minigameView in _minigameViews)
+            {
+                minigameView.Tick(deltaTime);
+            }
         }
 
         // Ускорялка для тестов проходимости игры
@@ -140,16 +152,17 @@ public class GuestsManager : MonoBehaviour
         //{
         //    Time.timeScale = 1;
         //}
-
-        // TODO: Дописать схожую логику для диалога миниигры 
     }
 
-    public void CreateMinigameDialogBox()
+    private void CreateMinigameDialogBox(OrderBox orderView)
     {
-        // TODO: Создать диалоговое окно и сохранить его
+        var minigameGo = GameObject.Instantiate(_commonAssets.MinigamePrefab, _bubbleContainer);
+        var minigameView = minigameGo.GetComponent<MinigameView>();
+        minigameView.Connect(_orderDrinks[orderView].sequence, OnMinigameComplete, _camera, orderView.GuestView);
+        _minigameViews.Add(minigameView);
     }
 
-    private void OnMinigameComplete(bool completionResult)
+    private void OnMinigameComplete(bool completionResult, MinigameView minigameView)
     {
         if (completionResult)
         {
@@ -159,8 +172,12 @@ public class GuestsManager : MonoBehaviour
         {
             _gameModel.VisibleValues.CollectedMoney -= 5;
         }
+
+        _playerController.MovementEnabled = true;
+
+        _minigamesToRemove.Add(minigameView);
     }
-    //minigame
+
     private void CreateGuest(GuestParams guestParams)
     {
         var go = Instantiate(guestParams.Prefab, _guestContainer);

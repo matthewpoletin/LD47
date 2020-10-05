@@ -18,7 +18,7 @@ public abstract class DialogBoxBase : MonoBehaviour
         _guestView = guestView;
     }
 
-    public void Tick(float deltaTime)
+    public virtual void Tick(float deltaTime)
     {
         transform.position = _camera.WorldToScreenPoint(_guestView.TopPlaceholder.position) + _offset;
     }

@@ -4,42 +4,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MinigameView : MonoBehaviour
+public class MinigameView : DialogBoxBase
 {
     [SerializeField] private Sprite idleImg = default;
     [SerializeField] private Sprite pressedImg = default;
+
+    [Space]
+    [SerializeField] private Image _upImage = default;
+    [SerializeField] private Image _downImage = default;
+    [SerializeField] private Image _leftImage = default;
+    [SerializeField] private Image _rightImage = default;
 
     private string seq;
 
     private GameObject parent;
 
-    private Action<bool> _callBack;
+    private Action<bool, MinigameView> _callBack;
 
     private bool shown = false;
     private bool integrity = true;
     private int counter = 0;
 
-    private Image a;
     private Dictionary<string, Image> uberDict = new Dictionary<string, Image>();
 
     private void Awake()
     {
-        uberDict.Add("W", GameObject.Find("Up").GetComponent<Image>());
-        uberDict.Add("S", GameObject.Find("Down").GetComponent<Image>());
-        uberDict.Add("A", GameObject.Find("Left").GetComponent<Image>());
-        uberDict.Add("D", GameObject.Find("Right").GetComponent<Image>());
+        uberDict.Add("W", _upImage);
+        uberDict.Add("S", _downImage);
+        uberDict.Add("A", _leftImage);
+        uberDict.Add("D", _rightImage);
     }
 
-    public void Connect(string sequence, Action<bool> callback)
+    public void Connect(string sequence, Action<bool, MinigameView> callback, Camera camera1, GuestView guestView)
     {
+        base.Connect(camera1, guestView);
+
         seq = sequence;
         _callBack = callback;
 
         ShowSequence();
     }
 
-    private void Update()
+    public override void Tick(float deltaTime)
     {
+        base.Tick(deltaTime);
+
         switch (shown)
         {
             case true:
@@ -56,8 +65,7 @@ public class MinigameView : MonoBehaviour
                         if (counter >= seq.Length)
                         {
                             shown = false;
-                            _callBack?.Invoke(integrity);
-                            Destroy(gameObject);
+                            _callBack?.Invoke(integrity, this);
                         }
                     }
                 }

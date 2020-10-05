@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : BaseModule
 {
@@ -18,6 +19,8 @@ public class GameManager : BaseModule
     private GameModel _gameModel;
     private CycleManager _cycleManager;
 
+    private bool _isPaused = false;
+
     public override void Connect(GameController controller)
     {
         _gameModel = new GameModel();
@@ -26,12 +29,13 @@ public class GameManager : BaseModule
 
         _guestsManager.Connect(_gameModel, controller.GlobalParams.GuestList, controller.Pool, controller.GlobalParams,
             controller.GlobalParams.CommonAssets,
-            _camera, _bubbleContainer, _playerController);
+            _camera, _bubbleContainer, _minigameContainer, _playerController);
 
-        _cycleManager = new CycleManager(controller, controller.Pool, _guestsManager, _bubbleContainer, _minigameContainer,
+        _cycleManager = new CycleManager(controller, controller.Pool, _guestsManager, _bubbleContainer,
+            _minigameContainer,
             controller.GlobalParams.StorylineCsv, _playerController, _camera, _gameModel);
 
-        _pauseDialog.Connect(controller);
+        _pauseDialog.Connect(controller, TogglePause);
         _pauseDialog.gameObject.SetActive(false);
 
         _report.Connect(controller);
@@ -50,17 +54,37 @@ public class GameManager : BaseModule
 
     public override void Tick(float deltaTime)
     {
-        _cycleManager.Tick(deltaTime);
-        _guestsManager.Tick(deltaTime);
+        if (!_isPaused)
+        {
+            _playerController.Tick(deltaTime);
+            _cycleManager.Tick(deltaTime);
+            _guestsManager.Tick(deltaTime);
+        }
 
         if (Input.GetKey(KeyCode.R))
         {
             _cycleManager.Restart();
         }
-        else if (Input.GetKey(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            _pauseDialog.gameObject.SetActive(true);
+            TogglePause(!_isPaused);
         }
+    }
+
+    private void TogglePause(bool isPaused)
+    {
+        _pauseDialog.gameObject.SetActive(isPaused);
+
+        if (isPaused)
+        {
+            _cycleManager.Timer.Pause();
+        }
+        else
+        {
+            _cycleManager.Timer.Unpause();
+        }
+
+        _isPaused = isPaused;
     }
 
     /// <summary>

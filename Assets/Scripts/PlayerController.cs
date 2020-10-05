@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private Camera _camera;
     private GlobalParams _globalParams;
 
-    public bool MovementEnabled = true;
+    public bool MovementEnabled { get; set; } = true;
 
     public Transform TopPlaceholder => _topPlaceholder;
 
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         _globalParams = globalParams;
     }
 
-    private void FixedUpdate()
+    public void Tick(float deltaTime)
     {
         if (!MovementEnabled)
         {

@@ -26,6 +26,7 @@ public class GuestsManager : MonoBehaviour
     private CommonAssets _commonAssets;
     private Camera _camera;
     private Transform _bubbleContainer;
+    private Transform _minigameContainer;
     private PlayerController _playerController;
 
     private readonly List<string> _clueList = new List<string>();
@@ -45,7 +46,7 @@ public class GuestsManager : MonoBehaviour
     public void Connect(GameModel gameModel, List<GuestParams> guestList, GameObjectPool pool,
         GlobalParams globalParams,
         CommonAssets commonAssets, Camera camera1,
-        Transform bubbleContainer, PlayerController playerController)
+        Transform bubbleContainer, Transform minigameContainer, PlayerController playerController)
     {
         _gameModel = gameModel;
         _pool = pool;
@@ -53,6 +54,7 @@ public class GuestsManager : MonoBehaviour
         _commonAssets = commonAssets;
         _camera = camera1;
         _bubbleContainer = bubbleContainer;
+        _minigameContainer = minigameContainer;
         _playerController = playerController;
 
         foreach (var guestParams in guestList)
@@ -151,7 +153,7 @@ public class GuestsManager : MonoBehaviour
 
     private void CreateMinigameDialogBox(OrderBox orderView)
     {
-        var minigameGo = GameObject.Instantiate(_commonAssets.MinigamePrefab, _bubbleContainer);
+        var minigameGo = GameObject.Instantiate(_commonAssets.MinigamePrefab, _minigameContainer);
         var minigameView = minigameGo.GetComponent<MinigameView>();
         minigameView.Connect(_orderDrinks[orderView].sequence, OnMinigameComplete, _camera, orderView.GuestView);
         _minigameViews.Add(minigameView);

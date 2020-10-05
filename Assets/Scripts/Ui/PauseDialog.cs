@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PauseDialog : MonoBehaviour
@@ -8,11 +9,13 @@ public class PauseDialog : MonoBehaviour
     [SerializeField] private Button _exitButton = default;
 
     private GameController _controller;
+    private Action<bool> _resumeGameCallback;
 
-    public void Connect(GameController controller)
+    public void Connect(GameController controller, Action<bool> resumeGameCallback)
     {
         _controller = controller;
-        
+        _resumeGameCallback = resumeGameCallback;
+
         _resumeButton.onClick.AddListener(OnResumeButtonClick);
         _restartButton.onClick.AddListener(OnRestartButtonClick);
         _exitButton.onClick.AddListener(OnExitButtonClick);
@@ -30,7 +33,7 @@ public class PauseDialog : MonoBehaviour
 
     private void OnResumeButtonClick()
     {
-        // TODO:
+        _resumeGameCallback?.Invoke(false);
     }
 
     public void Utilize()

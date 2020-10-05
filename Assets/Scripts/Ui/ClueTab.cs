@@ -7,7 +7,12 @@ public class ClueTab : MonoBehaviour
     public string name = default;
     [SerializeField] private int _maxNumberOfClues = default;
     [SerializeField] private GameObject _summaryPrefab;
-    [SerializeField] private GameObject _policeButton;
+
+    public GameObject _policeButton;
+    public GameObject _sleepButton;
+
+    public GameObject _endGameButton;
+
     private List<string> _currentClues = new List<string>();
 
     public void CheckForSummary(string newClue)
@@ -17,10 +22,18 @@ public class ClueTab : MonoBehaviour
         if (_currentClues.Count >= _maxNumberOfClues)
         {
             Instantiate(_summaryPrefab, gameObject.transform);
-            if (_policeButton != null)
-            {
-                _policeButton.SetActive(true);
-            }
+
+            // да, да, я знаю, что это зашквар, но быстро придумать другого решения не смог
+            ActivateButton(_policeButton);
+            ActivateButton(_sleepButton);
+        }
+    }
+
+    private void ActivateButton(GameObject buttonToActivate)
+    {
+        if (buttonToActivate != null)
+        {
+            buttonToActivate.SetActive(true);
         }
     }
 }
